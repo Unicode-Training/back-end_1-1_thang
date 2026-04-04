@@ -461,3 +461,218 @@ Muốn làm việc với User:
 //Tính đa hình
 //Nạp chồng (Overload)
 //Dependency Injection
+
+//Overload
+// class UserService {
+//   findUser(id: number): void;
+//   findUser(email: string): void;
+//   findUser(param: number | string): void {
+//     if (typeof param === "number") {
+//       console.log("Tìm kiếm theo id");
+//     } else {
+//       console.log("Tìm kiếm theo email");
+//     }
+//   }
+// }
+
+// const userService = new UserService();
+// userService.findUser(1);
+// userService.findUser("hoangan.web@gmail.com");
+
+// function Logger2(target: Function) {
+//   console.log(`Logging2... ${target.name}`);
+//   console.log((target as typeof User).message);
+// }
+// const Logger = (input: string) => (target: Function) => {
+//   console.log(`Logging... ${target.name}`);
+//   console.log(input);
+// };
+
+// @Logger("Hello")
+// @Logger2
+// class User {
+//   constructor(private name: string) {}
+//   public static message = "Hello anh em";
+// }
+// const user = new User("Hoàng An");
+
+// @Logger2
+// class Customer {}
+// const customer = new Customer();
+
+// function Log(target: any, methodName: string, descriptor: PropertyDescriptor) {
+//target: prototype của UserService
+//   console.log(`Method: ${methodName} được gọi`);
+//   console.log(`target: `, target);
+//   console.log(descriptor);
+//   console.log(descriptor.value);
+// }
+// function ReadOnly(target: any, propertyName: string) {
+//   console.log(`Property: ${propertyName} được tạo`);
+//   console.log(`Target:`, target);
+// }
+// class UserService {
+//   @ReadOnly
+//   public name: string = "hoàng an";
+//   @Log
+//   getName(value: string) {}
+// }
+// const userService = new UserService();
+
+// class User {
+//   private data = ["Item 1", "Item 2", "Item 3"];
+//   private data2 = 0;
+//   get latest(): string | undefined {
+//     return this.data[this.data.length - 1];
+//   }
+
+//   set latest(value: string) {
+//     this.data.push(value);
+//   }
+
+//   get value() {
+//     return this.data2;
+//   }
+
+//   set value(number: number) {
+//     //validate
+//     this.data2 += number;
+//   }
+// }
+
+// const user = new User();
+// // user.latest = "Item 4"; //setter
+// // console.log(user.latest); //getter
+
+// user.value++;
+// console.log(user.value);
+
+// const Validate =
+//   (number: number) =>
+//   (target: any, propertyName: string, descriptor: PropertyDescriptor) => {
+//     const originalGetter = descriptor.get;
+//     descriptor.get = function () {
+//       const value = originalGetter?.call(this);
+//       if (value <= number) {
+//         throw new Error("age invalid");
+//       }
+//       return value;
+//     };
+//   };
+
+// const Validate = (
+//   target: any,
+//   propertyName: string,
+//   descriptor: PropertyDescriptor,
+// ) => {
+//   const originalSetter = descriptor.set;
+//   descriptor.set = function (value) {
+//     if (value < 0) {
+//       console.log(`${propertyName} không được âm`);
+//       return;
+//     }
+//     originalSetter?.call(this, value);
+//   };
+// };
+
+// class User {
+//   private _age: number = 30;
+//   private _total: number = 0;
+//   //   @Validate(20)
+//   get age() {
+//     return this._age;
+//   }
+//   @Validate
+//   set age(value: number) {
+//     //validate
+//     this._age = value;
+//   }
+
+//   @Validate
+//   set total(value: number) {
+//     this._total = value;
+//   }
+// }
+
+// const user = new User();
+// user.age = -30;
+// // console.log(user.age);
+
+// user.total = -10;
+
+// function ParamLogger(target: any, methodName: string, paramIndex: number) {
+//   console.log(`Parameter index: ${paramIndex} in method: ${methodName}`);
+// }
+// class AuthService {
+//   login(username: string, @ParamLogger password: string) {
+//     console.log(`Logging in...`);
+//   }
+// }
+
+// function ValidateParams(
+//   target: any,
+//   methodName: string,
+//   descriptor: PropertyDescriptor,
+// ) {
+//   const originalMethod = descriptor.value;
+//   descriptor.value = function (...args: any) {
+//     if (args.length !== 2) {
+//       console.log("Số lượng đối số không hợp lệ");
+//       return;
+//     }
+//     if (+args[1] === 0) {
+//       console.log("Số chia không được bằng 0");
+//       return;
+//     }
+//     return originalMethod.apply(this, args);
+//   };
+// }
+
+// class Calc {
+//   @ValidateParams
+//   divi(a: number, b: number, c: number) {
+//     return a / b;
+//   }
+// }
+
+// const calc = new Calc();
+// console.log(calc.divi(10, 2, 0));
+
+// console.log(1000 ** 1000 === 2000 ** 2000);
+
+//NaN --> xuất hiện khi ép kiểu về số thất bại
+
+//Dependency Injection
+import "reflect-metadata";
+import { UserController } from "./controllers/UserController";
+import { UserService } from "./services/UserService";
+import { ProductService } from "./services/ProductService";
+
+//low level
+//high level
+
+//DI Container
+
+const dependencies = Reflect.getMetadata("design:paramtypes", UserController);
+// const instances = dependencies.map((dependency: any) => new dependency());
+
+const DIContainer = (target: any) => {
+  if (!target) {
+    return [];
+  }
+  const result = target.map((dependency: any) => {
+    const metadata = Reflect.getMetadata("design:paramtypes", dependency);
+    //metadata --> mảng chứa class của từng tham số
+    //[PostService]
+    //new dependency(...metadata)
+    return Reflect.construct(dependency, DIContainer(metadata)); //new A(...args)
+  });
+  return result;
+};
+
+const instanceArr = DIContainer(dependencies);
+
+const controller = Reflect.construct(UserController, instanceArr);
+controller.findAll();
+
+//new UserController(instance1, instance2)
