@@ -1,24 +1,26 @@
 import { NextFunction, Request, Response } from "express";
+import { userService } from "../services/user.service";
 
 export const userController = {
-  index: (req: any, res: Response, next: NextFunction) => {
-    const { s, status } = req.query;
-    // const apiKey = req.get("x-api-key");
-    // const apiKey = req.headers["x-api-key"];
-    // console.log(apiKey);
-    // res.set("x-api-key", "123");
-    // res.status(404);
-    console.log(req.user);
-
-    res.json({ s, status });
+  index: async (req: any, res: Response, next: NextFunction) => {
+    //Gọi service
+    const users = await userService.findAll();
+    res.json({
+      data: users,
+    });
   },
-  find: (req: Request, res: Response) => {
+  find: async (req: Request, res: Response, next: NextFunction) => {
+    // next("ABC");
     const { id } = req.params;
-    res.json({ id });
+    const user = await userService.find(+id!); //Promise reject
+    return res.json({
+      data: user,
+    });
   },
   create: (req: Request, res: Response) => {
     console.log(req.body);
-
     res.json({});
   },
 };
+
+//Controller Name --> Action
