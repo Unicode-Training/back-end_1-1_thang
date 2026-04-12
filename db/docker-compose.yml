@@ -1,0 +1,14 @@
+name: thang_mysql
+services:
+  mysql_db:
+    image: mysql
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 3311:3306
+
+volumes:
+  mysql_data:
