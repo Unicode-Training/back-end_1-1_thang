@@ -112,3 +112,22 @@ ON lienket2va3
 JOIN bang4
 ON lienket3va4
 ```
+
+## Hàm tổng hợp
+
+- `COUNT(*)`: Đếm số hàng
+- MIN(ten-cot): Giá trị nhỏ nhất
+- MAX(ten-cot): Giá trị lớn nhất
+- SUM(ten-cot): Tính tổng
+- AVG(ten-cot): Tính trung bình cộng
+
+* Khi select thêm 1 cột mà có sử dụng các hàm trên -> Phải nhóm các cột đã select
+* Nếu muốn lọc theo group --> dùng having
+
+## Lệnh xuất mysql Docker Compose
+
+docker compose exec -T <service_name> /usr/bin/mysqldump -u <user> -p<password> <database_name> > ./dump.sql
+
+## Lệnh import mysql Docker Compose
+
+docker compose exec -T <service_name> mysql -u<user> -p<password> <database_name> < ./host_file.sql
