@@ -131,3 +131,28 @@ docker compose exec -T <service_name> /usr/bin/mysqldump -u <user> -p<password> 
 ## Lệnh import mysql Docker Compose
 
 docker compose exec -T <service_name> mysql -u<user> -p<password> <database_name> < ./host_file.sql
+
+Ví dụ:
+
+`SELECT * FROM users`
+
+- user 1
+- user 2
+- user 3
+- user 4
+
+--> Kéo về ứng dụng (Nodejs) --> lặp foreach --> userId --> `SELECT count(*) from users_courses WHERE user_id=:userId`
+
+==> Query N+1
+
+Cách xử lý:
+
+C1: Dùng join, subquery
+
+C2: Dùng where in
+
+B1:
+
+`SELECT * FROM users` --> lấy được danh sách users --> Tầng ứng dụng gom các userId vào chuỗi: `userId1,userId2,userId3`
+
+`SELECT * FROM users_courses WHERE user_id IN(userId1,userId2,userId3)`
