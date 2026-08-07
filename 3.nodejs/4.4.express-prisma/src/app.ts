@@ -334,72 +334,73 @@ app.get('/', (req: Request, res: Response) => {
 //     res.json({ users })
 // });
 
-// app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-//     const message = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV ? err.message : "Server Error"
-//     res.status(500).json({
-//         error: message || "Server Error"
+
+// app.post('/users/:userId/roles', async (req: Request, res: Response) => {
+//     const body = req.body;
+//     const { userId } = req.params;
+
+//     const user = await prisma.user.update({
+//         where: {
+//             id: +userId!
+//         },
+//         data: {
+//             roles: {
+//                 createMany: {
+//                     data: body.map((item: number) => ({ roleId: item }))
+//                 }
+//             }
+//         }
 //     })
+
+//     res.json({ user })
 // });
 
-app.post('/users/:userId/roles', async (req: Request, res: Response) => {
-    const body = req.body;
-    const { userId } = req.params;
+// app.put('/users/:userId/roles', async (req: Request, res: Response) => {
+//     const { userId } = req.params;
+//     const body = req.body;
+//     //Lấy dữ liệu bảng trung gian
+//     const dataFromDb = await prisma.user.findUnique({
+//         where: {
+//             id: +userId!
+//         },
+//         include: {
+//             roles: true
+//         }
+//     });
 
-    const user = await prisma.user.update({
-        where: {
-            id: +userId!
-        },
-        data: {
-            roles: {
-                createMany: {
-                    data: body.map((item: number) => ({ roleId: item }))
-                }
-            }
-        }
+//     const rolesFromDb = dataFromDb?.roles.map((item) => item.roleId);
+
+//     //Lấy danh sách cần insert vào db => So sánh body với rolesFromDb => Tìm ra phần tử khác
+//     const onInsertRoles = body.filter((item: number) => {
+//         return !rolesFromDb?.includes(item);
+//     }).map((item: number) => ({ roleId: item, userId: +userId! }));
+
+//     //Lấy danh sách càn xóa trên db => So sánh rolesFromDb với body => Tìm ra phần tử khác
+//     const onDeleteRoles = rolesFromDb?.filter((item: number) => {
+//         return !body.includes(item);
+//     });
+
+//     await prisma.$transaction([
+//         prisma.userRole.deleteMany({
+//             where: {
+//                 roleId: {
+//                     in: onDeleteRoles as number[]
+//                 }
+//             }
+//         }),
+//         prisma.userRole.createMany({
+//             data: onInsertRoles
+//         })
+//     ]);
+
+//     res.json({})
+// });
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    const message = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV ? err.message : "Server Error"
+    res.status(500).json({
+        error: message || "Server Error"
     })
-
-    res.json({ user })
-});
-
-app.put('/users/:userId/roles', async (req: Request, res: Response) => {
-    const { userId } = req.params;
-    const body = req.body;
-    //Lấy dữ liệu bảng trung gian
-    const dataFromDb = await prisma.user.findUnique({
-        where: {
-            id: +userId!
-        },
-        include: {
-            roles: true
-        }
-    });
-
-    const rolesFromDb = dataFromDb?.roles.map((item) => item.roleId);
-
-    //Lấy danh sách cần insert vào db => So sánh body với rolesFromDb => Tìm ra phần tử khác
-    const onInsertRoles = body.filter((item: number) => {
-        return !rolesFromDb?.includes(item);
-    }).map((item: number) => ({ roleId: item, userId: +userId! }));
-
-    //Lấy danh sách càn xóa trên db => So sánh rolesFromDb với body => Tìm ra phần tử khác
-    const onDeleteRoles = rolesFromDb?.filter((item: number) => {
-        return !body.includes(item);
-    });
-
-    await prisma.$transaction([
-        prisma.userRole.deleteMany({
-            where: {
-                roleId: {
-                    in: onDeleteRoles as number[]
-                }
-            }
-        }),
-        prisma.userRole.createMany({
-            data: onInsertRoles
-        })
-    ]);
-
-    res.json({})
 });
 
 app.listen(PORT, () => {
