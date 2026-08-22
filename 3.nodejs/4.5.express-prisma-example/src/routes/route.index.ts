@@ -6,6 +6,8 @@ const router = express.Router();
 router.get('/', (req: Request, res: Response) => {
     res.json({})
 });
+
+router.get('/products', productController.findAll);
 router.post('/products', validate(createProductSchema), productController.create);
 router.get('/products/:id', productController.find);
 export default router;

@@ -2,7 +2,8 @@ import { StatusCodes } from "http-status-codes";
 import HttpException from "../exceptions/http.exception";
 import { prisma } from "../libs/prisma";
 import { Prisma } from "../prisma/generated/prisma/client";
-import { Product } from "../types/product.type";
+import { Product, ProductQuery } from "../types/product.type";
+import { ProductWhereInput } from "../prisma/generated/prisma/models";
 
 export const productService = {
     existingSku(sku: string) {
@@ -11,6 +12,84 @@ export const productService = {
                 sku,
             },
         });
+    },
+
+    async findAll({ fields = '', q = "", status, sku, minPrice, maxPrice, sort = "id", order = "asc", page = 1, limit = 3 }: ProductQuery) {
+        const select = fields.split(',').filter(val => val).reduce((acc, cur) => {
+            acc[cur.trim()] = true;
+            return acc;
+        }, {} as { [key: string]: boolean });
+
+        const filters = {} as ProductWhereInput;
+
+        if (q) {
+            filters.OR = [
+                {
+                    name: {
+                        contains: q.trim()
+                    }
+                },
+                {
+                    description: {
+                        contains: q.trim()
+                    }
+                },
+                {
+                    shortDescription: {
+                        contains: q.trim()
+                    }
+                }
+            ]
+        }
+
+        if (status) {
+            filters.status = status;
+        }
+
+        if (sku) {
+            filters.sku = {
+                contains: sku
+            }
+        }
+
+        if (minPrice || maxPrice) {
+            filters.AND = [];
+            if (minPrice) {
+                filters.AND.push({
+                    price: {
+                        gte: +minPrice
+                    }
+                })
+            }
+
+            if (maxPrice) {
+                filters.AND.push({
+                    price: {
+                        lte: +maxPrice
+                    }
+                })
+            }
+        }
+
+        const [data, count] = await Promise.all([
+            prisma.product.findMany({
+                ...(Object.keys(select).length ? { select } : {}),
+                where: filters,
+                orderBy: {
+                    [sort]: order
+                },
+                take: +limit,
+                skip: (page - 1) * limit,
+            }),
+            prisma.product.count({
+                where: filters,
+            })
+        ]);
+
+        return {
+            data,
+            count
+        }
     },
 
     create({ images = [], attributes = [], ...data }: Product) {

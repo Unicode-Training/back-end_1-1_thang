@@ -9,10 +9,12 @@ app.use(express.json());
 app.use('/api', indexRouter);
 
 app.use((err: ErrorWithStatus, req: Request, res: Response, next: NextFunction) => {
-    const status = err.status || 500
+    const status = err.status || 500;
+    const isProduction = process.env.NODE_ENV === "production";
+    const message = isProduction ? "Internal Server Error" : err.message
     return res.status(status).json({
         success: false,
-        error: err.message || "Server Error"
+        error: message
     })
 });
 
