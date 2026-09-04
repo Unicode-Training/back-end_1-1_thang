@@ -3,7 +3,7 @@ import { Request, Express } from 'express'
 declare global {
     export namespace Express {
         export interface Request {
-            user?: User;
+            user?: Omit<User, 'password'>;
             jti?: string;
             expired?: number;
         }

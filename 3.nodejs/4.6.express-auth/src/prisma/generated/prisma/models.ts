@@ -10,6 +10,7 @@
  */
 export type * from './models/AttributeValue'
 export type * from './models/Attribute'
+export type * from './models/Device'
 export type * from './models/ProductAttributeValue'
 export type * from './models/ProductImage'
 export type * from './models/Product'

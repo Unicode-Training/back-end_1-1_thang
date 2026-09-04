@@ -9,6 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const DeviceStatus = {
+  ACTIVE: 'ACTIVE',
+  INCTIVE: 'INCTIVE'
+} as const
+
+export type DeviceStatus = (typeof DeviceStatus)[keyof typeof DeviceStatus]
+
+
 export const ProductStatus = {
   DRAFT: 'DRAFT',
   PUBLISH: 'PUBLISH'

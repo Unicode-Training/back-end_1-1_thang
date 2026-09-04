@@ -50,6 +50,11 @@ export type AttributeValue = Prisma.AttributeValueModel
  */
 export type Attribute = Prisma.AttributeModel
 /**
+ * Model Device
+ * 
+ */
+export type Device = Prisma.DeviceModel
+/**
  * Model ProductAttributeValue
  * 
  */

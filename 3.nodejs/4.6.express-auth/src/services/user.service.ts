@@ -3,7 +3,10 @@ import { prisma } from "../libs/prisma"
 export const userService = {
     find(id: number) {
         return prisma.user.findUnique({
-            where: { id }
+            where: { id },
+            omit: {
+                password: true
+            }
         })
     }
 }

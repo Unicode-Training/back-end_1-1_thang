@@ -53,6 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   AttributeValue: 'AttributeValue',
   Attribute: 'Attribute',
+  Device: 'Device',
   ProductAttributeValue: 'ProductAttributeValue',
   ProductImage: 'ProductImage',
   Product: 'Product',
@@ -94,6 +95,22 @@ export const AttributeScalarFieldEnum = {
 } as const
 
 export type AttributeScalarFieldEnum = (typeof AttributeScalarFieldEnum)[keyof typeof AttributeScalarFieldEnum]
+
+
+export const DeviceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  jti: 'jti',
+  status: 'status',
+  activedAt: 'activedAt',
+  inactivedAt: 'inactivedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DeviceScalarFieldEnum = (typeof DeviceScalarFieldEnum)[keyof typeof DeviceScalarFieldEnum]
 
 
 export const ProductAttributeValueScalarFieldEnum = {
@@ -171,19 +188,28 @@ export const AttributeOrderByRelevanceFieldEnum = {
 export type AttributeOrderByRelevanceFieldEnum = (typeof AttributeOrderByRelevanceFieldEnum)[keyof typeof AttributeOrderByRelevanceFieldEnum]
 
 
-export const ProductImageOrderByRelevanceFieldEnum = {
-  imageUrl: 'imageUrl'
-} as const
-
-export type ProductImageOrderByRelevanceFieldEnum = (typeof ProductImageOrderByRelevanceFieldEnum)[keyof typeof ProductImageOrderByRelevanceFieldEnum]
-
-
 export const NullsOrder = {
   first: 'first',
   last: 'last'
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const DeviceOrderByRelevanceFieldEnum = {
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  jti: 'jti'
+} as const
+
+export type DeviceOrderByRelevanceFieldEnum = (typeof DeviceOrderByRelevanceFieldEnum)[keyof typeof DeviceOrderByRelevanceFieldEnum]
+
+
+export const ProductImageOrderByRelevanceFieldEnum = {
+  imageUrl: 'imageUrl'
+} as const
+
+export type ProductImageOrderByRelevanceFieldEnum = (typeof ProductImageOrderByRelevanceFieldEnum)[keyof typeof ProductImageOrderByRelevanceFieldEnum]
 
 
 export const ProductOrderByRelevanceFieldEnum = {

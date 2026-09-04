@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import { ErrorWithStatus } from "./types/error.type";
 import indexRouter from "./routes/route.index";
+// import { authService } from "./services/auth.service";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -17,6 +18,8 @@ app.use((err: ErrorWithStatus, req: Request, res: Response, next: NextFunction) 
         error: message
     })
 });
+
+// authService.revokeByUser(1);
 
 app.listen(PORT, () => {
     console.log('Chạy với cổng ' + PORT);
