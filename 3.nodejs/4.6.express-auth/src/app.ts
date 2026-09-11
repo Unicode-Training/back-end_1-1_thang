@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
+import cors from "cors";
 import { ErrorWithStatus } from "./types/error.type";
 import indexRouter from "./routes/route.index";
 // import { authService } from "./services/auth.service";
@@ -7,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 //Middleware
 app.use(express.json());
+app.use(cors());
 app.use('/api', indexRouter);
 
 app.use((err: ErrorWithStatus, req: Request, res: Response, next: NextFunction) => {

@@ -8,6 +8,7 @@ import { Jwt } from "../utils/jwt";
 import { deviceService } from "./device.service";
 import { Request } from "express";
 import { sendMail, sendMailWithTemplate } from "../utils/mailer";
+import { generateOtp, md5 } from "../utils/auth";
 
 export const authService = {
     async login(loginData: LoginData, req: Request) {
@@ -51,14 +52,7 @@ export const authService = {
 
         //Gửi email cảnh báo
         const subject = `[Cảnh báo đăng nhập]: Bạn vừa đăng nhập`;
-        const html = `
-        <p>Chào: ${user.name}</p>
-        <p>Chúng tôi phát hiện bạn vừa đăng nhập:</p>
-        <p>Thông tin thiết bị</p>
-        <p>- Ip: ${req.ip}</p>
-        <p>- User Agent: ${req.headers["user-agent"]}</p>
-        <p>- Thời gian: ${new Date().toLocaleString()}</p>
-        `
+
         // sendMail(user.email, subject, html);
         sendMailWithTemplate(user.email, subject, 'login-notice', {
             name: user.name,
@@ -69,8 +63,8 @@ export const authService = {
 
         return token;
     },
-    register(registerData: RegisterData) {
-        return prisma.user.create({
+    async register(registerData: RegisterData) {
+        const user = await prisma.user.create({
             omit: {
                 password: true
             },
@@ -78,7 +72,25 @@ export const authService = {
                 ...registerData,
                 password: Hash.make(registerData.password)
             }
-        })
+        });
+
+        //Tạo OTP
+        const otp = generateOtp();
+        //Lưu OTP vào redis
+        const ttl = 300;
+        await redis.setex(`user_active_otp:${md5(otp)}`, ttl, JSON.stringify({
+            userId: user.id
+        }));
+
+        //Gửi email
+        const subject = 'Mã kích hoạt tài khoản của bạn';
+        sendMailWithTemplate(user.email, subject, 'user-active-otp', {
+            name: user.name,
+            email: user.email,
+            otp
+        });
+
+        return user;
     },
     logout(jti: string, expired: number) {
         //Lưu jti -> blacklist
@@ -164,6 +176,32 @@ export const authService = {
             this.revokeByJti(userId, jtiOnRedis);
         }
 
+    },
+
+    //Kích hoạt tài khoản
+    async activeUser(otp: string, loginUrl: string) {
+        const hashMd5 = md5(otp);
+        const otpOnRedis = await redis.get(`user_active_otp:${hashMd5}`);
+        if (!otpOnRedis) {
+            throw new HttpException("Đã có lỗi xảy ra, vui lòng thử lại sau");
+        }
+        const { userId } = JSON.parse(otpOnRedis);
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            },
+            data: {
+                status: true
+            }
+        });
+        await redis.del(`user_active_otp:${hashMd5}`);
+        const subject = 'Tài khoản đã sẵn sàng';
+        sendMailWithTemplate(user.email, subject, 'user-active', {
+            name: user.name,
+            email: user.email,
+            link: loginUrl
+        })
+        return true;
     }
 
 }

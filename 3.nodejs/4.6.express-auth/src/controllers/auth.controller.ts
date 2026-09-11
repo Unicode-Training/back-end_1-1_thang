@@ -76,5 +76,17 @@ export const authController = {
             message: "Login all device success",
             success: true
         });
+    },
+
+    async active(req: Request, res: Response) {
+        const { otp, loginUrl } = req.body;
+        const origin = req.headers.origin;
+        const loginUrlFull = `${origin}${loginUrl}`
+        await authService.activeUser(otp, loginUrlFull);
+        return res.json({
+            message: "Active account success",
+            success: true
+        })
     }
+
 }
