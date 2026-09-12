@@ -1,0 +1,20 @@
+enum DeviceStatus {
+    ACTIVE
+    INCTIVE
+}
+
+model Device {
+    id          Int          @id @default(autoincrement())
+    userId      Int
+    user        User         @relation(fields: [userId], references: [id])
+    ipAddress   String?
+    userAgent   String?
+    jti         String
+    status      DeviceStatus @default(ACTIVE)
+    activedAt   DateTime?
+    inactivedAt DateTime?
+    createdAt   DateTime     @default(now()) @db.Timestamp()
+    updatedAt   DateTime     @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("devices")
+}

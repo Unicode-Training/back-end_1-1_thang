@@ -1,0 +1,19 @@
+enum Status {
+    INACTIVE
+    ACTIVE
+}
+
+model User {
+    id        Int        @id @default(autoincrement()) //primary key, auto_increment
+    name      String     @db.VarChar(30)
+    email     String     @unique @db.VarChar(100)
+    password  String?    @db.VarChar(100)
+    status    Status     @default(INACTIVE)
+    phone     Phone?
+    posts     Post[]
+    roles     UserRole[]
+    createdAt DateTime   @default(now()) @db.Timestamp()
+    updatedAt DateTime   @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("users") //Table name
+}

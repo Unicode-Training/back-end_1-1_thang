@@ -1,0 +1,14 @@
+model ProductAttributeValue {
+    id Int @id @default(autoincrement())
+
+    attribute        Attribute      @relation(fields: [attributeId], references: [id])
+    product          Product        @relation(fields: [productId], references: [id])
+    attributeValue   AttributeValue @relation(fields: [attributeValueId], references: [id])
+    attributeId      Int
+    productId        Int
+    attributeValueId Int
+    createdAt        DateTime       @default(now()) @db.Timestamp()
+    updatedAt        DateTime       @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("products_attribute_values")
+}
