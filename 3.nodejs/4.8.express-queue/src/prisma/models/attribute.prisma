@@ -1,0 +1,10 @@
+model Attribute {
+    id                Int                     @id @default(autoincrement())
+    productAttributes ProductAttributeValue[] //Từ attribute lấy ra danh sách sản phẩm
+    values            AttributeValue[]
+    name              String                  @db.VarChar(100)
+    createdAt         DateTime                @default(now()) @db.Timestamp()
+    updatedAt         DateTime                @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("attributes")
+}
