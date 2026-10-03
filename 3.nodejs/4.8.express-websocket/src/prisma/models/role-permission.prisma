@@ -1,0 +1,11 @@
+model RolePermission {
+    id           Int        @id @default(autoincrement())
+    roleId       Int
+    permissionId Int
+    role         Role       @relation(fields: [roleId], references: [id])
+    permission   Permission @relation(fields: [permissionId], references: [id])
+    createdAt    DateTime   @default(now()) @db.Timestamp()
+    updatedAt    DateTime   @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("roles_permissions")
+}
