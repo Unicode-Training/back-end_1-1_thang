@@ -1,0 +1,9 @@
+model CompanyScale {
+    id        Int       @id @default(autoincrement())
+    name      String    @db.VarChar(100)
+    createdAt DateTime  @default(now()) @db.Timestamp()
+    updatedAt DateTime  @default(now()) @updatedAt @db.Timestamp()
+    companies Company[]
+
+    @@map("company_scales")
+}

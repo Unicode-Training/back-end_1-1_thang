@@ -1,0 +1,10 @@
+model Industry {
+    id        Int       @id @default(autoincrement())
+    image     String    @db.VarChar(100)
+    name      String    @db.VarChar(100)
+    createdAt DateTime  @default(now()) @db.Timestamp()
+    updatedAt DateTime  @default(now()) @updatedAt @db.Timestamp()
+    companies Company[]
+
+    @@map("industry")
+}

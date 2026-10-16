@@ -1,0 +1,24 @@
+enum VerificationStatus {
+    PENDING
+    APPROVE
+}
+
+model Company {
+    id                 Int                @id @default(autoincrement())
+    industryId         Int?
+    scaleId            Int?
+    industry           Industry?          @relation(fields: [industryId], references: [id])
+    scale              CompanyScale?      @relation(fields: [scaleId], references: [id])
+    name               String             @db.VarChar(200)
+    logo               String?            @db.VarChar(100)
+    website            String?            @db.VarChar(100)
+    taxNumber          String             @unique @db.VarChar(100)
+    shortDescription   String?            @db.Text()
+    description        String?            @db.Text()
+    verificationStatus VerificationStatus @default(PENDING)
+    createdAt          DateTime           @default(now()) @db.Timestamp()
+    updatedAt          DateTime           @default(now()) @updatedAt @db.Timestamp()
+    employerProfiles   EmployerProfile[]
+
+    @@map("company")
+}
