@@ -397,11 +397,15 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  CompanyAddress: 'CompanyAddress',
+  CompanyDocument: 'CompanyDocument',
   CompanyScale: 'CompanyScale',
   Company: 'Company',
   EmployerProfile: 'EmployerProfile',
   Industry: 'Industry',
-  User: 'User'
+  Province: 'Province',
+  User: 'User',
+  Ward: 'Ward'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -417,10 +421,142 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "companyScale" | "company" | "employerProfile" | "industry" | "user"
+    modelProps: "companyAddress" | "companyDocument" | "companyScale" | "company" | "employerProfile" | "industry" | "province" | "user" | "ward"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    CompanyAddress: {
+      payload: Prisma.$CompanyAddressPayload<ExtArgs>
+      fields: Prisma.CompanyAddressFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompanyAddressFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyAddressPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompanyAddressFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyAddressPayload>
+        }
+        findFirst: {
+          args: Prisma.CompanyAddressFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyAddressPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompanyAddressFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyAddressPayload>
+        }
+        findMany: {
+          args: Prisma.CompanyAddressFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyAddressPayload>[]
+        }
+        create: {
+          args: Prisma.CompanyAddressCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyAddressPayload>
+        }
+        createMany: {
+          args: Prisma.CompanyAddressCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.CompanyAddressDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyAddressPayload>
+        }
+        update: {
+          args: Prisma.CompanyAddressUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyAddressPayload>
+        }
+        deleteMany: {
+          args: Prisma.CompanyAddressDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompanyAddressUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.CompanyAddressUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyAddressPayload>
+        }
+        aggregate: {
+          args: Prisma.CompanyAddressAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompanyAddress>
+        }
+        groupBy: {
+          args: Prisma.CompanyAddressGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompanyAddressGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompanyAddressCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompanyAddressCountAggregateOutputType> | number
+        }
+      }
+    }
+    CompanyDocument: {
+      payload: Prisma.$CompanyDocumentPayload<ExtArgs>
+      fields: Prisma.CompanyDocumentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CompanyDocumentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyDocumentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CompanyDocumentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyDocumentPayload>
+        }
+        findFirst: {
+          args: Prisma.CompanyDocumentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyDocumentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CompanyDocumentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyDocumentPayload>
+        }
+        findMany: {
+          args: Prisma.CompanyDocumentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyDocumentPayload>[]
+        }
+        create: {
+          args: Prisma.CompanyDocumentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyDocumentPayload>
+        }
+        createMany: {
+          args: Prisma.CompanyDocumentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.CompanyDocumentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyDocumentPayload>
+        }
+        update: {
+          args: Prisma.CompanyDocumentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyDocumentPayload>
+        }
+        deleteMany: {
+          args: Prisma.CompanyDocumentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CompanyDocumentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.CompanyDocumentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyDocumentPayload>
+        }
+        aggregate: {
+          args: Prisma.CompanyDocumentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompanyDocument>
+        }
+        groupBy: {
+          args: Prisma.CompanyDocumentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompanyDocumentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CompanyDocumentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CompanyDocumentCountAggregateOutputType> | number
+        }
+      }
+    }
     CompanyScale: {
       payload: Prisma.$CompanyScalePayload<ExtArgs>
       fields: Prisma.CompanyScaleFieldRefs
@@ -685,6 +821,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Province: {
+      payload: Prisma.$ProvincePayload<ExtArgs>
+      fields: Prisma.ProvinceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProvinceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProvincePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProvinceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProvincePayload>
+        }
+        findFirst: {
+          args: Prisma.ProvinceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProvincePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProvinceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProvincePayload>
+        }
+        findMany: {
+          args: Prisma.ProvinceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProvincePayload>[]
+        }
+        create: {
+          args: Prisma.ProvinceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProvincePayload>
+        }
+        createMany: {
+          args: Prisma.ProvinceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.ProvinceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProvincePayload>
+        }
+        update: {
+          args: Prisma.ProvinceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProvincePayload>
+        }
+        deleteMany: {
+          args: Prisma.ProvinceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProvinceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.ProvinceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProvincePayload>
+        }
+        aggregate: {
+          args: Prisma.ProvinceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProvince>
+        }
+        groupBy: {
+          args: Prisma.ProvinceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProvinceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProvinceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProvinceCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -751,6 +953,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Ward: {
+      payload: Prisma.$WardPayload<ExtArgs>
+      fields: Prisma.WardFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WardFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WardPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WardFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WardPayload>
+        }
+        findFirst: {
+          args: Prisma.WardFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WardPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WardFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WardPayload>
+        }
+        findMany: {
+          args: Prisma.WardFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WardPayload>[]
+        }
+        create: {
+          args: Prisma.WardCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WardPayload>
+        }
+        createMany: {
+          args: Prisma.WardCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.WardDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WardPayload>
+        }
+        update: {
+          args: Prisma.WardUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WardPayload>
+        }
+        deleteMany: {
+          args: Prisma.WardDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.WardUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.WardUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WardPayload>
+        }
+        aggregate: {
+          args: Prisma.WardAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWard>
+        }
+        groupBy: {
+          args: Prisma.WardGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WardGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WardCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WardCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -788,6 +1056,32 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const CompanyAddressScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  provinceId: 'provinceId',
+  wardId: 'wardId',
+  address: 'address',
+  isHeadquarter: 'isHeadquarter',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompanyAddressScalarFieldEnum = (typeof CompanyAddressScalarFieldEnum)[keyof typeof CompanyAddressScalarFieldEnum]
+
+
+export const CompanyDocumentScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  name: 'name',
+  file: 'file',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompanyDocumentScalarFieldEnum = (typeof CompanyDocumentScalarFieldEnum)[keyof typeof CompanyDocumentScalarFieldEnum]
 
 
 export const CompanyScaleScalarFieldEnum = {
@@ -844,6 +1138,16 @@ export const IndustryScalarFieldEnum = {
 export type IndustryScalarFieldEnum = (typeof IndustryScalarFieldEnum)[keyof typeof IndustryScalarFieldEnum]
 
 
+export const ProvinceScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProvinceScalarFieldEnum = (typeof ProvinceScalarFieldEnum)[keyof typeof ProvinceScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -858,12 +1162,38 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const WardScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  provinceId: 'provinceId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WardScalarFieldEnum = (typeof WardScalarFieldEnum)[keyof typeof WardScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const CompanyAddressOrderByRelevanceFieldEnum = {
+  address: 'address'
+} as const
+
+export type CompanyAddressOrderByRelevanceFieldEnum = (typeof CompanyAddressOrderByRelevanceFieldEnum)[keyof typeof CompanyAddressOrderByRelevanceFieldEnum]
+
+
+export const CompanyDocumentOrderByRelevanceFieldEnum = {
+  name: 'name',
+  file: 'file'
+} as const
+
+export type CompanyDocumentOrderByRelevanceFieldEnum = (typeof CompanyDocumentOrderByRelevanceFieldEnum)[keyof typeof CompanyDocumentOrderByRelevanceFieldEnum]
 
 
 export const CompanyScaleOrderByRelevanceFieldEnum = {
@@ -909,6 +1239,13 @@ export const IndustryOrderByRelevanceFieldEnum = {
 export type IndustryOrderByRelevanceFieldEnum = (typeof IndustryOrderByRelevanceFieldEnum)[keyof typeof IndustryOrderByRelevanceFieldEnum]
 
 
+export const ProvinceOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type ProvinceOrderByRelevanceFieldEnum = (typeof ProvinceOrderByRelevanceFieldEnum)[keyof typeof ProvinceOrderByRelevanceFieldEnum]
+
+
 export const UserOrderByRelevanceFieldEnum = {
   name: 'name',
   email: 'email',
@@ -916,6 +1253,13 @@ export const UserOrderByRelevanceFieldEnum = {
 } as const
 
 export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+export const WardOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type WardOrderByRelevanceFieldEnum = (typeof WardOrderByRelevanceFieldEnum)[keyof typeof WardOrderByRelevanceFieldEnum]
 
 
 
@@ -939,6 +1283,13 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
 
 
 /**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -949,13 +1300,6 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'VerificationStatus'
  */
 export type EnumVerificationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VerificationStatus'>
-    
-
-
-/**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -1137,11 +1481,15 @@ export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions 
  */
 export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
+  companyAddress?: Prisma.CompanyAddressOmit
+  companyDocument?: Prisma.CompanyDocumentOmit
   companyScale?: Prisma.CompanyScaleOmit
   company?: Prisma.CompanyOmit
   employerProfile?: Prisma.EmployerProfileOmit
   industry?: Prisma.IndustryOmit
+  province?: Prisma.ProvinceOmit
   user?: Prisma.UserOmit
+  ward?: Prisma.WardOmit
 }
 
 /* Types for Logging */

@@ -31,6 +31,23 @@ export const companyService = {
 
     },
 
+    async update(companyData: Company, userId: number, id: number) {
+        return prisma.company.update({
+            where: {
+                id,
+                employerProfiles: {
+                    some: {
+                        userId
+                    }
+                }
+            },
+            data: {
+                ...companyData,
+                verificationStatus: "PENDING"
+            }
+        })
+    },
+
     async delete(id: number, userId: number) {
         return prisma.company.delete({
             where: {

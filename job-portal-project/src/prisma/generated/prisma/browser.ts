@@ -18,6 +18,16 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
+ * Model CompanyAddress
+ * 
+ */
+export type CompanyAddress = Prisma.CompanyAddressModel
+/**
+ * Model CompanyDocument
+ * 
+ */
+export type CompanyDocument = Prisma.CompanyDocumentModel
+/**
  * Model CompanyScale
  * 
  */
@@ -38,7 +48,17 @@ export type EmployerProfile = Prisma.EmployerProfileModel
  */
 export type Industry = Prisma.IndustryModel
 /**
+ * Model Province
+ * 
+ */
+export type Province = Prisma.ProvinceModel
+/**
  * Model User
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Ward
+ * 
+ */
+export type Ward = Prisma.WardModel

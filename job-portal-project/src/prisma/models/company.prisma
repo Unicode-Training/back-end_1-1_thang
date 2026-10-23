@@ -19,6 +19,8 @@ model Company {
     createdAt          DateTime           @default(now()) @db.Timestamp()
     updatedAt          DateTime           @default(now()) @updatedAt @db.Timestamp()
     employerProfiles   EmployerProfile[]
+    companyDocuments   CompanyDocument[]
+    companyAddresses   CompanyAddress[]
 
     @@map("company")
 }

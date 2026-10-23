@@ -3,6 +3,7 @@ import HttpException from "../exceptions/http.exception";
 
 export const errorMiddleware = (err: HttpException, req: Request, res: Response, next: NextFunction) => {
     const status = err.status || 500;
+    console.log(err.message);
     const isProduction = process.env.NODE_ENV === "production";
     const message = isProduction ? "Internal Server Error" : err.message
     return res.status(status).json({

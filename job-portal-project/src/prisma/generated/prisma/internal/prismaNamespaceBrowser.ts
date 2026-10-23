@@ -51,11 +51,15 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  CompanyAddress: 'CompanyAddress',
+  CompanyDocument: 'CompanyDocument',
   CompanyScale: 'CompanyScale',
   Company: 'Company',
   EmployerProfile: 'EmployerProfile',
   Industry: 'Industry',
-  User: 'User'
+  Province: 'Province',
+  User: 'User',
+  Ward: 'Ward'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -72,6 +76,32 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const CompanyAddressScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  provinceId: 'provinceId',
+  wardId: 'wardId',
+  address: 'address',
+  isHeadquarter: 'isHeadquarter',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompanyAddressScalarFieldEnum = (typeof CompanyAddressScalarFieldEnum)[keyof typeof CompanyAddressScalarFieldEnum]
+
+
+export const CompanyDocumentScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  name: 'name',
+  file: 'file',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompanyDocumentScalarFieldEnum = (typeof CompanyDocumentScalarFieldEnum)[keyof typeof CompanyDocumentScalarFieldEnum]
 
 
 export const CompanyScaleScalarFieldEnum = {
@@ -128,6 +158,16 @@ export const IndustryScalarFieldEnum = {
 export type IndustryScalarFieldEnum = (typeof IndustryScalarFieldEnum)[keyof typeof IndustryScalarFieldEnum]
 
 
+export const ProvinceScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProvinceScalarFieldEnum = (typeof ProvinceScalarFieldEnum)[keyof typeof ProvinceScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -142,12 +182,38 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const WardScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  provinceId: 'provinceId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WardScalarFieldEnum = (typeof WardScalarFieldEnum)[keyof typeof WardScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const CompanyAddressOrderByRelevanceFieldEnum = {
+  address: 'address'
+} as const
+
+export type CompanyAddressOrderByRelevanceFieldEnum = (typeof CompanyAddressOrderByRelevanceFieldEnum)[keyof typeof CompanyAddressOrderByRelevanceFieldEnum]
+
+
+export const CompanyDocumentOrderByRelevanceFieldEnum = {
+  name: 'name',
+  file: 'file'
+} as const
+
+export type CompanyDocumentOrderByRelevanceFieldEnum = (typeof CompanyDocumentOrderByRelevanceFieldEnum)[keyof typeof CompanyDocumentOrderByRelevanceFieldEnum]
 
 
 export const CompanyScaleOrderByRelevanceFieldEnum = {
@@ -193,6 +259,13 @@ export const IndustryOrderByRelevanceFieldEnum = {
 export type IndustryOrderByRelevanceFieldEnum = (typeof IndustryOrderByRelevanceFieldEnum)[keyof typeof IndustryOrderByRelevanceFieldEnum]
 
 
+export const ProvinceOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type ProvinceOrderByRelevanceFieldEnum = (typeof ProvinceOrderByRelevanceFieldEnum)[keyof typeof ProvinceOrderByRelevanceFieldEnum]
+
+
 export const UserOrderByRelevanceFieldEnum = {
   name: 'name',
   email: 'email',
@@ -200,4 +273,11 @@ export const UserOrderByRelevanceFieldEnum = {
 } as const
 
 export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+export const WardOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type WardOrderByRelevanceFieldEnum = (typeof WardOrderByRelevanceFieldEnum)[keyof typeof WardOrderByRelevanceFieldEnum]
 

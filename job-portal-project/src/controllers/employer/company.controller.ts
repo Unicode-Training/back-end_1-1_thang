@@ -12,6 +12,17 @@ export const companyController = {
         })
     },
 
+    async update(req: Request, res: Response) {
+        const user = req.user;
+        const { id } = req.params;
+        const data = await companyService.update(req.body, user!.id, +id!);
+        return res.json({
+            data,
+            success: true,
+            message: "Update company success"
+        })
+    },
+
     async delete(req: Request, res: Response) {
         const { id } = req.params;
         const user = req.user;

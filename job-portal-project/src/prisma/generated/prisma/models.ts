@@ -8,9 +8,13 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/CompanyAddress'
+export type * from './models/CompanyDocument'
 export type * from './models/CompanyScale'
 export type * from './models/Company'
 export type * from './models/EmployerProfile'
 export type * from './models/Industry'
+export type * from './models/Province'
 export type * from './models/User'
+export type * from './models/Ward'
 export type * from './commonInputTypes'

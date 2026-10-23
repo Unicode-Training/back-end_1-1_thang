@@ -1,0 +1,11 @@
+model CompanyDocument {
+    id        Int      @id @default(autoincrement())
+    companyId Int
+    company   Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+    name      String   @db.VarChar(150)
+    file      String   @db.VarChar(200)
+    createdAt DateTime @default(now()) @db.Timestamp()
+    updatedAt DateTime @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("company_documents")
+}

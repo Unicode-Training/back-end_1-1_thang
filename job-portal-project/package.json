@@ -10,7 +10,8 @@
     "worker": "tsx watch src/workers/index.worker",
     "scheduler": "tsx watch src/schedulers/index.scheduler",
     "seed:industry": "tsx src/prisma/seed/industry.ts",
-    "seed:companyScale": "tsx src/prisma/seed/company-scale.ts"
+    "seed:companyScale": "tsx src/prisma/seed/company-scale.ts",
+    "seed:province": "tsx src/prisma/seed/province-ward.ts"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +31,7 @@
     "ioredis": "^6.0.0",
     "jsonwebtoken": "^9.0.3",
     "moment": "^2.31.0",
+    "multer": "^2.5.0",
     "node-cron": "^4.6.0",
     "nodemailer": "^10.0.0",
     "ws": "^8.22.0",
@@ -41,6 +43,7 @@
     "@types/ejs": "^3.1.5",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.3.0",
     "@types/node": "^26.4.0",
     "@types/ws": "^8.18.2",
     "prisma": "^7.9.1",

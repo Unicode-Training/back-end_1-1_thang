@@ -6,6 +6,7 @@ declare global {
             user?: Omit<User, 'password'>;
             jti?: string;
             expired?: number;
+            companyId?: number;
         }
     }
 } 

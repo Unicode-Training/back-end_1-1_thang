@@ -29,8 +29,8 @@ export * from "./enums"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more CompanyScales
- * const companyScales = await prisma.companyScale.findMany()
+ * // Fetch zero or more CompanyAddresses
+ * const companyAddresses = await prisma.companyAddress.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -39,6 +39,16 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
+/**
+ * Model CompanyAddress
+ * 
+ */
+export type CompanyAddress = Prisma.CompanyAddressModel
+/**
+ * Model CompanyDocument
+ * 
+ */
+export type CompanyDocument = Prisma.CompanyDocumentModel
 /**
  * Model CompanyScale
  * 
@@ -60,7 +70,17 @@ export type EmployerProfile = Prisma.EmployerProfileModel
  */
 export type Industry = Prisma.IndustryModel
 /**
+ * Model Province
+ * 
+ */
+export type Province = Prisma.ProvinceModel
+/**
  * Model User
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Ward
+ * 
+ */
+export type Ward = Prisma.WardModel

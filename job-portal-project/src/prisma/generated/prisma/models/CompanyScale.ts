@@ -343,22 +343,6 @@ export type CompanyScaleNullableScalarRelationFilter = {
   isNot?: Prisma.CompanyScaleWhereInput | null
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type CompanyScaleCreateNestedOneWithoutCompaniesInput = {
   create?: Prisma.XOR<Prisma.CompanyScaleCreateWithoutCompaniesInput, Prisma.CompanyScaleUncheckedCreateWithoutCompaniesInput>
   connectOrCreate?: Prisma.CompanyScaleCreateOrConnectWithoutCompaniesInput

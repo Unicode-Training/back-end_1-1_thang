@@ -514,10 +514,6 @@ export type EmployerProfileUncheckedUpdateManyWithoutCompanyNestedInput = {
   deleteMany?: Prisma.EmployerProfileScalarWhereInput | Prisma.EmployerProfileScalarWhereInput[]
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type EnumEmployerVerificationStatusFieldUpdateOperationsInput = {
   set?: $Enums.EmployerVerificationStatus
 }
