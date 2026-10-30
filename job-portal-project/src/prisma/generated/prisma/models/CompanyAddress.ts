@@ -255,6 +255,7 @@ export type CompanyAddressWhereInput = {
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   province?: Prisma.XOR<Prisma.ProvinceScalarRelationFilter, Prisma.ProvinceWhereInput>
   ward?: Prisma.XOR<Prisma.WardScalarRelationFilter, Prisma.WardWhereInput>
+  jobs?: Prisma.JobListRelationFilter
 }
 
 export type CompanyAddressOrderByWithRelationInput = {
@@ -269,6 +270,7 @@ export type CompanyAddressOrderByWithRelationInput = {
   company?: Prisma.CompanyOrderByWithRelationInput
   province?: Prisma.ProvinceOrderByWithRelationInput
   ward?: Prisma.WardOrderByWithRelationInput
+  jobs?: Prisma.JobOrderByRelationAggregateInput
   _relevance?: Prisma.CompanyAddressOrderByRelevanceInput
 }
 
@@ -287,6 +289,7 @@ export type CompanyAddressWhereUniqueInput = Prisma.AtLeast<{
   company?: Prisma.XOR<Prisma.CompanyScalarRelationFilter, Prisma.CompanyWhereInput>
   province?: Prisma.XOR<Prisma.ProvinceScalarRelationFilter, Prisma.ProvinceWhereInput>
   ward?: Prisma.XOR<Prisma.WardScalarRelationFilter, Prisma.WardWhereInput>
+  jobs?: Prisma.JobListRelationFilter
 }, "id">
 
 export type CompanyAddressOrderByWithAggregationInput = {
@@ -327,6 +330,7 @@ export type CompanyAddressCreateInput = {
   company: Prisma.CompanyCreateNestedOneWithoutCompanyAddressesInput
   province: Prisma.ProvinceCreateNestedOneWithoutCompanyAddressesInput
   ward: Prisma.WardCreateNestedOneWithoutCompanyAddressesInput
+  jobs?: Prisma.JobCreateNestedManyWithoutAddressInput
 }
 
 export type CompanyAddressUncheckedCreateInput = {
@@ -338,6 +342,7 @@ export type CompanyAddressUncheckedCreateInput = {
   isHeadquarter?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  jobs?: Prisma.JobUncheckedCreateNestedManyWithoutAddressInput
 }
 
 export type CompanyAddressUpdateInput = {
@@ -348,6 +353,7 @@ export type CompanyAddressUpdateInput = {
   company?: Prisma.CompanyUpdateOneRequiredWithoutCompanyAddressesNestedInput
   province?: Prisma.ProvinceUpdateOneRequiredWithoutCompanyAddressesNestedInput
   ward?: Prisma.WardUpdateOneRequiredWithoutCompanyAddressesNestedInput
+  jobs?: Prisma.JobUpdateManyWithoutAddressNestedInput
 }
 
 export type CompanyAddressUncheckedUpdateInput = {
@@ -359,6 +365,7 @@ export type CompanyAddressUncheckedUpdateInput = {
   isHeadquarter?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  jobs?: Prisma.JobUncheckedUpdateManyWithoutAddressNestedInput
 }
 
 export type CompanyAddressCreateManyInput = {
@@ -453,6 +460,11 @@ export type CompanyAddressOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type CompanyAddressNullableScalarRelationFilter = {
+  is?: Prisma.CompanyAddressWhereInput | null
+  isNot?: Prisma.CompanyAddressWhereInput | null
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -513,6 +525,22 @@ export type CompanyAddressUncheckedUpdateManyWithoutCompanyNestedInput = {
   update?: Prisma.CompanyAddressUpdateWithWhereUniqueWithoutCompanyInput | Prisma.CompanyAddressUpdateWithWhereUniqueWithoutCompanyInput[]
   updateMany?: Prisma.CompanyAddressUpdateManyWithWhereWithoutCompanyInput | Prisma.CompanyAddressUpdateManyWithWhereWithoutCompanyInput[]
   deleteMany?: Prisma.CompanyAddressScalarWhereInput | Prisma.CompanyAddressScalarWhereInput[]
+}
+
+export type CompanyAddressCreateNestedOneWithoutJobsInput = {
+  create?: Prisma.XOR<Prisma.CompanyAddressCreateWithoutJobsInput, Prisma.CompanyAddressUncheckedCreateWithoutJobsInput>
+  connectOrCreate?: Prisma.CompanyAddressCreateOrConnectWithoutJobsInput
+  connect?: Prisma.CompanyAddressWhereUniqueInput
+}
+
+export type CompanyAddressUpdateOneWithoutJobsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyAddressCreateWithoutJobsInput, Prisma.CompanyAddressUncheckedCreateWithoutJobsInput>
+  connectOrCreate?: Prisma.CompanyAddressCreateOrConnectWithoutJobsInput
+  upsert?: Prisma.CompanyAddressUpsertWithoutJobsInput
+  disconnect?: Prisma.CompanyAddressWhereInput | boolean
+  delete?: Prisma.CompanyAddressWhereInput | boolean
+  connect?: Prisma.CompanyAddressWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyAddressUpdateToOneWithWhereWithoutJobsInput, Prisma.CompanyAddressUpdateWithoutJobsInput>, Prisma.CompanyAddressUncheckedUpdateWithoutJobsInput>
 }
 
 export type CompanyAddressCreateNestedManyWithoutProvinceInput = {
@@ -606,6 +634,7 @@ export type CompanyAddressCreateWithoutCompanyInput = {
   updatedAt?: Date | string
   province: Prisma.ProvinceCreateNestedOneWithoutCompanyAddressesInput
   ward: Prisma.WardCreateNestedOneWithoutCompanyAddressesInput
+  jobs?: Prisma.JobCreateNestedManyWithoutAddressInput
 }
 
 export type CompanyAddressUncheckedCreateWithoutCompanyInput = {
@@ -616,6 +645,7 @@ export type CompanyAddressUncheckedCreateWithoutCompanyInput = {
   isHeadquarter?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  jobs?: Prisma.JobUncheckedCreateNestedManyWithoutAddressInput
 }
 
 export type CompanyAddressCreateOrConnectWithoutCompanyInput = {
@@ -658,6 +688,64 @@ export type CompanyAddressScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"CompanyAddress"> | Date | string
 }
 
+export type CompanyAddressCreateWithoutJobsInput = {
+  address: string
+  isHeadquarter?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company: Prisma.CompanyCreateNestedOneWithoutCompanyAddressesInput
+  province: Prisma.ProvinceCreateNestedOneWithoutCompanyAddressesInput
+  ward: Prisma.WardCreateNestedOneWithoutCompanyAddressesInput
+}
+
+export type CompanyAddressUncheckedCreateWithoutJobsInput = {
+  id?: number
+  companyId: number
+  provinceId: number
+  wardId: number
+  address: string
+  isHeadquarter?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CompanyAddressCreateOrConnectWithoutJobsInput = {
+  where: Prisma.CompanyAddressWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyAddressCreateWithoutJobsInput, Prisma.CompanyAddressUncheckedCreateWithoutJobsInput>
+}
+
+export type CompanyAddressUpsertWithoutJobsInput = {
+  update: Prisma.XOR<Prisma.CompanyAddressUpdateWithoutJobsInput, Prisma.CompanyAddressUncheckedUpdateWithoutJobsInput>
+  create: Prisma.XOR<Prisma.CompanyAddressCreateWithoutJobsInput, Prisma.CompanyAddressUncheckedCreateWithoutJobsInput>
+  where?: Prisma.CompanyAddressWhereInput
+}
+
+export type CompanyAddressUpdateToOneWithWhereWithoutJobsInput = {
+  where?: Prisma.CompanyAddressWhereInput
+  data: Prisma.XOR<Prisma.CompanyAddressUpdateWithoutJobsInput, Prisma.CompanyAddressUncheckedUpdateWithoutJobsInput>
+}
+
+export type CompanyAddressUpdateWithoutJobsInput = {
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  isHeadquarter?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company?: Prisma.CompanyUpdateOneRequiredWithoutCompanyAddressesNestedInput
+  province?: Prisma.ProvinceUpdateOneRequiredWithoutCompanyAddressesNestedInput
+  ward?: Prisma.WardUpdateOneRequiredWithoutCompanyAddressesNestedInput
+}
+
+export type CompanyAddressUncheckedUpdateWithoutJobsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  companyId?: Prisma.IntFieldUpdateOperationsInput | number
+  provinceId?: Prisma.IntFieldUpdateOperationsInput | number
+  wardId?: Prisma.IntFieldUpdateOperationsInput | number
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  isHeadquarter?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type CompanyAddressCreateWithoutProvinceInput = {
   address: string
   isHeadquarter?: boolean
@@ -665,6 +753,7 @@ export type CompanyAddressCreateWithoutProvinceInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutCompanyAddressesInput
   ward: Prisma.WardCreateNestedOneWithoutCompanyAddressesInput
+  jobs?: Prisma.JobCreateNestedManyWithoutAddressInput
 }
 
 export type CompanyAddressUncheckedCreateWithoutProvinceInput = {
@@ -675,6 +764,7 @@ export type CompanyAddressUncheckedCreateWithoutProvinceInput = {
   isHeadquarter?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  jobs?: Prisma.JobUncheckedCreateNestedManyWithoutAddressInput
 }
 
 export type CompanyAddressCreateOrConnectWithoutProvinceInput = {
@@ -710,6 +800,7 @@ export type CompanyAddressCreateWithoutWardInput = {
   updatedAt?: Date | string
   company: Prisma.CompanyCreateNestedOneWithoutCompanyAddressesInput
   province: Prisma.ProvinceCreateNestedOneWithoutCompanyAddressesInput
+  jobs?: Prisma.JobCreateNestedManyWithoutAddressInput
 }
 
 export type CompanyAddressUncheckedCreateWithoutWardInput = {
@@ -720,6 +811,7 @@ export type CompanyAddressUncheckedCreateWithoutWardInput = {
   isHeadquarter?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  jobs?: Prisma.JobUncheckedCreateNestedManyWithoutAddressInput
 }
 
 export type CompanyAddressCreateOrConnectWithoutWardInput = {
@@ -765,6 +857,7 @@ export type CompanyAddressUpdateWithoutCompanyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   province?: Prisma.ProvinceUpdateOneRequiredWithoutCompanyAddressesNestedInput
   ward?: Prisma.WardUpdateOneRequiredWithoutCompanyAddressesNestedInput
+  jobs?: Prisma.JobUpdateManyWithoutAddressNestedInput
 }
 
 export type CompanyAddressUncheckedUpdateWithoutCompanyInput = {
@@ -775,6 +868,7 @@ export type CompanyAddressUncheckedUpdateWithoutCompanyInput = {
   isHeadquarter?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  jobs?: Prisma.JobUncheckedUpdateManyWithoutAddressNestedInput
 }
 
 export type CompanyAddressUncheckedUpdateManyWithoutCompanyInput = {
@@ -804,6 +898,7 @@ export type CompanyAddressUpdateWithoutProvinceInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutCompanyAddressesNestedInput
   ward?: Prisma.WardUpdateOneRequiredWithoutCompanyAddressesNestedInput
+  jobs?: Prisma.JobUpdateManyWithoutAddressNestedInput
 }
 
 export type CompanyAddressUncheckedUpdateWithoutProvinceInput = {
@@ -814,6 +909,7 @@ export type CompanyAddressUncheckedUpdateWithoutProvinceInput = {
   isHeadquarter?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  jobs?: Prisma.JobUncheckedUpdateManyWithoutAddressNestedInput
 }
 
 export type CompanyAddressUncheckedUpdateManyWithoutProvinceInput = {
@@ -843,6 +939,7 @@ export type CompanyAddressUpdateWithoutWardInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company?: Prisma.CompanyUpdateOneRequiredWithoutCompanyAddressesNestedInput
   province?: Prisma.ProvinceUpdateOneRequiredWithoutCompanyAddressesNestedInput
+  jobs?: Prisma.JobUpdateManyWithoutAddressNestedInput
 }
 
 export type CompanyAddressUncheckedUpdateWithoutWardInput = {
@@ -853,6 +950,7 @@ export type CompanyAddressUncheckedUpdateWithoutWardInput = {
   isHeadquarter?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  jobs?: Prisma.JobUncheckedUpdateManyWithoutAddressNestedInput
 }
 
 export type CompanyAddressUncheckedUpdateManyWithoutWardInput = {
@@ -865,6 +963,35 @@ export type CompanyAddressUncheckedUpdateManyWithoutWardInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+
+/**
+ * Count Type CompanyAddressCountOutputType
+ */
+
+export type CompanyAddressCountOutputType = {
+  jobs: number
+}
+
+export type CompanyAddressCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  jobs?: boolean | CompanyAddressCountOutputTypeCountJobsArgs
+}
+
+/**
+ * CompanyAddressCountOutputType without action
+ */
+export type CompanyAddressCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CompanyAddressCountOutputType
+   */
+  select?: Prisma.CompanyAddressCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * CompanyAddressCountOutputType without action
+ */
+export type CompanyAddressCountOutputTypeCountJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.JobWhereInput
+}
 
 
 export type CompanyAddressSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -879,6 +1006,8 @@ export type CompanyAddressSelect<ExtArgs extends runtime.Types.Extensions.Intern
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   province?: boolean | Prisma.ProvinceDefaultArgs<ExtArgs>
   ward?: boolean | Prisma.WardDefaultArgs<ExtArgs>
+  jobs?: boolean | Prisma.CompanyAddress$jobsArgs<ExtArgs>
+  _count?: boolean | Prisma.CompanyAddressCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["companyAddress"]>
 
 
@@ -899,6 +1028,8 @@ export type CompanyAddressInclude<ExtArgs extends runtime.Types.Extensions.Inter
   company?: boolean | Prisma.CompanyDefaultArgs<ExtArgs>
   province?: boolean | Prisma.ProvinceDefaultArgs<ExtArgs>
   ward?: boolean | Prisma.WardDefaultArgs<ExtArgs>
+  jobs?: boolean | Prisma.CompanyAddress$jobsArgs<ExtArgs>
+  _count?: boolean | Prisma.CompanyAddressCountOutputTypeDefaultArgs<ExtArgs>
 }
 
 export type $CompanyAddressPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -907,6 +1038,7 @@ export type $CompanyAddressPayload<ExtArgs extends runtime.Types.Extensions.Inte
     company: Prisma.$CompanyPayload<ExtArgs>
     province: Prisma.$ProvincePayload<ExtArgs>
     ward: Prisma.$WardPayload<ExtArgs>
+    jobs: Prisma.$JobPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1260,6 +1392,7 @@ export interface Prisma__CompanyAddressClient<T, Null = never, ExtArgs extends r
   company<T extends Prisma.CompanyDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyDefaultArgs<ExtArgs>>): Prisma.Prisma__CompanyClient<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   province<T extends Prisma.ProvinceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProvinceDefaultArgs<ExtArgs>>): Prisma.Prisma__ProvinceClient<runtime.Types.Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   ward<T extends Prisma.WardDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WardDefaultArgs<ExtArgs>>): Prisma.Prisma__WardClient<runtime.Types.Result.GetResult<Prisma.$WardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  jobs<T extends Prisma.CompanyAddress$jobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CompanyAddress$jobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1642,6 +1775,30 @@ export type CompanyAddressDeleteManyArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many CompanyAddresses to delete.
    */
   limit?: number
+}
+
+/**
+ * CompanyAddress.jobs
+ */
+export type CompanyAddress$jobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Job
+   */
+  select?: Prisma.JobSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Job
+   */
+  omit?: Prisma.JobOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JobInclude<ExtArgs> | null
+  where?: Prisma.JobWhereInput
+  orderBy?: Prisma.JobOrderByWithRelationInput | Prisma.JobOrderByWithRelationInput[]
+  cursor?: Prisma.JobWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.JobScalarFieldEnum | Prisma.JobScalarFieldEnum[]
 }
 
 /**

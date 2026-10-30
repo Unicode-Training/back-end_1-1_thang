@@ -1,6 +1,7 @@
 import { prisma } from "../../libs/prisma"
+import { EmployerProfile } from "../../prisma/generated/prisma/client";
 import { Hash } from "../../utils/hashing";
-import { EmployerProfile } from "../../validators/employer/employer-profile.validator";
+import { EmployerProfile as EmployerProfileValidator } from "../../validators/employer/employer-profile.validator";
 
 export const employerProfileService = {
     async findAll(userId: number) {
@@ -11,7 +12,7 @@ export const employerProfileService = {
 
         const data = await prisma.employerProfile.findMany({
             where: {
-                companyId: profile?.companyId!
+                companyId: profile!.companyId!
             },
             include: {
                 user: {
@@ -33,7 +34,7 @@ export const employerProfileService = {
         })
     },
 
-    async create(data: EmployerProfile, companyId: number) {
+    async create(data: EmployerProfileValidator, companyId: number) {
 
         return prisma.user.create({
             data: {
@@ -50,6 +51,15 @@ export const employerProfileService = {
                         verificationStatus: data.verificationStatus!
                     }
                 }
+            }
+        })
+    },
+
+    async assignProfile(data: EmployerProfile, companyId: number) {
+        return prisma.employerProfile.create({
+            data: {
+                ...data,
+                companyId
             }
         })
     },

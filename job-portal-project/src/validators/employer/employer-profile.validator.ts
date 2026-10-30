@@ -8,6 +8,13 @@ export const createEmployerProfileSchema = z.object({
     position: z.string({ error: "Position is string" }).optional(),
     bio: z.string({ error: "Bio is string" }).optional(),
     verificationStatus: z.enum(['PENDING', 'APPROVE'], 'Verification Status is PENDING, APPROVE').optional()
-})
+});
+
+export const assignEmployerProfileSchema = z.object({
+    position: z.string({ error: "Position is string" }).optional(),
+    bio: z.string({ error: "Bio is string" }).optional(),
+    verificationStatus: z.enum(['PENDING', 'APPROVE'], 'Verification Status is PENDING, APPROVE').optional(),
+    userId: z.number({ error: "User ID is number" }),
+});
 
 export type EmployerProfile = z.infer<typeof createEmployerProfileSchema>;

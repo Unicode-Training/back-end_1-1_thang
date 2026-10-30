@@ -56,8 +56,16 @@ export const ModelName = {
   CompanyScale: 'CompanyScale',
   Company: 'Company',
   EmployerProfile: 'EmployerProfile',
+  Exp: 'Exp',
   Industry: 'Industry',
+  Interest: 'Interest',
+  JobInterest: 'JobInterest',
+  JobSkill: 'JobSkill',
+  Job: 'Job',
+  Level: 'Level',
   Province: 'Province',
+  Salary: 'Salary',
+  Skill: 'Skill',
   User: 'User',
   Ward: 'Ward'
 } as const
@@ -147,6 +155,17 @@ export const EmployerProfileScalarFieldEnum = {
 export type EmployerProfileScalarFieldEnum = (typeof EmployerProfileScalarFieldEnum)[keyof typeof EmployerProfileScalarFieldEnum]
 
 
+export const ExpScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExpScalarFieldEnum = (typeof ExpScalarFieldEnum)[keyof typeof ExpScalarFieldEnum]
+
+
 export const IndustryScalarFieldEnum = {
   id: 'id',
   image: 'image',
@@ -158,6 +177,73 @@ export const IndustryScalarFieldEnum = {
 export type IndustryScalarFieldEnum = (typeof IndustryScalarFieldEnum)[keyof typeof IndustryScalarFieldEnum]
 
 
+export const InterestScalarFieldEnum = {
+  id: 'id',
+  icon: 'icon',
+  name: 'name',
+  description: 'description',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InterestScalarFieldEnum = (typeof InterestScalarFieldEnum)[keyof typeof InterestScalarFieldEnum]
+
+
+export const JobInterestScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  interestId: 'interestId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobInterestScalarFieldEnum = (typeof JobInterestScalarFieldEnum)[keyof typeof JobInterestScalarFieldEnum]
+
+
+export const JobSkillScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  skillId: 'skillId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobSkillScalarFieldEnum = (typeof JobSkillScalarFieldEnum)[keyof typeof JobSkillScalarFieldEnum]
+
+
+export const JobScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  addressId: 'addressId',
+  levelId: 'levelId',
+  expId: 'expId',
+  salaryId: 'salaryId',
+  quantity: 'quantity',
+  name: 'name',
+  description: 'description',
+  requirement: 'requirement',
+  expire: 'expire',
+  verificationStatus: 'verificationStatus',
+  rejectReason: 'rejectReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
+
+
+export const LevelScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LevelScalarFieldEnum = (typeof LevelScalarFieldEnum)[keyof typeof LevelScalarFieldEnum]
+
+
 export const ProvinceScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -166,6 +252,28 @@ export const ProvinceScalarFieldEnum = {
 } as const
 
 export type ProvinceScalarFieldEnum = (typeof ProvinceScalarFieldEnum)[keyof typeof ProvinceScalarFieldEnum]
+
+
+export const SalaryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SalaryScalarFieldEnum = (typeof SalaryScalarFieldEnum)[keyof typeof SalaryScalarFieldEnum]
+
+
+export const SkillScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SkillScalarFieldEnum = (typeof SkillScalarFieldEnum)[keyof typeof SkillScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -251,6 +359,13 @@ export const EmployerProfileOrderByRelevanceFieldEnum = {
 export type EmployerProfileOrderByRelevanceFieldEnum = (typeof EmployerProfileOrderByRelevanceFieldEnum)[keyof typeof EmployerProfileOrderByRelevanceFieldEnum]
 
 
+export const ExpOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type ExpOrderByRelevanceFieldEnum = (typeof ExpOrderByRelevanceFieldEnum)[keyof typeof ExpOrderByRelevanceFieldEnum]
+
+
 export const IndustryOrderByRelevanceFieldEnum = {
   image: 'image',
   name: 'name'
@@ -259,11 +374,51 @@ export const IndustryOrderByRelevanceFieldEnum = {
 export type IndustryOrderByRelevanceFieldEnum = (typeof IndustryOrderByRelevanceFieldEnum)[keyof typeof IndustryOrderByRelevanceFieldEnum]
 
 
+export const InterestOrderByRelevanceFieldEnum = {
+  icon: 'icon',
+  name: 'name',
+  description: 'description'
+} as const
+
+export type InterestOrderByRelevanceFieldEnum = (typeof InterestOrderByRelevanceFieldEnum)[keyof typeof InterestOrderByRelevanceFieldEnum]
+
+
+export const JobOrderByRelevanceFieldEnum = {
+  name: 'name',
+  description: 'description',
+  requirement: 'requirement',
+  rejectReason: 'rejectReason'
+} as const
+
+export type JobOrderByRelevanceFieldEnum = (typeof JobOrderByRelevanceFieldEnum)[keyof typeof JobOrderByRelevanceFieldEnum]
+
+
+export const LevelOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type LevelOrderByRelevanceFieldEnum = (typeof LevelOrderByRelevanceFieldEnum)[keyof typeof LevelOrderByRelevanceFieldEnum]
+
+
 export const ProvinceOrderByRelevanceFieldEnum = {
   name: 'name'
 } as const
 
 export type ProvinceOrderByRelevanceFieldEnum = (typeof ProvinceOrderByRelevanceFieldEnum)[keyof typeof ProvinceOrderByRelevanceFieldEnum]
+
+
+export const SalaryOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type SalaryOrderByRelevanceFieldEnum = (typeof SalaryOrderByRelevanceFieldEnum)[keyof typeof SalaryOrderByRelevanceFieldEnum]
+
+
+export const SkillOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type SkillOrderByRelevanceFieldEnum = (typeof SkillOrderByRelevanceFieldEnum)[keyof typeof SkillOrderByRelevanceFieldEnum]
 
 
 export const UserOrderByRelevanceFieldEnum = {

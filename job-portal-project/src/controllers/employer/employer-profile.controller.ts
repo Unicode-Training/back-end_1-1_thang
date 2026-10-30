@@ -22,6 +22,16 @@ export const employerProfileController = {
         })
     },
 
+    async assignProfile(req: Request, res: Response) {
+        const companyId = req.companyId;
+        const data = await employerProfileService.assignProfile(req.body, companyId!);
+        return res.json({
+            data,
+            success: true,
+            message: "Assign profile success"
+        });
+    },
+
     async delete(req: Request, res: Response) {
         const companyId = req.companyId;
         const { id } = req.params;

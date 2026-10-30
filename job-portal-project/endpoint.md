@@ -47,33 +47,33 @@ replacePath: string
 
 1. Create Company
 
-POST /api/employer/company
+POST /api/employers/company
 
 2. Update Company
 
-PATCH /api/employer/company/:id
+PATCH /api/employers/company/:id
 
 3. Delete Company
 
-DELETE /api/employer/company/:id
+DELETE /api/employers/company/:id
 
 ## Company Document
 
 1. Get list document
 
-GET /api/employer/company/documents
+GET /api/employers/company/documents
 
 2. Create document
 
-POST /api/employer/company/documents
+POST /api/employers/company/documents
 
 3. Update document
 
-PATCH /api/employer/company/documents/:id
+PATCH /api/employers/company/documents/:id
 
 4. Delete document
 
-DELETE /api/employer/company/documents/:id
+DELETE /api/employers/company/documents/:id
 
 ## Profile
 
@@ -81,18 +81,38 @@ DELETE /api/employer/company/documents/:id
 
 1. Get list profiles
 
-GET /api/emloyer/company/profiles
+GET /api/emloyers/company/profiles
 
 2. Create profile
 
-POST /api/employer/company/profiles
+POST /api/employers/company/profiles
 
 3. Delete profile
 
-DELETE /api/employer/company/profiles/:id
+DELETE /api/employers/company/profiles/:id
+
+2. Assign profile (user exsiting)
+
+PATCH /api/employers/company/profiles
 
 ## Address
 
 1. Get list address
 
-GET /api/employer/company/address
+GET /api/employers/company/address
+
+2. Create address
+
+POST /api/employers/company/address
+
+3. Update address
+
+PATCH /api/employers/company/address/:id
+
+4. Update Headquarter
+
+PATCH /api/employers/company/address/:id/headquarter
+
+5. Delete Address
+
+DELETE /api/employers/company/address/:id

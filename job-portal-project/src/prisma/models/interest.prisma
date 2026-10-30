@@ -1,0 +1,12 @@
+model Interest {
+    id           Int           @id @default(autoincrement())
+    icon         String?       @db.VarChar(100)
+    name         String        @db.VarChar(100)
+    description  String        @db.Text
+    status       Boolean       @default(false)
+    createdAt    DateTime      @default(now()) @db.Timestamp()
+    updatedAt    DateTime      @default(now()) @updatedAt @db.Timestamp()
+    jobInterests JobInterest[]
+
+    @@map("interests")
+}

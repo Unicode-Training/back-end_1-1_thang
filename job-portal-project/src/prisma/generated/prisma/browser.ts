@@ -43,15 +43,55 @@ export type Company = Prisma.CompanyModel
  */
 export type EmployerProfile = Prisma.EmployerProfileModel
 /**
+ * Model Exp
+ * 
+ */
+export type Exp = Prisma.ExpModel
+/**
  * Model Industry
  * 
  */
 export type Industry = Prisma.IndustryModel
 /**
+ * Model Interest
+ * 
+ */
+export type Interest = Prisma.InterestModel
+/**
+ * Model JobInterest
+ * 
+ */
+export type JobInterest = Prisma.JobInterestModel
+/**
+ * Model JobSkill
+ * 
+ */
+export type JobSkill = Prisma.JobSkillModel
+/**
+ * Model Job
+ * 
+ */
+export type Job = Prisma.JobModel
+/**
+ * Model Level
+ * 
+ */
+export type Level = Prisma.LevelModel
+/**
  * Model Province
  * 
  */
 export type Province = Prisma.ProvinceModel
+/**
+ * Model Salary
+ * 
+ */
+export type Salary = Prisma.SalaryModel
+/**
+ * Model Skill
+ * 
+ */
+export type Skill = Prisma.SkillModel
 /**
  * Model User
  * 

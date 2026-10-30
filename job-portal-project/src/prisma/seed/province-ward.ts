@@ -1,7 +1,6 @@
-import { da } from "zod/v4/locales";
+
 import { prisma } from "../../libs/prisma";
 import data from "./province-ward.json";
-import { WardCreateManyInput } from "../generated/prisma/models";
 import { Ward } from "../generated/prisma/client";
 const main = async () => {
     await prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 0`

@@ -5,7 +5,7 @@ import { Company } from "../../prisma/generated/prisma/client";
 export const companyService = {
     async create(companyData: Company, userId: number) {
         return prisma.$transaction(async (tx) => {
-            const existing = await prisma.company.findUnique({
+            const existing = await tx.company.findUnique({
                 where: {
                     taxNumber: companyData.taxNumber
                 }
@@ -13,11 +13,11 @@ export const companyService = {
             if (existing) {
                 throw new HttpException("Company existing", 409);
             }
-            const company = await prisma.company.create({
+            const company = await tx.company.create({
                 data: companyData
             });
 
-            await prisma.employerProfile.create({
+            await tx.employerProfile.create({
                 data: {
                     userId,
                     isOwner: true,
@@ -57,6 +57,15 @@ export const companyService = {
                         userId
                     }
                 }
+            }
+        })
+    },
+
+    async isVerified(id: number) {
+        return prisma.company.count({
+            where: {
+                id,
+                verificationStatus: 'APPROVE'
             }
         })
     }

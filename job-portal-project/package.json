@@ -11,7 +11,12 @@
     "scheduler": "tsx watch src/schedulers/index.scheduler",
     "seed:industry": "tsx src/prisma/seed/industry.ts",
     "seed:companyScale": "tsx src/prisma/seed/company-scale.ts",
-    "seed:province": "tsx src/prisma/seed/province-ward.ts"
+    "seed:province": "tsx src/prisma/seed/province-ward.ts",
+    "seed:interest": "tsx src/prisma/seed/interest.ts",
+    "seed:skill": "tsx src/prisma/seed/skill.ts",
+    "seed:level": "tsx src/prisma/seed/level.ts",
+    "seed:exp": "tsx src/prisma/seed/exp.ts",
+    "seed:salary": "tsx src/prisma/seed/salary.ts"
   },
   "keywords": [],
   "author": "",
@@ -38,6 +43,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/bcrypt": "^6.0.0",
     "@types/cors": "^2.8.19",
     "@types/ejs": "^3.1.5",
@@ -46,8 +52,11 @@
     "@types/multer": "^2.3.0",
     "@types/node": "^26.4.0",
     "@types/ws": "^8.18.2",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
     "prisma": "^7.9.1",
     "tsx": "^4.23.10",
-    "typescript": "^7.0.2"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1"
   }
 }

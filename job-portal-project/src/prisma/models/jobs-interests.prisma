@@ -1,0 +1,11 @@
+model JobInterest {
+    id         Int      @id @default(autoincrement())
+    jobId      Int
+    interestId Int
+    job        Job      @relation(fields: [jobId], references: [id])
+    interest   Interest @relation(fields: [interestId], references: [id])
+    createdAt  DateTime @default(now()) @db.Timestamp()
+    updatedAt  DateTime @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("jobs_interests")
+}

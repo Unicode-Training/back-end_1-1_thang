@@ -7,7 +7,7 @@ export const employerMiddleware = (requiredOwner: boolean = false) => async (req
     const user = req.user;
     const profile = await prisma.employerProfile.findUnique({
         where: {
-            userId: user?.id!
+            userId: user!.id!
         }
     });
     if (!profile) {
@@ -19,6 +19,6 @@ export const employerMiddleware = (requiredOwner: boolean = false) => async (req
     if (requiredOwner && !profile?.isOwner) {
         throw new HttpException("Forbidden", 403);
     }
-    req.companyId = profile?.companyId!
+    req.companyId = profile!.companyId!
     next();
 }

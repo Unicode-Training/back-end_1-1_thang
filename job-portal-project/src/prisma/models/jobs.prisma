@@ -1,0 +1,32 @@
+enum JobVerificationStatus {
+    PENDING
+    APPROVE
+    REJECTED
+}
+
+model Job {
+    id                 Int                   @id @default(autoincrement())
+    companyId          Int
+    addressId          Int?
+    levelId            Int
+    expId              Int
+    salaryId           Int?
+    company            Company               @relation(fields: [companyId], references: [id])
+    address            CompanyAddress?       @relation(fields: [addressId], references: [id])
+    level              Level                 @relation(fields: [levelId], references: [id])
+    exp                Exp                   @relation(fields: [expId], references: [id])
+    salary             Salary?               @relation(fields: [salaryId], references: [id])
+    quantity           Int                   @default(1)
+    name               String                @db.VarChar(200)
+    description        String                @db.Text()
+    requirement        String                @db.Text()
+    expire             DateTime?             @db.Date
+    verificationStatus JobVerificationStatus @default(PENDING)
+    rejectReason       String?               @db.Text
+    createdAt          DateTime              @default(now()) @db.Timestamp()
+    updatedAt          DateTime              @default(now()) @updatedAt @db.Timestamp()
+    jobInterests       JobInterest[]
+    jobSkills          JobSkill[]
+
+    @@map("jobs")
+}

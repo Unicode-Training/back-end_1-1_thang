@@ -25,6 +25,15 @@ export const EmployerVerificationStatus = {
 export type EmployerVerificationStatus = (typeof EmployerVerificationStatus)[keyof typeof EmployerVerificationStatus]
 
 
+export const JobVerificationStatus = {
+  PENDING: 'PENDING',
+  APPROVE: 'APPROVE',
+  REJECTED: 'REJECTED'
+} as const
+
+export type JobVerificationStatus = (typeof JobVerificationStatus)[keyof typeof JobVerificationStatus]
+
+
 export const UserRole = {
   CANDIDATE: 'CANDIDATE',
   EMPLOYER: 'EMPLOYER',
