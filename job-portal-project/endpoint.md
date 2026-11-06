@@ -116,3 +116,25 @@ PATCH /api/employers/company/address/:id/headquarter
 5. Delete Address
 
 DELETE /api/employers/company/address/:id
+
+## Jobs
+
+1. Get list jobs
+
+GET /api/employers/jobs
+
+2. Get detail Job
+
+GET /api/employers/jobs/:id
+
+3. Create job
+
+POST /api/employers/jobs
+
+4. Update Job
+
+PATCH /api/employers/jobs/:id
+
+5. Delete Job
+
+DELETE /api/employers/jobs/:id

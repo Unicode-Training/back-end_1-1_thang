@@ -8,6 +8,7 @@ const router = express.Router();
 router.get('/jobs', jobController.findAll);
 router.get('/jobs/:id', jobController.find);
 router.post('/jobs', validate(createJobSchema), jobController.create);
-
+router.patch('/jobs/:id', jobController.update);
+router.delete('/jobs/:id', jobController.delete);
 
 export default router;

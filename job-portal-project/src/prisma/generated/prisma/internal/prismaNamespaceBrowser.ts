@@ -67,7 +67,8 @@ export const ModelName = {
   Salary: 'Salary',
   Skill: 'Skill',
   User: 'User',
-  Ward: 'Ward'
+  Ward: 'Ward',
+  Work: 'Work'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -219,6 +220,7 @@ export const JobScalarFieldEnum = {
   levelId: 'levelId',
   expId: 'expId',
   salaryId: 'salaryId',
+  workId: 'workId',
   quantity: 'quantity',
   name: 'name',
   description: 'description',
@@ -299,6 +301,17 @@ export const WardScalarFieldEnum = {
 } as const
 
 export type WardScalarFieldEnum = (typeof WardScalarFieldEnum)[keyof typeof WardScalarFieldEnum]
+
+
+export const WorkScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WorkScalarFieldEnum = (typeof WorkScalarFieldEnum)[keyof typeof WorkScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -435,4 +448,11 @@ export const WardOrderByRelevanceFieldEnum = {
 } as const
 
 export type WardOrderByRelevanceFieldEnum = (typeof WardOrderByRelevanceFieldEnum)[keyof typeof WardOrderByRelevanceFieldEnum]
+
+
+export const WorkOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type WorkOrderByRelevanceFieldEnum = (typeof WorkOrderByRelevanceFieldEnum)[keyof typeof WorkOrderByRelevanceFieldEnum]
 

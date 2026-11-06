@@ -16,7 +16,8 @@
     "seed:skill": "tsx src/prisma/seed/skill.ts",
     "seed:level": "tsx src/prisma/seed/level.ts",
     "seed:exp": "tsx src/prisma/seed/exp.ts",
-    "seed:salary": "tsx src/prisma/seed/salary.ts"
+    "seed:salary": "tsx src/prisma/seed/salary.ts",
+    "seed:work": "tsx src/prisma/seed/work.ts"
   },
   "keywords": [],
   "author": "",

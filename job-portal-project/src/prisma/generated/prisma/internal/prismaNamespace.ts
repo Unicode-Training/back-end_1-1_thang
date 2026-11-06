@@ -413,7 +413,8 @@ export const ModelName = {
   Salary: 'Salary',
   Skill: 'Skill',
   User: 'User',
-  Ward: 'Ward'
+  Ward: 'Ward',
+  Work: 'Work'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -429,7 +430,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "companyAddress" | "companyDocument" | "companyScale" | "company" | "employerProfile" | "exp" | "industry" | "interest" | "jobInterest" | "jobSkill" | "job" | "level" | "province" | "salary" | "skill" | "user" | "ward"
+    modelProps: "companyAddress" | "companyDocument" | "companyScale" | "company" | "employerProfile" | "exp" | "industry" | "interest" | "jobInterest" | "jobSkill" | "job" | "level" | "province" | "salary" | "skill" | "user" | "ward" | "work"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1555,6 +1556,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Work: {
+      payload: Prisma.$WorkPayload<ExtArgs>
+      fields: Prisma.WorkFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WorkFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WorkFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkPayload>
+        }
+        findFirst: {
+          args: Prisma.WorkFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WorkFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkPayload>
+        }
+        findMany: {
+          args: Prisma.WorkFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkPayload>[]
+        }
+        create: {
+          args: Prisma.WorkCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkPayload>
+        }
+        createMany: {
+          args: Prisma.WorkCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.WorkDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkPayload>
+        }
+        update: {
+          args: Prisma.WorkUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkPayload>
+        }
+        deleteMany: {
+          args: Prisma.WorkDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.WorkUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.WorkUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WorkPayload>
+        }
+        aggregate: {
+          args: Prisma.WorkAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWork>
+        }
+        groupBy: {
+          args: Prisma.WorkGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WorkCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WorkCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1727,6 +1794,7 @@ export const JobScalarFieldEnum = {
   levelId: 'levelId',
   expId: 'expId',
   salaryId: 'salaryId',
+  workId: 'workId',
   quantity: 'quantity',
   name: 'name',
   description: 'description',
@@ -1807,6 +1875,17 @@ export const WardScalarFieldEnum = {
 } as const
 
 export type WardScalarFieldEnum = (typeof WardScalarFieldEnum)[keyof typeof WardScalarFieldEnum]
+
+
+export const WorkScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WorkScalarFieldEnum = (typeof WorkScalarFieldEnum)[keyof typeof WorkScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1943,6 +2022,13 @@ export const WardOrderByRelevanceFieldEnum = {
 } as const
 
 export type WardOrderByRelevanceFieldEnum = (typeof WardOrderByRelevanceFieldEnum)[keyof typeof WardOrderByRelevanceFieldEnum]
+
+
+export const WorkOrderByRelevanceFieldEnum = {
+  name: 'name'
+} as const
+
+export type WorkOrderByRelevanceFieldEnum = (typeof WorkOrderByRelevanceFieldEnum)[keyof typeof WorkOrderByRelevanceFieldEnum]
 
 
 
@@ -2188,6 +2274,7 @@ export type GlobalOmitConfig = {
   skill?: Prisma.SkillOmit
   user?: Prisma.UserOmit
   ward?: Prisma.WardOmit
+  work?: Prisma.WorkOmit
 }
 
 /* Types for Logging */

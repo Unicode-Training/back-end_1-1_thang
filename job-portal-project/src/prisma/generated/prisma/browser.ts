@@ -102,3 +102,8 @@ export type User = Prisma.UserModel
  * 
  */
 export type Ward = Prisma.WardModel
+/**
+ * Model Work
+ * 
+ */
+export type Work = Prisma.WorkModel

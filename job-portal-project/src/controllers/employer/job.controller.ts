@@ -29,5 +29,28 @@ export const jobController = {
             success: true,
             message: "Create job success"
         })
+    },
+
+    async update(req: Request, res: Response) {
+        const { id } = req.params;
+
+        const data = await jobService.update(req.body, +id!);
+
+        return res.json({
+            data,
+            success: true,
+            message: "Update job success"
+        })
+    },
+
+    async delete(req: Request, res: Response) {
+        const { id } = req.params;
+        const data = await jobService.delete(+id!);
+        return res.json({
+            data,
+            success: true,
+            message: "Delete job success"
+        })
+
     }
 }
