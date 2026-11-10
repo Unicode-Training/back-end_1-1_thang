@@ -23,7 +23,7 @@ const main = async () => {
                 status: true
             },
             {
-                name: 'Trên 15 năm',
+                name: 'Trên 15 triệu',
                 status: true
             }
         ]

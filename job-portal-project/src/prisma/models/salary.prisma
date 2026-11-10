@@ -2,6 +2,7 @@ model Salary {
     id        Int      @id @default(autoincrement())
     name      String   @db.VarChar(100)
     status    Boolean  @default(false)
+    position  Int      @default(1)
     createdAt DateTime @default(now()) @db.Timestamp()
     updatedAt DateTime @default(now()) @updatedAt @db.Timestamp()
     jobs      Job[]

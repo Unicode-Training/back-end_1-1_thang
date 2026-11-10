@@ -1834,6 +1834,7 @@ export const SalaryScalarFieldEnum = {
   id: 'id',
   name: 'name',
   status: 'status',
+  position: 'position',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

@@ -18,5 +18,10 @@ export type JobPublicQuery = {
     q: string;
     sort: string;
     order: 'desc' | 'asc',
-    industryId: number;
+    industryId: string;
+    skillId: string;
+    expId: string;
+    workId: string;
+    salaryId: string;
+    provinceId: number;
 }

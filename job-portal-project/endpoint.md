@@ -138,3 +138,45 @@ PATCH /api/employers/jobs/:id
 5. Delete Job
 
 DELETE /api/employers/jobs/:id
+
+## Public
+
+### Industry
+
+GET /api/industry
+
+Query:
+
+- limit: number
+- page: number
+- q: string
+- sort: string
+- order: "desc" | "asc"
+
+### Job
+
+1. Lấy danh sách jobs
+
+GET /api/jobs
+
+Query:
+
+- limit: number
+- page: number
+- q: string
+- sort: salary | related | fieldname
+- order: desc | asc
+- industryId: id1,id2,...
+- skillId: id1,id2,...
+- expId: id1,id2...
+- workId: id1,id2,...
+- salaryId: id1,id2,...
+- provinceId: number
+
+2. Lấy chi tiết Job
+
+GET /api/jobs/:id
+
+3. Lấy danh sách job liên quan
+
+GET /api/jobs/:id/related

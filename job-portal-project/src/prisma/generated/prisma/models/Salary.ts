@@ -28,16 +28,19 @@ export type AggregateSalary = {
 
 export type SalaryAvgAggregateOutputType = {
   id: number | null
+  position: number | null
 }
 
 export type SalarySumAggregateOutputType = {
   id: number | null
+  position: number | null
 }
 
 export type SalaryMinAggregateOutputType = {
   id: number | null
   name: string | null
   status: boolean | null
+  position: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -46,6 +49,7 @@ export type SalaryMaxAggregateOutputType = {
   id: number | null
   name: string | null
   status: boolean | null
+  position: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -54,6 +58,7 @@ export type SalaryCountAggregateOutputType = {
   id: number
   name: number
   status: number
+  position: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -62,16 +67,19 @@ export type SalaryCountAggregateOutputType = {
 
 export type SalaryAvgAggregateInputType = {
   id?: true
+  position?: true
 }
 
 export type SalarySumAggregateInputType = {
   id?: true
+  position?: true
 }
 
 export type SalaryMinAggregateInputType = {
   id?: true
   name?: true
   status?: true
+  position?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -80,6 +88,7 @@ export type SalaryMaxAggregateInputType = {
   id?: true
   name?: true
   status?: true
+  position?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -88,6 +97,7 @@ export type SalaryCountAggregateInputType = {
   id?: true
   name?: true
   status?: true
+  position?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -183,6 +193,7 @@ export type SalaryGroupByOutputType = {
   id: number
   name: string
   status: boolean
+  position: number
   createdAt: Date
   updatedAt: Date
   _count: SalaryCountAggregateOutputType | null
@@ -214,6 +225,7 @@ export type SalaryWhereInput = {
   id?: Prisma.IntFilter<"Salary"> | number
   name?: Prisma.StringFilter<"Salary"> | string
   status?: Prisma.BoolFilter<"Salary"> | boolean
+  position?: Prisma.IntFilter<"Salary"> | number
   createdAt?: Prisma.DateTimeFilter<"Salary"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Salary"> | Date | string
   jobs?: Prisma.JobListRelationFilter
@@ -223,6 +235,7 @@ export type SalaryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  position?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   jobs?: Prisma.JobOrderByRelationAggregateInput
@@ -236,6 +249,7 @@ export type SalaryWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.SalaryWhereInput | Prisma.SalaryWhereInput[]
   name?: Prisma.StringFilter<"Salary"> | string
   status?: Prisma.BoolFilter<"Salary"> | boolean
+  position?: Prisma.IntFilter<"Salary"> | number
   createdAt?: Prisma.DateTimeFilter<"Salary"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Salary"> | Date | string
   jobs?: Prisma.JobListRelationFilter
@@ -245,6 +259,7 @@ export type SalaryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  position?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.SalaryCountOrderByAggregateInput
@@ -261,6 +276,7 @@ export type SalaryScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Salary"> | number
   name?: Prisma.StringWithAggregatesFilter<"Salary"> | string
   status?: Prisma.BoolWithAggregatesFilter<"Salary"> | boolean
+  position?: Prisma.IntWithAggregatesFilter<"Salary"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Salary"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Salary"> | Date | string
 }
@@ -268,6 +284,7 @@ export type SalaryScalarWhereWithAggregatesInput = {
 export type SalaryCreateInput = {
   name: string
   status?: boolean
+  position?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   jobs?: Prisma.JobCreateNestedManyWithoutSalaryInput
@@ -277,6 +294,7 @@ export type SalaryUncheckedCreateInput = {
   id?: number
   name: string
   status?: boolean
+  position?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   jobs?: Prisma.JobUncheckedCreateNestedManyWithoutSalaryInput
@@ -285,6 +303,7 @@ export type SalaryUncheckedCreateInput = {
 export type SalaryUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  position?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   jobs?: Prisma.JobUpdateManyWithoutSalaryNestedInput
@@ -294,6 +313,7 @@ export type SalaryUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  position?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   jobs?: Prisma.JobUncheckedUpdateManyWithoutSalaryNestedInput
@@ -303,6 +323,7 @@ export type SalaryCreateManyInput = {
   id?: number
   name: string
   status?: boolean
+  position?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -310,6 +331,7 @@ export type SalaryCreateManyInput = {
 export type SalaryUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  position?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -318,6 +340,7 @@ export type SalaryUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  position?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -337,18 +360,21 @@ export type SalaryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  position?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type SalaryAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  position?: Prisma.SortOrder
 }
 
 export type SalaryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  position?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -357,12 +383,14 @@ export type SalaryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  position?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type SalarySumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  position?: Prisma.SortOrder
 }
 
 export type SalaryCreateNestedOneWithoutJobsInput = {
@@ -384,6 +412,7 @@ export type SalaryUpdateOneWithoutJobsNestedInput = {
 export type SalaryCreateWithoutJobsInput = {
   name: string
   status?: boolean
+  position?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -392,6 +421,7 @@ export type SalaryUncheckedCreateWithoutJobsInput = {
   id?: number
   name: string
   status?: boolean
+  position?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -415,6 +445,7 @@ export type SalaryUpdateToOneWithWhereWithoutJobsInput = {
 export type SalaryUpdateWithoutJobsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  position?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -423,6 +454,7 @@ export type SalaryUncheckedUpdateWithoutJobsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  position?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -462,6 +494,7 @@ export type SalarySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   id?: boolean
   name?: boolean
   status?: boolean
+  position?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   jobs?: boolean | Prisma.Salary$jobsArgs<ExtArgs>
@@ -474,11 +507,12 @@ export type SalarySelectScalar = {
   id?: boolean
   name?: boolean
   status?: boolean
+  position?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type SalaryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["salary"]>
+export type SalaryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "status" | "position" | "createdAt" | "updatedAt", ExtArgs["result"]["salary"]>
 export type SalaryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   jobs?: boolean | Prisma.Salary$jobsArgs<ExtArgs>
   _count?: boolean | Prisma.SalaryCountOutputTypeDefaultArgs<ExtArgs>
@@ -493,6 +527,7 @@ export type $SalaryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     id: number
     name: string
     status: boolean
+    position: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["salary"]>
@@ -868,6 +903,7 @@ export interface SalaryFieldRefs {
   readonly id: Prisma.FieldRef<"Salary", 'Int'>
   readonly name: Prisma.FieldRef<"Salary", 'String'>
   readonly status: Prisma.FieldRef<"Salary", 'Boolean'>
+  readonly position: Prisma.FieldRef<"Salary", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Salary", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Salary", 'DateTime'>
 }

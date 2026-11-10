@@ -14,5 +14,26 @@ export const jobController = {
                 currentPage: req.query.page ? +req.query.page : 1
             }
         })
+    },
+
+    async find(req: Request, res: Response) {
+        const { id } = req.params;
+        const data = await jobService.find(+id!);
+        return res.json({
+            data,
+            success: true,
+            message: "Get job success"
+        });
+    },
+
+    async related(req: Request, res: Response) {
+        const { id } = req.params;
+        const limit = req.query.limit ? +req.query.limit : 3;
+        const data = await jobService.related(+id!, limit);
+        return res.json({
+            success: true,
+            message: "Get job related success",
+            data
+        })
     }
 }
