@@ -51,6 +51,10 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  CandidateExp: 'CandidateExp',
+  CandidateEducation: 'CandidateEducation',
+  CandidateSkill: 'CandidateSkill',
+  Candidate: 'Candidate',
   CompanyAddress: 'CompanyAddress',
   CompanyDocument: 'CompanyDocument',
   CompanyScale: 'CompanyScale',
@@ -85,6 +89,64 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const CandidateExpScalarFieldEnum = {
+  id: 'id',
+  candidateId: 'candidateId',
+  name: 'name',
+  companyName: 'companyName',
+  companyLogo: 'companyLogo',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CandidateExpScalarFieldEnum = (typeof CandidateExpScalarFieldEnum)[keyof typeof CandidateExpScalarFieldEnum]
+
+
+export const CandidateEducationScalarFieldEnum = {
+  id: 'id',
+  candidateId: 'candidateId',
+  schoolName: 'schoolName',
+  schoolLogo: 'schoolLogo',
+  specialized: 'specialized',
+  startYear: 'startYear',
+  endYear: 'endYear',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CandidateEducationScalarFieldEnum = (typeof CandidateEducationScalarFieldEnum)[keyof typeof CandidateEducationScalarFieldEnum]
+
+
+export const CandidateSkillScalarFieldEnum = {
+  id: 'id',
+  candidateId: 'candidateId',
+  skillId: 'skillId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CandidateSkillScalarFieldEnum = (typeof CandidateSkillScalarFieldEnum)[keyof typeof CandidateSkillScalarFieldEnum]
+
+
+export const CandidateScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  avatar: 'avatar',
+  phone: 'phone',
+  address: 'address',
+  website: 'website',
+  isLookingJob: 'isLookingJob',
+  cvFile: 'cvFile',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CandidateScalarFieldEnum = (typeof CandidateScalarFieldEnum)[keyof typeof CandidateScalarFieldEnum]
 
 
 export const CompanyAddressScalarFieldEnum = {
@@ -323,6 +385,44 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const CandidateExpOrderByRelevanceFieldEnum = {
+  name: 'name',
+  companyName: 'companyName',
+  companyLogo: 'companyLogo',
+  description: 'description'
+} as const
+
+export type CandidateExpOrderByRelevanceFieldEnum = (typeof CandidateExpOrderByRelevanceFieldEnum)[keyof typeof CandidateExpOrderByRelevanceFieldEnum]
+
+
+export const CandidateEducationOrderByRelevanceFieldEnum = {
+  schoolName: 'schoolName',
+  schoolLogo: 'schoolLogo',
+  specialized: 'specialized'
+} as const
+
+export type CandidateEducationOrderByRelevanceFieldEnum = (typeof CandidateEducationOrderByRelevanceFieldEnum)[keyof typeof CandidateEducationOrderByRelevanceFieldEnum]
+
+
+export const CandidateOrderByRelevanceFieldEnum = {
+  avatar: 'avatar',
+  phone: 'phone',
+  address: 'address',
+  website: 'website',
+  cvFile: 'cvFile'
+} as const
+
+export type CandidateOrderByRelevanceFieldEnum = (typeof CandidateOrderByRelevanceFieldEnum)[keyof typeof CandidateOrderByRelevanceFieldEnum]
+
+
 export const CompanyAddressOrderByRelevanceFieldEnum = {
   address: 'address'
 } as const
@@ -343,14 +443,6 @@ export const CompanyScaleOrderByRelevanceFieldEnum = {
 } as const
 
 export type CompanyScaleOrderByRelevanceFieldEnum = (typeof CompanyScaleOrderByRelevanceFieldEnum)[keyof typeof CompanyScaleOrderByRelevanceFieldEnum]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 export const CompanyOrderByRelevanceFieldEnum = {

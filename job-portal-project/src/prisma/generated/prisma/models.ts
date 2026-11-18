@@ -8,6 +8,10 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/CandidateExp'
+export type * from './models/CandidateEducation'
+export type * from './models/CandidateSkill'
+export type * from './models/Candidate'
 export type * from './models/CompanyAddress'
 export type * from './models/CompanyDocument'
 export type * from './models/CompanyScale'

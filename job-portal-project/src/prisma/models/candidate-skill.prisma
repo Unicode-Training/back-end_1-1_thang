@@ -1,0 +1,11 @@
+model CandidateSkill {
+    id          Int       @id @default(autoincrement())
+    candidateId Int
+    candidate   Candidate @relation(fields: [candidateId], references: [id])
+    skillId     Int
+    skill       Skill     @relation(fields: [skillId], references: [id])
+    createdAt   DateTime  @default(now()) @db.Timestamp()
+    updatedAt   DateTime  @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("candiates_skills")
+}

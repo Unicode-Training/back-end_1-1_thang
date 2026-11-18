@@ -1,0 +1,15 @@
+model CandidateExp {
+    id          Int       @id @default(autoincrement())
+    candidateId Int
+    candidate   Candidate @relation(fields: [candidateId], references: [id])
+    name        String    @db.VarChar(200)
+    companyName String    @db.VarChar(100)
+    companyLogo String?   @db.VarChar(200)
+    startDate   DateTime  @db.Date
+    endDate     DateTime? @db.Date
+    description String?   @db.Text()
+    createdAt   DateTime  @default(now()) @db.Timestamp()
+    updatedAt   DateTime  @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("candiate_exps")
+}

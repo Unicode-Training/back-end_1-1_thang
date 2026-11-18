@@ -832,10 +832,6 @@ export type JobUpdateOneRequiredWithoutJobSkillsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.JobUpdateToOneWithWhereWithoutJobSkillsInput, Prisma.JobUpdateWithoutJobSkillsInput>, Prisma.JobUncheckedUpdateWithoutJobSkillsInput>
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type EnumJobVerificationStatusFieldUpdateOperationsInput = {
   set?: $Enums.JobVerificationStatus
 }

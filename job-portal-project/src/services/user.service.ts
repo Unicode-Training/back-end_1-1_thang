@@ -30,6 +30,19 @@ export const userService = {
         })
     },
 
+    async existingEmail(email: string, id: number = 0) {
+        return prisma.user.count({
+            where: {
+                email,
+                ...(id > 0 ? {
+                    id: {
+                        not: id
+                    }
+                } : {})
+            }
+        })
+    },
+
     async find(id: number) {
         const data = await prisma.user.findUnique({
             where: { id },

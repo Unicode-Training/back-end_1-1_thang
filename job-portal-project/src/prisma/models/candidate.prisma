@@ -1,0 +1,18 @@
+model Candidate {
+    id                  Int                  @id @default(autoincrement())
+    userId              Int                  @unique
+    user                User                 @relation(fields: [userId], references: [id])
+    avatar              String?              @db.VarChar(200)
+    phone               String?              @db.VarChar(15)
+    address             String?              @db.VarChar(200)
+    website             String?              @db.VarChar(50)
+    isLookingJob        Boolean              @default(true)
+    cvFile              String?              @db.VarChar(200)
+    createdAt           DateTime             @default(now()) @db.Timestamp()
+    updatedAt           DateTime             @default(now()) @updatedAt @db.Timestamp()
+    candidateExps       CandidateExp[]
+    candidateEducations CandidateEducation[]
+    candidateSkills     CandidateSkill[]
+
+    @@map("candidates")
+}

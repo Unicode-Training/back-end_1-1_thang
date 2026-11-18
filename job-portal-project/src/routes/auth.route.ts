@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import { validate } from "../middlewares/validate.middleware";
 import { loginSchema, registerSchema } from "../validators/auth.validator";
 import { authController } from "../controllers/auth.controller";

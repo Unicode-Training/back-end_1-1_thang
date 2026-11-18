@@ -1,0 +1,18 @@
+import express from "express";
+import { candidateController } from "../controllers/candidate/candidate.controller";
+import { verifyMiddleware } from "../middlewares/verify.middleware";
+import { authMiddleware } from "../middlewares/auth.middleware";
+import { validate } from "../middlewares/validate.middleware";
+import { updateProfileSchema } from "../validators/candidate/updateProfile.validator";
+import { createExpSchema } from "../validators/candidate/createExp.validator";
+import { createEducationSchema } from "../validators/candidate/createEducation.validator";
+const router = express.Router();
+router.use(authMiddleware);
+router.use(verifyMiddleware);
+router.get('/profile', candidateController.profile);
+router.patch('/profile', validate(updateProfileSchema), candidateController.updateProfile);
+router.get('/profile/exps', candidateController.findExps);
+router.post('/profile/exps', validate(createExpSchema), candidateController.createExp);
+router.get('/profile/educations', candidateController.findEducations);
+router.post('/profile/educations', validate(createEducationSchema), candidateController.createEducation);
+export default router;

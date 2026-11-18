@@ -465,26 +465,6 @@ export type CompanyAddressNullableScalarRelationFilter = {
   isNot?: Prisma.CompanyAddressWhereInput | null
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type CompanyAddressCreateNestedManyWithoutCompanyInput = {
   create?: Prisma.XOR<Prisma.CompanyAddressCreateWithoutCompanyInput, Prisma.CompanyAddressUncheckedCreateWithoutCompanyInput> | Prisma.CompanyAddressCreateWithoutCompanyInput[] | Prisma.CompanyAddressUncheckedCreateWithoutCompanyInput[]
   connectOrCreate?: Prisma.CompanyAddressCreateOrConnectWithoutCompanyInput | Prisma.CompanyAddressCreateOrConnectWithoutCompanyInput[]

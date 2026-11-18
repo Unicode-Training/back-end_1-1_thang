@@ -4,6 +4,7 @@ import "dotenv/config";
 import indexRouter from "./routes/index.route";
 import authRouter from "./routes/auth.route";
 import employerRouter from "./routes/employer.route";
+import candidateRouter from "./routes/candidate.route";
 import uploadRouter from "./routes/upload.route";
 import "./socket/index";
 import "./subscribe/index.subscribe";
@@ -20,6 +21,7 @@ app.use('/storage', express.static(process.cwd() + '/storage'));
 app.use('/api', indexRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/employers', employerRouter);
+app.use('/api/candidate', candidateRouter);
 app.use('/api/uploads', uploadRouter)
 
 app.use(notFoundMiddleware);

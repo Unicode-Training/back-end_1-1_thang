@@ -1,0 +1,14 @@
+model CandidateEducation {
+    id          Int       @id @default(autoincrement())
+    candidateId Int
+    candidate   Candidate @relation(fields: [candidateId], references: [id])
+    schoolName  String    @db.VarChar(100)
+    schoolLogo  String?   @db.VarChar(200)
+    specialized String    @db.VarChar(100)
+    startYear   DateTime  @db.Date()
+    endYear     DateTime? @db.Date()
+    createdAt   DateTime  @default(now()) @db.Timestamp()
+    updatedAt   DateTime  @default(now()) @updatedAt @db.Timestamp()
+
+    @@map("candiate_educations")
+}

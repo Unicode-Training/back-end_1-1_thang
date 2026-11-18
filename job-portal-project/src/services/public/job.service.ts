@@ -251,11 +251,32 @@ export const jobService = {
         const skip = Math.floor(Math.random() * total);
         const data = await prisma.job.findMany({
             where,
+            include: {
+                company: {
+                    include: {
+                        companyAddresses: {
+                            include: {
+                                province: true
+                            }
+                        }
+                    }
+                },
+                salary: true
+            },
             take: +limit,
             skip
         });
 
-        return data;
+        return data.map(item => {
+            const { company, ...job } = item;
+            const { companyAddresses, ...companyInfo } = company;
+            const address = job.addressId ? companyAddresses.find(val => val.id === job.addressId) : companyAddresses.find(val => val.isHeadquarter)
+            return {
+                ...job,
+                company: companyInfo,
+                address,
+            }
+        });
     }
 }
 

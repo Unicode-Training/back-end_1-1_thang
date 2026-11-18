@@ -2,6 +2,7 @@ import HttpException from "../exceptions/http.exception";
 import { User } from "../prisma/generated/prisma/client";
 import { Hash } from "../utils/hashing";
 import { Jwt } from "../utils/jwt";
+import { candidateService } from "./candidate/candidate.service";
 import { userService } from "./user.service";
 
 export const authService = {
@@ -29,6 +30,11 @@ export const authService = {
     },
     async register(regsiterData: User) {
         const user = await userService.create(regsiterData);
+        if (user.role === 'CANDIDATE') {
+            await candidateService.create({
+                userId: user.id
+            });
+        }
         const token = Jwt.generateToken({
             jti: crypto.randomUUID(),
             id: user.id
