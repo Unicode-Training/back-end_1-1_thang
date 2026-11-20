@@ -1,0 +1,14 @@
+model JobApplyStatus {
+    id            Int                @id @default(autoincrement())
+    applyId       Int
+    apply         JobApply           @relation(fields: [applyId], references: [id])
+    status        JobApplyStatusEnum @default(SUBMITTED)
+    note          String?
+    interviewDate DateTime?
+    selectedDate  DateTime?
+    createdAt     DateTime           @default(now()) @db.Timestamp()
+    updatedAt     DateTime           @default(now()) @updatedAt @db.Timestamp()
+
+    @@unique([status, applyId])
+    @@map("jobs_apply_status")
+}

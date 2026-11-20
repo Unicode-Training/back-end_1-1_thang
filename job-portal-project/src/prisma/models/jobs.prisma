@@ -29,6 +29,7 @@ model Job {
     updatedAt          DateTime              @default(now()) @updatedAt @db.Timestamp()
     jobInterests       JobInterest[]
     jobSkills          JobSkill[]
+    jobApplies         JobApply[]
 
     @@map("jobs")
 }

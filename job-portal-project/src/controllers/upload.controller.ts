@@ -15,5 +15,20 @@ export const uploadController = {
                 path: '/storage/logo/' + req.file?.filename
             }
         })
+    },
+
+    async uploadCv(req: Request, res: Response) {
+        const { replacePath } = req.body;
+        if (replacePath) {
+            await uploadService.deleteFile(process.cwd() + replacePath);
+        }
+        return res.json({
+            success: true,
+            message: "Upload cv success",
+            data: {
+                fullUrl: req.protocol + '://' + req.get('host') + '/storage/cv/' + req.file?.filename,
+                path: '/storage/cv/' + req.file?.filename
+            }
+        })
     }
 }

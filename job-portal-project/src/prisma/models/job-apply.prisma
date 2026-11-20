@@ -1,0 +1,22 @@
+enum JobApplyStatusEnum {
+    SUBMITTED
+    REVIEW
+    INTERVIEW
+    SELECTED
+    REJECTED
+}
+
+model JobApply {
+    id               Int                @id @default(autoincrement())
+    jobId            Int
+    candidateId      Int
+    job              Job                @relation(fields: [jobId], references: [id])
+    candidate        Candidate          @relation(fields: [candidateId], references: [id])
+    status           JobApplyStatusEnum @default(SUBMITTED)
+    createdAt        DateTime           @default(now()) @db.Timestamp()
+    updatedAt        DateTime           @default(now()) @updatedAt @db.Timestamp()
+    jobApplyStatuses JobApplyStatus[]
+
+    @@unique([jobId, candidateId])
+    @@map("jobs_apply")
+}

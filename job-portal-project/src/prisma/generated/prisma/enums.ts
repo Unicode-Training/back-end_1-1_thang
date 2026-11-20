@@ -25,6 +25,17 @@ export const EmployerVerificationStatus = {
 export type EmployerVerificationStatus = (typeof EmployerVerificationStatus)[keyof typeof EmployerVerificationStatus]
 
 
+export const JobApplyStatusEnum = {
+  SUBMITTED: 'SUBMITTED',
+  REVIEW: 'REVIEW',
+  INTERVIEW: 'INTERVIEW',
+  SELECTED: 'SELECTED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type JobApplyStatusEnum = (typeof JobApplyStatusEnum)[keyof typeof JobApplyStatusEnum]
+
+
 export const JobVerificationStatus = {
   PENDING: 'PENDING',
   APPROVE: 'APPROVE',

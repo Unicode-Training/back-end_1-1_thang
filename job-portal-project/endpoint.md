@@ -43,6 +43,17 @@ file: Binary file
 replacePath: string
 ```
 
+2. Upload CV
+
+POST /api/upload/av
+
+Body:
+
+```
+file: Binary file
+replacePath: string
+```
+
 ## Company
 
 1. Create Company
@@ -180,3 +191,37 @@ GET /api/jobs/:id
 3. Lấy danh sách job liên quan
 
 GET /api/jobs/:id/related
+
+## Candidate
+
+1. Lấy thông tin profile
+
+GET /api/candidate/profile
+
+2. Cập nhật profile
+
+PATCH /api/candidate/profile
+
+3. Lấy danh sách kinh nghiệm
+
+GET /api/candidate/profile/exps
+
+4. Thêm kinh nghiệm
+
+POST /api/candidate/profile/exps
+
+5. Lấy danh sách học vấn
+
+GET /api/candidate/profile/education
+
+6. Thêm học vấn
+
+POST /api/candidate/profile/education
+
+7. Lấy danh sách kỹ năng
+
+GET /api/candidate/profile/skills
+
+8. Thêm kỹ năng mới
+
+POST /api/candidate/profile/skills

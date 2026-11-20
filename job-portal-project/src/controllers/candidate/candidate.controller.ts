@@ -62,4 +62,24 @@ export const candidateController = {
             message: "Create education candidate"
         });
     },
+
+    async findSkill(req: Request, res: Response) {
+        const userId = req.user?.id;
+        const data = await candidateService.findSkill(userId!);
+        return res.json({
+            data,
+            success: true,
+            message: "Get skill list candidate"
+        });
+    },
+
+    async createSkill(req: Request, res: Response) {
+        const userId = req.user?.id;
+        const data = await candidateService.createSkill(req.body, userId!);
+        return res.status(201).json({
+            data,
+            success: true,
+            message: "Create skill candidate"
+        });
+    },
 }

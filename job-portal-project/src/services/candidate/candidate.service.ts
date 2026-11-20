@@ -1,6 +1,6 @@
 import HttpException from "../../exceptions/http.exception";
 import { prisma } from "../../libs/prisma";
-import { Candidate, CandidateEducation } from "../../prisma/generated/prisma/client";
+import { Candidate, CandidateEducation, CandidateSkill } from "../../prisma/generated/prisma/client";
 import { CandidateExpCreateInput, CandidateUpdateInput, UserUpdateInput } from "../../prisma/generated/prisma/models";
 import { userService } from "../user.service";
 
@@ -130,6 +130,40 @@ export const candidateService = {
             where: { userId }
         })
         return prisma.candidateEducation.create({
+            data: {
+                ...data,
+                candidateId: candidate!.id
+            }
+        })
+    },
+
+    async findSkill(userId: number) {
+        const candidate = await prisma.candidate.findUnique({
+            where: {
+                userId
+            },
+            include: {
+                candidateSkills: {
+                    include: {
+                        skill: true
+                    }
+                }
+            },
+
+        });
+        if (!candidate) {
+            throw new HttpException('Candidate not found', 404);
+        }
+        const { candidateSkills } = candidate;
+        return candidateSkills.map(val => val.skill);
+    },
+
+    async createSkill(data: Omit<CandidateSkill, 'candidate'>, userId: number) {
+
+        const candidate = await prisma.candidate.findUnique({
+            where: { userId }
+        })
+        return prisma.candidateSkill.create({
             data: {
                 ...data,
                 candidateId: candidate!.id

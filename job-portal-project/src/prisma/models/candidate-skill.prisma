@@ -7,5 +7,6 @@ model CandidateSkill {
     createdAt   DateTime  @default(now()) @db.Timestamp()
     updatedAt   DateTime  @default(now()) @updatedAt @db.Timestamp()
 
+    @@unique([skillId, candidateId])
     @@map("candiates_skills")
 }

@@ -13,6 +13,7 @@ model Candidate {
     candidateExps       CandidateExp[]
     candidateEducations CandidateEducation[]
     candidateSkills     CandidateSkill[]
+    jobApplies          JobApply[]
 
     @@map("candidates")
 }

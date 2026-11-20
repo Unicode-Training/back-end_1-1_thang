@@ -1,0 +1,1 @@
+import "./job-apply.worker"

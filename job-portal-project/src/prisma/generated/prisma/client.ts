@@ -100,6 +100,16 @@ export type Industry = Prisma.IndustryModel
  */
 export type Interest = Prisma.InterestModel
 /**
+ * Model JobApplyStatus
+ * 
+ */
+export type JobApplyStatus = Prisma.JobApplyStatusModel
+/**
+ * Model JobApply
+ * 
+ */
+export type JobApply = Prisma.JobApplyModel
+/**
  * Model JobInterest
  * 
  */

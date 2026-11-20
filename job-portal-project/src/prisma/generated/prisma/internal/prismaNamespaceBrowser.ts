@@ -63,6 +63,8 @@ export const ModelName = {
   Exp: 'Exp',
   Industry: 'Industry',
   Interest: 'Interest',
+  JobApplyStatus: 'JobApplyStatus',
+  JobApply: 'JobApply',
   JobInterest: 'JobInterest',
   JobSkill: 'JobSkill',
   Job: 'Job',
@@ -251,6 +253,32 @@ export const InterestScalarFieldEnum = {
 } as const
 
 export type InterestScalarFieldEnum = (typeof InterestScalarFieldEnum)[keyof typeof InterestScalarFieldEnum]
+
+
+export const JobApplyStatusScalarFieldEnum = {
+  id: 'id',
+  applyId: 'applyId',
+  status: 'status',
+  note: 'note',
+  interviewDate: 'interviewDate',
+  selectedDate: 'selectedDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobApplyStatusScalarFieldEnum = (typeof JobApplyStatusScalarFieldEnum)[keyof typeof JobApplyStatusScalarFieldEnum]
+
+
+export const JobApplyScalarFieldEnum = {
+  id: 'id',
+  jobId: 'jobId',
+  candidateId: 'candidateId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobApplyScalarFieldEnum = (typeof JobApplyScalarFieldEnum)[keyof typeof JobApplyScalarFieldEnum]
 
 
 export const JobInterestScalarFieldEnum = {
@@ -487,6 +515,13 @@ export const InterestOrderByRelevanceFieldEnum = {
 } as const
 
 export type InterestOrderByRelevanceFieldEnum = (typeof InterestOrderByRelevanceFieldEnum)[keyof typeof InterestOrderByRelevanceFieldEnum]
+
+
+export const JobApplyStatusOrderByRelevanceFieldEnum = {
+  note: 'note'
+} as const
+
+export type JobApplyStatusOrderByRelevanceFieldEnum = (typeof JobApplyStatusOrderByRelevanceFieldEnum)[keyof typeof JobApplyStatusOrderByRelevanceFieldEnum]
 
 
 export const JobOrderByRelevanceFieldEnum = {

@@ -1,3 +1,7 @@
-export const QUEUE = {
+export const QUEUE_NAME = {
+    JOB_APPLY: 'JOB_APPLY_QUEUE'
+}
 
+export const QUEUE_JOB = {
+    ADD_JOB_APPLY_STATUS: 'ADD_JOB_APPLY_STATUS'
 }

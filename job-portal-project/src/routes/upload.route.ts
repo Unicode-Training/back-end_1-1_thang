@@ -1,6 +1,10 @@
 import express from "express";
 import { uploadController } from "../controllers/upload.controller";
-import { uploadLogo } from "../libs/multer";
+import { uploadCv, uploadLogo } from "../libs/multer";
+import { authMiddleware } from "../middlewares/auth.middleware";
+import { roleMiddleware } from "../middlewares/role.middleware";
 const router = express.Router();
-router.post('/logo', uploadLogo.single('file'), uploadController.uploadLogo);
+router.use(authMiddleware);
+router.post('/logo', roleMiddleware('EMPLOYER'), uploadLogo.single('file'), uploadController.uploadLogo);
+router.post('/cv', roleMiddleware('CANDIDATE'), uploadCv.single('file'), uploadController.uploadCv);
 export default router;

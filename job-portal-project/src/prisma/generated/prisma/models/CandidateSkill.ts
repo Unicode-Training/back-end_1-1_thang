@@ -240,6 +240,7 @@ export type CandidateSkillOrderByWithRelationInput = {
 
 export type CandidateSkillWhereUniqueInput = Prisma.AtLeast<{
   id?: number
+  skillId_candidateId?: Prisma.CandidateSkillSkillIdCandidateIdCompoundUniqueInput
   AND?: Prisma.CandidateSkillWhereInput | Prisma.CandidateSkillWhereInput[]
   OR?: Prisma.CandidateSkillWhereInput[]
   NOT?: Prisma.CandidateSkillWhereInput | Prisma.CandidateSkillWhereInput[]
@@ -249,7 +250,7 @@ export type CandidateSkillWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"CandidateSkill"> | Date | string
   candidate?: Prisma.XOR<Prisma.CandidateScalarRelationFilter, Prisma.CandidateWhereInput>
   skill?: Prisma.XOR<Prisma.SkillScalarRelationFilter, Prisma.SkillWhereInput>
-}, "id">
+}, "id" | "skillId_candidateId">
 
 export type CandidateSkillOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -324,6 +325,11 @@ export type CandidateSkillUncheckedUpdateManyInput = {
   skillId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CandidateSkillSkillIdCandidateIdCompoundUniqueInput = {
+  skillId: number
+  candidateId: number
 }
 
 export type CandidateSkillCountOrderByAggregateInput = {
