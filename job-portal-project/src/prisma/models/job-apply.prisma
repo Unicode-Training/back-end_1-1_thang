@@ -4,6 +4,7 @@ enum JobApplyStatusEnum {
     INTERVIEW
     SELECTED
     REJECTED
+    CANCEL
 }
 
 model JobApply {

@@ -1,0 +1,29 @@
+<p>Chào: <%= name %></p>
+<p>Cảm ơn bạn đã quan tâm đến vị trí tuyển dụng tại Job Portal</p>
+<p>Đơn ứng tuyển của bạn đã cập nhật</p>
+<p>Đơn ứng tuyển đang ở trạng thái: <%= applyStatus %></p>
+<% if (note) { %>
+<p><%= note %></p>
+<% } %>   
+<% if (applyStatus === 'INTERVIEW') { %>
+<p><b>Lịch phỏng vấn:</b></p>
+<p>Ngày: <%= interviewDate %></p>
+<p>Địa điểm: Hà Nội</p>
+<% } %>    
+<% if (applyStatus === 'SELECTED') { %>
+<p><b>Ngày làm việc:</b></p>
+<p>Ngày: <%= selectedDate %></p>
+<p>Địa điểm: Hà Nội</p>
+<% } %> 
+<% if (applyStatus === 'REJECTED') { %>
+ Hy vọng được hợp tác với bạn lần sau   
+<% } %> 
+<% if (applyStatus !== 'CANCEL') { %>
+<p>Khi có thông tin cập nhật mới, chúng tôi sẽ gửi email cho bạn</p>
+<% } %>
+<% if (typeof applyUrl !== 'undefined') { %>
+<p>Bạn có thể xem trạng thái tại đây</p>
+<%= applyUrl %>
+<% } %>
+<p>Trân trọng,</p>
+<p>Job Portal Team</p>

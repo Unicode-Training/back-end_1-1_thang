@@ -225,3 +225,15 @@ GET /api/candidate/profile/skills
 8. Thêm kỹ năng mới
 
 POST /api/candidate/profile/skills
+
+10. Lấy danh sách apply
+
+GET /api/candidate/apply
+
+11. Xem chi tiết apply
+
+GET /api/candidate/apply/:id
+
+12. Apply 1 job
+
+POST /api/candidate/apply/:jobId

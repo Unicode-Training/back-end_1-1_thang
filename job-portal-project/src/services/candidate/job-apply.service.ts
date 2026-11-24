@@ -1,8 +1,8 @@
 import { QUEUE_JOB } from "../../constants/queue.constant";
 import HttpException from "../../exceptions/http.exception";
 import { prisma } from "../../libs/prisma"
-import { JobApply } from "../../prisma/generated/prisma/client";
-import { JobApplyStatusEnum } from "../../prisma/generated/prisma/enums";
+import { JobApplyStatus, User } from "../../prisma/generated/prisma/client";
+import { emailQueue } from "../../queue/email.queue";
 import { jobApplyQueue } from "../../queue/job-apply.queue";
 
 export const jobApplyService = {
@@ -81,10 +81,10 @@ export const jobApplyService = {
         return jobApplyStatuses;
     },
 
-    async apply(jobId: number, userId: number) {
+    async apply(jobId: number, user: Omit<User, 'password'>, meta?: { applyUrl: string }) {
 
         const candidate = await prisma.candidate.findUnique({
-            where: { userId }
+            where: { userId: user.id }
         });
 
         if (!candidate) {
@@ -97,44 +97,79 @@ export const jobApplyService = {
             }
         });
 
+        const job = await prisma.job.findUnique({
+            where: {
+                id: jobId
+            },
+            select: {
+                name: true
+            }
+        })
+
         await jobApplyQueue.add(QUEUE_JOB.ADD_JOB_APPLY_STATUS, {
             status: data.status,
             applyId: data.id,
         });
 
+        await emailQueue.add(QUEUE_JOB.SEND_EMAIL_APPLY_JOB, {
+            email: user.email,
+            name: user.name,
+            jobName: job?.name,
+            applyStatus: data.status,
+            applyUrl: meta?.applyUrl ? meta?.applyUrl.replace(/\/+$/, '') + '/' + data.id : process.env.FRONTEND_URL
+        })
+
         return data;
     },
 
-    async updateApplyStatus(id: number, userId: number, data: JobApply) {
-        const candidate = await prisma.candidate.findUnique({
-            where: { userId }
-        });
-
-        if (!candidate) {
-            throw new HttpException("Candidate not found", 404);
-        }
-        const jobApply = await prisma.jobApply.update({
-            where: {
-                id,
-                candidateId: candidate.id
-            },
-            data
-        });
-
-        await jobApplyQueue.add(QUEUE_JOB.ADD_JOB_APPLY_STATUS, {
-            status: jobApply.status,
-            applyId: jobApply.id,
-        });
-
-        return jobApply;
-    },
-
-    async createjobApplyStatus(status: JobApplyStatusEnum, applyId: number) {
+    async createjobApplyStatus(data: JobApplyStatus, applyId: number) {
         return prisma.jobApplyStatus.create({
             data: {
-                status,
+                ...data,
                 applyId
             }
         })
+    },
+
+    async cancelJobApply(id: number) {
+        const currentApply = await prisma.jobApply.findUnique({
+            where: {
+                id
+            }
+        })
+        const data = await prisma.jobApply.update({
+            where: {
+                id
+            },
+            data: {
+                status: 'CANCEL'
+            },
+            include: {
+                candidate: {
+                    include: {
+                        user: true
+                    }
+                },
+                job: true
+            }
+        });
+
+        const user = data.candidate.user;
+        const job = data.job;
+        if (currentApply?.status !== 'CANCEL') {
+            await jobApplyQueue.add(QUEUE_JOB.ADD_JOB_APPLY_STATUS, {
+                status: data.status,
+                applyId: data.id,
+            });
+
+            await emailQueue.add(QUEUE_JOB.SEND_EMAIL_STATUS_APPLY_JOB, {
+                email: user.email,
+                name: user.name,
+                jobName: job?.name,
+                applyStatus: data.status,
+            })
+        }
+
+        return data;
     }
 }

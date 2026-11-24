@@ -2232,6 +2232,7 @@ export const JobApplyStatusScalarFieldEnum = {
   note: 'note',
   interviewDate: 'interviewDate',
   selectedDate: 'selectedDate',
+  invitation: 'invitation',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2488,7 +2489,8 @@ export type InterestOrderByRelevanceFieldEnum = (typeof InterestOrderByRelevance
 
 
 export const JobApplyStatusOrderByRelevanceFieldEnum = {
-  note: 'note'
+  note: 'note',
+  invitation: 'invitation'
 } as const
 
 export type JobApplyStatusOrderByRelevanceFieldEnum = (typeof JobApplyStatusOrderByRelevanceFieldEnum)[keyof typeof JobApplyStatusOrderByRelevanceFieldEnum]

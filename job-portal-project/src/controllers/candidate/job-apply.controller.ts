@@ -22,25 +22,23 @@ export const jobApplyController = {
         })
     },
     async apply(req: Request, res: Response) {
-        const userId = req.user?.id;
         const { jobId } = req.params;
-        const data = await jobApplyService.apply(+jobId!, userId!);
+        const user = req.user;
+        const data = await jobApplyService.apply(+jobId!, user!, req.body);
         return res.status(201).json({
             data,
             success: true,
             message: 'Apply job success'
         });
     },
-    async updateApplyStatus(req: Request, res: Response) {
-        const userId = req.user?.id;
+
+    async cancel(req: Request, res: Response) {
         const { id } = req.params;
-
-        const data = await jobApplyService.updateApplyStatus(+id!, userId!, req.body);
-
+        await jobApplyService.cancelJobApply(+id!);
         return res.json({
-            data,
             success: true,
-            message: 'Update status apply job success'
+            message: "Cancel apply success"
         });
     }
+
 }

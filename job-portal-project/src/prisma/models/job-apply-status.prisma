@@ -6,6 +6,7 @@ model JobApplyStatus {
     note          String?
     interviewDate DateTime?
     selectedDate  DateTime?
+    invitation    String?            @db.Text()
     createdAt     DateTime           @default(now()) @db.Timestamp()
     updatedAt     DateTime           @default(now()) @updatedAt @db.Timestamp()
 

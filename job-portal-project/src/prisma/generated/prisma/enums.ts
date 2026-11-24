@@ -30,7 +30,8 @@ export const JobApplyStatusEnum = {
   REVIEW: 'REVIEW',
   INTERVIEW: 'INTERVIEW',
   SELECTED: 'SELECTED',
-  REJECTED: 'REJECTED'
+  REJECTED: 'REJECTED',
+  CANCEL: 'CANCEL'
 } as const
 
 export type JobApplyStatusEnum = (typeof JobApplyStatusEnum)[keyof typeof JobApplyStatusEnum]
