@@ -9,6 +9,7 @@ import { createEducationSchema } from "../validators/candidate/createEducation.v
 import { createSkillSchema } from "../validators/candidate/createSkill.validator";
 import { jobApplyController } from "../controllers/candidate/job-apply.controller";
 import { applyJobSchema } from "../validators/candidate/apployJob.validator";
+import { jobSavedController } from "../controllers/candidate/job-saved.controller";
 const router = express.Router();
 router.use(authMiddleware);
 router.use(verifyMiddleware);
@@ -28,5 +29,10 @@ router.get('/apply', jobApplyController.findAllApply);
 router.get('/apply/:id', jobApplyController.findApply);
 router.post('/apply/:jobId', validate(applyJobSchema), jobApplyController.apply);
 router.delete('/apply/:id', jobApplyController.cancel);
+
+//JOB SAVED
+router.get('/jobs/saved', jobSavedController.findAllSaved);
+router.post('/jobs/:jobId/saved', jobSavedController.saved);
+router.delete('/jobs/:jobId/saved', jobSavedController.unsaved);
 
 export default router;

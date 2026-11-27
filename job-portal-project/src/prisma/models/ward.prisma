@@ -6,6 +6,7 @@ model Ward {
     createdAt        DateTime         @default(now()) @db.Timestamp()
     updatedAt        DateTime         @default(now()) @updatedAt @db.Timestamp()
     companyAddresses CompanyAddress[]
+    candidates       Candidate[]
 
     @@map("wards")
 }

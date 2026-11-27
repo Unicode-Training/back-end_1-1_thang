@@ -1,0 +1,12 @@
+model JobSaved {
+    id          Int       @id @default(autoincrement())
+    candidateId Int
+    jobId       Int
+    candidate   Candidate @relation(fields: [candidateId], references: [id])
+    job         Job       @relation(fields: [jobId], references: [id])
+    createdAt   DateTime  @default(now()) @db.Timestamp()
+    updatedAt   DateTime  @default(now()) @updatedAt @db.Timestamp()
+
+    @@unique([candidateId, jobId])
+    @@map("job_saved")
+}

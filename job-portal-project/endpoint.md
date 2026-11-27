@@ -150,6 +150,20 @@ PATCH /api/employers/jobs/:id
 
 DELETE /api/employers/jobs/:id
 
+## Job Apply
+
+1. Lấy danh sách apply
+
+GET /api/employers/apply
+
+2. Lấy chi tiết apply
+
+GET /api/employers/apply/:id
+
+3. Cập nhật status apply
+
+PATCH /api/employers/apply/:id/status
+
 ## Public
 
 ### Industry
@@ -237,3 +251,7 @@ GET /api/candidate/apply/:id
 12. Apply 1 job
 
 POST /api/candidate/apply/:jobId
+
+13. Cancel Apply
+
+DELETE /api/candidate/apply/:id

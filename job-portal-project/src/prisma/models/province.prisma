@@ -5,6 +5,7 @@ model Province {
     updatedAt        DateTime         @default(now()) @updatedAt @db.Timestamp()
     wards            Ward[]
     companyAddresses CompanyAddress[]
+    candidates       Candidate[]
 
     @@map("provinces")
 }

@@ -50,6 +50,11 @@ export type CandidateExp = Prisma.CandidateExpModel
  */
 export type CandidateEducation = Prisma.CandidateEducationModel
 /**
+ * Model CandidateSaved
+ * 
+ */
+export type CandidateSaved = Prisma.CandidateSavedModel
+/**
  * Model CandidateSkill
  * 
  */
@@ -109,6 +114,11 @@ export type JobApplyStatus = Prisma.JobApplyStatusModel
  * 
  */
 export type JobApply = Prisma.JobApplyModel
+/**
+ * Model JobSaved
+ * 
+ */
+export type JobSaved = Prisma.JobSavedModel
 /**
  * Model JobInterest
  * 

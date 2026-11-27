@@ -30,6 +30,7 @@ model Job {
     jobInterests       JobInterest[]
     jobSkills          JobSkill[]
     jobApplies         JobApply[]
+    jobSaveds          JobSaved[]
 
     @@map("jobs")
 }

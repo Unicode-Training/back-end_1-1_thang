@@ -53,6 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   CandidateExp: 'CandidateExp',
   CandidateEducation: 'CandidateEducation',
+  CandidateSaved: 'CandidateSaved',
   CandidateSkill: 'CandidateSkill',
   Candidate: 'Candidate',
   CompanyAddress: 'CompanyAddress',
@@ -65,6 +66,7 @@ export const ModelName = {
   Interest: 'Interest',
   JobApplyStatus: 'JobApplyStatus',
   JobApply: 'JobApply',
+  JobSaved: 'JobSaved',
   JobInterest: 'JobInterest',
   JobSkill: 'JobSkill',
   Job: 'Job',
@@ -124,6 +126,17 @@ export const CandidateEducationScalarFieldEnum = {
 export type CandidateEducationScalarFieldEnum = (typeof CandidateEducationScalarFieldEnum)[keyof typeof CandidateEducationScalarFieldEnum]
 
 
+export const CandidateSavedScalarFieldEnum = {
+  id: 'id',
+  candidateId: 'candidateId',
+  companyId: 'companyId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CandidateSavedScalarFieldEnum = (typeof CandidateSavedScalarFieldEnum)[keyof typeof CandidateSavedScalarFieldEnum]
+
+
 export const CandidateSkillScalarFieldEnum = {
   id: 'id',
   candidateId: 'candidateId',
@@ -144,6 +157,10 @@ export const CandidateScalarFieldEnum = {
   website: 'website',
   isLookingJob: 'isLookingJob',
   cvFile: 'cvFile',
+  jobRole: 'jobRole',
+  income: 'income',
+  provinceId: 'provinceId',
+  wardId: 'wardId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -280,6 +297,17 @@ export const JobApplyScalarFieldEnum = {
 } as const
 
 export type JobApplyScalarFieldEnum = (typeof JobApplyScalarFieldEnum)[keyof typeof JobApplyScalarFieldEnum]
+
+
+export const JobSavedScalarFieldEnum = {
+  id: 'id',
+  candidateId: 'candidateId',
+  jobId: 'jobId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobSavedScalarFieldEnum = (typeof JobSavedScalarFieldEnum)[keyof typeof JobSavedScalarFieldEnum]
 
 
 export const JobInterestScalarFieldEnum = {
@@ -446,7 +474,8 @@ export const CandidateOrderByRelevanceFieldEnum = {
   phone: 'phone',
   address: 'address',
   website: 'website',
-  cvFile: 'cvFile'
+  cvFile: 'cvFile',
+  jobRole: 'jobRole'
 } as const
 
 export type CandidateOrderByRelevanceFieldEnum = (typeof CandidateOrderByRelevanceFieldEnum)[keyof typeof CandidateOrderByRelevanceFieldEnum]

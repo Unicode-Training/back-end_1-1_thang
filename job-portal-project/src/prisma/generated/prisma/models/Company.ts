@@ -286,6 +286,7 @@ export type CompanyWhereInput = {
   companyDocuments?: Prisma.CompanyDocumentListRelationFilter
   companyAddresses?: Prisma.CompanyAddressListRelationFilter
   jobs?: Prisma.JobListRelationFilter
+  candidateSaveds?: Prisma.CandidateSavedListRelationFilter
 }
 
 export type CompanyOrderByWithRelationInput = {
@@ -307,6 +308,7 @@ export type CompanyOrderByWithRelationInput = {
   companyDocuments?: Prisma.CompanyDocumentOrderByRelationAggregateInput
   companyAddresses?: Prisma.CompanyAddressOrderByRelationAggregateInput
   jobs?: Prisma.JobOrderByRelationAggregateInput
+  candidateSaveds?: Prisma.CandidateSavedOrderByRelationAggregateInput
   _relevance?: Prisma.CompanyOrderByRelevanceInput
 }
 
@@ -332,6 +334,7 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<{
   companyDocuments?: Prisma.CompanyDocumentListRelationFilter
   companyAddresses?: Prisma.CompanyAddressListRelationFilter
   jobs?: Prisma.JobListRelationFilter
+  candidateSaveds?: Prisma.CandidateSavedListRelationFilter
 }, "id" | "taxNumber">
 
 export type CompanyOrderByWithAggregationInput = {
@@ -388,6 +391,7 @@ export type CompanyCreateInput = {
   companyDocuments?: Prisma.CompanyDocumentCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateInput = {
@@ -407,6 +411,7 @@ export type CompanyUncheckedCreateInput = {
   companyDocuments?: Prisma.CompanyDocumentUncheckedCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobUncheckedCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUpdateInput = {
@@ -425,6 +430,7 @@ export type CompanyUpdateInput = {
   companyDocuments?: Prisma.CompanyDocumentUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateInput = {
@@ -444,6 +450,7 @@ export type CompanyUncheckedUpdateInput = {
   companyDocuments?: Prisma.CompanyDocumentUncheckedUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUncheckedUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateManyInput = {
@@ -566,6 +573,20 @@ export type CompanySumOrderByAggregateInput = {
   scaleId?: Prisma.SortOrder
 }
 
+export type CompanyCreateNestedOneWithoutCandidateSavedsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutCandidateSavedsInput, Prisma.CompanyUncheckedCreateWithoutCandidateSavedsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutCandidateSavedsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutCandidateSavedsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutCandidateSavedsInput, Prisma.CompanyUncheckedCreateWithoutCandidateSavedsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutCandidateSavedsInput
+  upsert?: Prisma.CompanyUpsertWithoutCandidateSavedsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutCandidateSavedsInput, Prisma.CompanyUpdateWithoutCandidateSavedsInput>, Prisma.CompanyUncheckedUpdateWithoutCandidateSavedsInput>
+}
+
 export type CompanyCreateNestedOneWithoutCompanyAddressesInput = {
   create?: Prisma.XOR<Prisma.CompanyCreateWithoutCompanyAddressesInput, Prisma.CompanyUncheckedCreateWithoutCompanyAddressesInput>
   connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutCompanyAddressesInput
@@ -640,14 +661,6 @@ export type EnumVerificationStatusFieldUpdateOperationsInput = {
   set?: $Enums.VerificationStatus
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type CompanyCreateNestedOneWithoutEmployerProfilesInput = {
   create?: Prisma.XOR<Prisma.CompanyCreateWithoutEmployerProfilesInput, Prisma.CompanyUncheckedCreateWithoutEmployerProfilesInput>
   connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutEmployerProfilesInput
@@ -718,6 +731,96 @@ export type CompanyUpdateOneRequiredWithoutJobsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutJobsInput, Prisma.CompanyUpdateWithoutJobsInput>, Prisma.CompanyUncheckedUpdateWithoutJobsInput>
 }
 
+export type CompanyCreateWithoutCandidateSavedsInput = {
+  name: string
+  logo?: string | null
+  website?: string | null
+  taxNumber: string
+  shortDescription?: string | null
+  description?: string | null
+  verificationStatus?: $Enums.VerificationStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  industry?: Prisma.IndustryCreateNestedOneWithoutCompaniesInput
+  scale?: Prisma.CompanyScaleCreateNestedOneWithoutCompaniesInput
+  employerProfiles?: Prisma.EmployerProfileCreateNestedManyWithoutCompanyInput
+  companyDocuments?: Prisma.CompanyDocumentCreateNestedManyWithoutCompanyInput
+  companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutCompanyInput
+  jobs?: Prisma.JobCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutCandidateSavedsInput = {
+  id?: number
+  industryId?: number | null
+  scaleId?: number | null
+  name: string
+  logo?: string | null
+  website?: string | null
+  taxNumber: string
+  shortDescription?: string | null
+  description?: string | null
+  verificationStatus?: $Enums.VerificationStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  employerProfiles?: Prisma.EmployerProfileUncheckedCreateNestedManyWithoutCompanyInput
+  companyDocuments?: Prisma.CompanyDocumentUncheckedCreateNestedManyWithoutCompanyInput
+  companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutCompanyInput
+  jobs?: Prisma.JobUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutCandidateSavedsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutCandidateSavedsInput, Prisma.CompanyUncheckedCreateWithoutCandidateSavedsInput>
+}
+
+export type CompanyUpsertWithoutCandidateSavedsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutCandidateSavedsInput, Prisma.CompanyUncheckedUpdateWithoutCandidateSavedsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutCandidateSavedsInput, Prisma.CompanyUncheckedCreateWithoutCandidateSavedsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutCandidateSavedsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutCandidateSavedsInput, Prisma.CompanyUncheckedUpdateWithoutCandidateSavedsInput>
+}
+
+export type CompanyUpdateWithoutCandidateSavedsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  industry?: Prisma.IndustryUpdateOneWithoutCompaniesNestedInput
+  scale?: Prisma.CompanyScaleUpdateOneWithoutCompaniesNestedInput
+  employerProfiles?: Prisma.EmployerProfileUpdateManyWithoutCompanyNestedInput
+  companyDocuments?: Prisma.CompanyDocumentUpdateManyWithoutCompanyNestedInput
+  companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutCompanyNestedInput
+  jobs?: Prisma.JobUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutCandidateSavedsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  industryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  scaleId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taxNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationStatus?: Prisma.EnumVerificationStatusFieldUpdateOperationsInput | $Enums.VerificationStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  employerProfiles?: Prisma.EmployerProfileUncheckedUpdateManyWithoutCompanyNestedInput
+  companyDocuments?: Prisma.CompanyDocumentUncheckedUpdateManyWithoutCompanyNestedInput
+  companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutCompanyNestedInput
+  jobs?: Prisma.JobUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
 export type CompanyCreateWithoutCompanyAddressesInput = {
   name: string
   logo?: string | null
@@ -733,6 +836,7 @@ export type CompanyCreateWithoutCompanyAddressesInput = {
   employerProfiles?: Prisma.EmployerProfileCreateNestedManyWithoutCompanyInput
   companyDocuments?: Prisma.CompanyDocumentCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutCompanyAddressesInput = {
@@ -751,6 +855,7 @@ export type CompanyUncheckedCreateWithoutCompanyAddressesInput = {
   employerProfiles?: Prisma.EmployerProfileUncheckedCreateNestedManyWithoutCompanyInput
   companyDocuments?: Prisma.CompanyDocumentUncheckedCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobUncheckedCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutCompanyAddressesInput = {
@@ -784,6 +889,7 @@ export type CompanyUpdateWithoutCompanyAddressesInput = {
   employerProfiles?: Prisma.EmployerProfileUpdateManyWithoutCompanyNestedInput
   companyDocuments?: Prisma.CompanyDocumentUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutCompanyAddressesInput = {
@@ -802,6 +908,7 @@ export type CompanyUncheckedUpdateWithoutCompanyAddressesInput = {
   employerProfiles?: Prisma.EmployerProfileUncheckedUpdateManyWithoutCompanyNestedInput
   companyDocuments?: Prisma.CompanyDocumentUncheckedUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUncheckedUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateWithoutCompanyDocumentsInput = {
@@ -819,6 +926,7 @@ export type CompanyCreateWithoutCompanyDocumentsInput = {
   employerProfiles?: Prisma.EmployerProfileCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutCompanyDocumentsInput = {
@@ -837,6 +945,7 @@ export type CompanyUncheckedCreateWithoutCompanyDocumentsInput = {
   employerProfiles?: Prisma.EmployerProfileUncheckedCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobUncheckedCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutCompanyDocumentsInput = {
@@ -870,6 +979,7 @@ export type CompanyUpdateWithoutCompanyDocumentsInput = {
   employerProfiles?: Prisma.EmployerProfileUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutCompanyDocumentsInput = {
@@ -888,6 +998,7 @@ export type CompanyUncheckedUpdateWithoutCompanyDocumentsInput = {
   employerProfiles?: Prisma.EmployerProfileUncheckedUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUncheckedUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateWithoutScaleInput = {
@@ -905,6 +1016,7 @@ export type CompanyCreateWithoutScaleInput = {
   companyDocuments?: Prisma.CompanyDocumentCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutScaleInput = {
@@ -923,6 +1035,7 @@ export type CompanyUncheckedCreateWithoutScaleInput = {
   companyDocuments?: Prisma.CompanyDocumentUncheckedCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobUncheckedCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutScaleInput = {
@@ -984,6 +1097,7 @@ export type CompanyCreateWithoutEmployerProfilesInput = {
   companyDocuments?: Prisma.CompanyDocumentCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutEmployerProfilesInput = {
@@ -1002,6 +1116,7 @@ export type CompanyUncheckedCreateWithoutEmployerProfilesInput = {
   companyDocuments?: Prisma.CompanyDocumentUncheckedCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobUncheckedCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutEmployerProfilesInput = {
@@ -1035,6 +1150,7 @@ export type CompanyUpdateWithoutEmployerProfilesInput = {
   companyDocuments?: Prisma.CompanyDocumentUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutEmployerProfilesInput = {
@@ -1053,6 +1169,7 @@ export type CompanyUncheckedUpdateWithoutEmployerProfilesInput = {
   companyDocuments?: Prisma.CompanyDocumentUncheckedUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUncheckedUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateWithoutIndustryInput = {
@@ -1070,6 +1187,7 @@ export type CompanyCreateWithoutIndustryInput = {
   companyDocuments?: Prisma.CompanyDocumentCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutIndustryInput = {
@@ -1088,6 +1206,7 @@ export type CompanyUncheckedCreateWithoutIndustryInput = {
   companyDocuments?: Prisma.CompanyDocumentUncheckedCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutCompanyInput
   jobs?: Prisma.JobUncheckedCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutIndustryInput = {
@@ -1131,6 +1250,7 @@ export type CompanyCreateWithoutJobsInput = {
   employerProfiles?: Prisma.EmployerProfileCreateNestedManyWithoutCompanyInput
   companyDocuments?: Prisma.CompanyDocumentCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutJobsInput = {
@@ -1149,6 +1269,7 @@ export type CompanyUncheckedCreateWithoutJobsInput = {
   employerProfiles?: Prisma.EmployerProfileUncheckedCreateNestedManyWithoutCompanyInput
   companyDocuments?: Prisma.CompanyDocumentUncheckedCreateNestedManyWithoutCompanyInput
   companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutCompanyInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutJobsInput = {
@@ -1182,6 +1303,7 @@ export type CompanyUpdateWithoutJobsInput = {
   employerProfiles?: Prisma.EmployerProfileUpdateManyWithoutCompanyNestedInput
   companyDocuments?: Prisma.CompanyDocumentUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutJobsInput = {
@@ -1200,6 +1322,7 @@ export type CompanyUncheckedUpdateWithoutJobsInput = {
   employerProfiles?: Prisma.EmployerProfileUncheckedUpdateManyWithoutCompanyNestedInput
   companyDocuments?: Prisma.CompanyDocumentUncheckedUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateManyScaleInput = {
@@ -1231,6 +1354,7 @@ export type CompanyUpdateWithoutScaleInput = {
   companyDocuments?: Prisma.CompanyDocumentUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutScaleInput = {
@@ -1249,6 +1373,7 @@ export type CompanyUncheckedUpdateWithoutScaleInput = {
   companyDocuments?: Prisma.CompanyDocumentUncheckedUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUncheckedUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateManyWithoutScaleInput = {
@@ -1294,6 +1419,7 @@ export type CompanyUpdateWithoutIndustryInput = {
   companyDocuments?: Prisma.CompanyDocumentUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutIndustryInput = {
@@ -1312,6 +1438,7 @@ export type CompanyUncheckedUpdateWithoutIndustryInput = {
   companyDocuments?: Prisma.CompanyDocumentUncheckedUpdateManyWithoutCompanyNestedInput
   companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutCompanyNestedInput
   jobs?: Prisma.JobUncheckedUpdateManyWithoutCompanyNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateManyWithoutIndustryInput = {
@@ -1338,6 +1465,7 @@ export type CompanyCountOutputType = {
   companyDocuments: number
   companyAddresses: number
   jobs: number
+  candidateSaveds: number
 }
 
 export type CompanyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1345,6 +1473,7 @@ export type CompanyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   companyDocuments?: boolean | CompanyCountOutputTypeCountCompanyDocumentsArgs
   companyAddresses?: boolean | CompanyCountOutputTypeCountCompanyAddressesArgs
   jobs?: boolean | CompanyCountOutputTypeCountJobsArgs
+  candidateSaveds?: boolean | CompanyCountOutputTypeCountCandidateSavedsArgs
 }
 
 /**
@@ -1385,6 +1514,13 @@ export type CompanyCountOutputTypeCountJobsArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.JobWhereInput
 }
 
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountCandidateSavedsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CandidateSavedWhereInput
+}
+
 
 export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1405,6 +1541,7 @@ export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   companyDocuments?: boolean | Prisma.Company$companyDocumentsArgs<ExtArgs>
   companyAddresses?: boolean | Prisma.Company$companyAddressesArgs<ExtArgs>
   jobs?: boolean | Prisma.Company$jobsArgs<ExtArgs>
+  candidateSaveds?: boolean | Prisma.Company$candidateSavedsArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["company"]>
 
@@ -1433,6 +1570,7 @@ export type CompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   companyDocuments?: boolean | Prisma.Company$companyDocumentsArgs<ExtArgs>
   companyAddresses?: boolean | Prisma.Company$companyAddressesArgs<ExtArgs>
   jobs?: boolean | Prisma.Company$jobsArgs<ExtArgs>
+  candidateSaveds?: boolean | Prisma.Company$candidateSavedsArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1445,6 +1583,7 @@ export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     companyDocuments: Prisma.$CompanyDocumentPayload<ExtArgs>[]
     companyAddresses: Prisma.$CompanyAddressPayload<ExtArgs>[]
     jobs: Prisma.$JobPayload<ExtArgs>[]
+    candidateSaveds: Prisma.$CandidateSavedPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1805,6 +1944,7 @@ export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends runtime.
   companyDocuments<T extends Prisma.Company$companyDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$companyDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   companyAddresses<T extends Prisma.Company$companyAddressesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$companyAddressesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyAddressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   jobs<T extends Prisma.Company$jobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$jobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  candidateSaveds<T extends Prisma.Company$candidateSavedsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$candidateSavedsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CandidateSavedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2325,6 +2465,30 @@ export type Company$jobsArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.JobScalarFieldEnum | Prisma.JobScalarFieldEnum[]
+}
+
+/**
+ * Company.candidateSaveds
+ */
+export type Company$candidateSavedsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CandidateSaved
+   */
+  select?: Prisma.CandidateSavedSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CandidateSaved
+   */
+  omit?: Prisma.CandidateSavedOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CandidateSavedInclude<ExtArgs> | null
+  where?: Prisma.CandidateSavedWhereInput
+  orderBy?: Prisma.CandidateSavedOrderByWithRelationInput | Prisma.CandidateSavedOrderByWithRelationInput[]
+  cursor?: Prisma.CandidateSavedWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CandidateSavedScalarFieldEnum | Prisma.CandidateSavedScalarFieldEnum[]
 }
 
 /**

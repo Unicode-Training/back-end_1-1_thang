@@ -8,5 +8,9 @@ export const updateProfileSchema = z.object({
     address: z.string({ error: "Address is string" }).optional(),
     avatar: z.string({ error: "Avatar is string" }).optional(),
     isLookingJob: z.boolean().optional(),
-    cvFile: z.string({ error: "CV file is string" }).optional()
+    cvFile: z.string({ error: "CV file is string" }).optional(),
+    jobRole: z.string({ error: 'Job Role is string' }).optional(),
+    income: z.number({ error: 'Income is number' }).optional(),
+    provinceId: z.number({ error: 'Province Id is number' }).optional(),
+    wardId: z.number({ error: 'Ward Id is number' }).optional(),
 })

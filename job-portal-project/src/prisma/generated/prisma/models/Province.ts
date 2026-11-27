@@ -210,6 +210,7 @@ export type ProvinceWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Province"> | Date | string
   wards?: Prisma.WardListRelationFilter
   companyAddresses?: Prisma.CompanyAddressListRelationFilter
+  candidates?: Prisma.CandidateListRelationFilter
 }
 
 export type ProvinceOrderByWithRelationInput = {
@@ -219,6 +220,7 @@ export type ProvinceOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   wards?: Prisma.WardOrderByRelationAggregateInput
   companyAddresses?: Prisma.CompanyAddressOrderByRelationAggregateInput
+  candidates?: Prisma.CandidateOrderByRelationAggregateInput
   _relevance?: Prisma.ProvinceOrderByRelevanceInput
 }
 
@@ -232,6 +234,7 @@ export type ProvinceWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Province"> | Date | string
   wards?: Prisma.WardListRelationFilter
   companyAddresses?: Prisma.CompanyAddressListRelationFilter
+  candidates?: Prisma.CandidateListRelationFilter
 }, "id">
 
 export type ProvinceOrderByWithAggregationInput = {
@@ -262,6 +265,7 @@ export type ProvinceCreateInput = {
   updatedAt?: Date | string
   wards?: Prisma.WardCreateNestedManyWithoutProvinceInput
   companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutProvinceInput
+  candidates?: Prisma.CandidateCreateNestedManyWithoutProvinceInput
 }
 
 export type ProvinceUncheckedCreateInput = {
@@ -271,6 +275,7 @@ export type ProvinceUncheckedCreateInput = {
   updatedAt?: Date | string
   wards?: Prisma.WardUncheckedCreateNestedManyWithoutProvinceInput
   companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutProvinceInput
+  candidates?: Prisma.CandidateUncheckedCreateNestedManyWithoutProvinceInput
 }
 
 export type ProvinceUpdateInput = {
@@ -279,6 +284,7 @@ export type ProvinceUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   wards?: Prisma.WardUpdateManyWithoutProvinceNestedInput
   companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutProvinceNestedInput
+  candidates?: Prisma.CandidateUpdateManyWithoutProvinceNestedInput
 }
 
 export type ProvinceUncheckedUpdateInput = {
@@ -288,6 +294,7 @@ export type ProvinceUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   wards?: Prisma.WardUncheckedUpdateManyWithoutProvinceNestedInput
   companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutProvinceNestedInput
+  candidates?: Prisma.CandidateUncheckedUpdateManyWithoutProvinceNestedInput
 }
 
 export type ProvinceCreateManyInput = {
@@ -308,6 +315,11 @@ export type ProvinceUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ProvinceNullableScalarRelationFilter = {
+  is?: Prisma.ProvinceWhereInput | null
+  isNot?: Prisma.ProvinceWhereInput | null
 }
 
 export type ProvinceScalarRelationFilter = {
@@ -350,6 +362,22 @@ export type ProvinceSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type ProvinceCreateNestedOneWithoutCandidatesInput = {
+  create?: Prisma.XOR<Prisma.ProvinceCreateWithoutCandidatesInput, Prisma.ProvinceUncheckedCreateWithoutCandidatesInput>
+  connectOrCreate?: Prisma.ProvinceCreateOrConnectWithoutCandidatesInput
+  connect?: Prisma.ProvinceWhereUniqueInput
+}
+
+export type ProvinceUpdateOneWithoutCandidatesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProvinceCreateWithoutCandidatesInput, Prisma.ProvinceUncheckedCreateWithoutCandidatesInput>
+  connectOrCreate?: Prisma.ProvinceCreateOrConnectWithoutCandidatesInput
+  upsert?: Prisma.ProvinceUpsertWithoutCandidatesInput
+  disconnect?: Prisma.ProvinceWhereInput | boolean
+  delete?: Prisma.ProvinceWhereInput | boolean
+  connect?: Prisma.ProvinceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProvinceUpdateToOneWithWhereWithoutCandidatesInput, Prisma.ProvinceUpdateWithoutCandidatesInput>, Prisma.ProvinceUncheckedUpdateWithoutCandidatesInput>
+}
+
 export type ProvinceCreateNestedOneWithoutCompanyAddressesInput = {
   create?: Prisma.XOR<Prisma.ProvinceCreateWithoutCompanyAddressesInput, Prisma.ProvinceUncheckedCreateWithoutCompanyAddressesInput>
   connectOrCreate?: Prisma.ProvinceCreateOrConnectWithoutCompanyAddressesInput
@@ -378,11 +406,62 @@ export type ProvinceUpdateOneRequiredWithoutWardsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProvinceUpdateToOneWithWhereWithoutWardsInput, Prisma.ProvinceUpdateWithoutWardsInput>, Prisma.ProvinceUncheckedUpdateWithoutWardsInput>
 }
 
+export type ProvinceCreateWithoutCandidatesInput = {
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  wards?: Prisma.WardCreateNestedManyWithoutProvinceInput
+  companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutProvinceInput
+}
+
+export type ProvinceUncheckedCreateWithoutCandidatesInput = {
+  id?: number
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  wards?: Prisma.WardUncheckedCreateNestedManyWithoutProvinceInput
+  companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutProvinceInput
+}
+
+export type ProvinceCreateOrConnectWithoutCandidatesInput = {
+  where: Prisma.ProvinceWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProvinceCreateWithoutCandidatesInput, Prisma.ProvinceUncheckedCreateWithoutCandidatesInput>
+}
+
+export type ProvinceUpsertWithoutCandidatesInput = {
+  update: Prisma.XOR<Prisma.ProvinceUpdateWithoutCandidatesInput, Prisma.ProvinceUncheckedUpdateWithoutCandidatesInput>
+  create: Prisma.XOR<Prisma.ProvinceCreateWithoutCandidatesInput, Prisma.ProvinceUncheckedCreateWithoutCandidatesInput>
+  where?: Prisma.ProvinceWhereInput
+}
+
+export type ProvinceUpdateToOneWithWhereWithoutCandidatesInput = {
+  where?: Prisma.ProvinceWhereInput
+  data: Prisma.XOR<Prisma.ProvinceUpdateWithoutCandidatesInput, Prisma.ProvinceUncheckedUpdateWithoutCandidatesInput>
+}
+
+export type ProvinceUpdateWithoutCandidatesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  wards?: Prisma.WardUpdateManyWithoutProvinceNestedInput
+  companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutProvinceNestedInput
+}
+
+export type ProvinceUncheckedUpdateWithoutCandidatesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  wards?: Prisma.WardUncheckedUpdateManyWithoutProvinceNestedInput
+  companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutProvinceNestedInput
+}
+
 export type ProvinceCreateWithoutCompanyAddressesInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
   wards?: Prisma.WardCreateNestedManyWithoutProvinceInput
+  candidates?: Prisma.CandidateCreateNestedManyWithoutProvinceInput
 }
 
 export type ProvinceUncheckedCreateWithoutCompanyAddressesInput = {
@@ -391,6 +470,7 @@ export type ProvinceUncheckedCreateWithoutCompanyAddressesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   wards?: Prisma.WardUncheckedCreateNestedManyWithoutProvinceInput
+  candidates?: Prisma.CandidateUncheckedCreateNestedManyWithoutProvinceInput
 }
 
 export type ProvinceCreateOrConnectWithoutCompanyAddressesInput = {
@@ -414,6 +494,7 @@ export type ProvinceUpdateWithoutCompanyAddressesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   wards?: Prisma.WardUpdateManyWithoutProvinceNestedInput
+  candidates?: Prisma.CandidateUpdateManyWithoutProvinceNestedInput
 }
 
 export type ProvinceUncheckedUpdateWithoutCompanyAddressesInput = {
@@ -422,6 +503,7 @@ export type ProvinceUncheckedUpdateWithoutCompanyAddressesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   wards?: Prisma.WardUncheckedUpdateManyWithoutProvinceNestedInput
+  candidates?: Prisma.CandidateUncheckedUpdateManyWithoutProvinceNestedInput
 }
 
 export type ProvinceCreateWithoutWardsInput = {
@@ -429,6 +511,7 @@ export type ProvinceCreateWithoutWardsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   companyAddresses?: Prisma.CompanyAddressCreateNestedManyWithoutProvinceInput
+  candidates?: Prisma.CandidateCreateNestedManyWithoutProvinceInput
 }
 
 export type ProvinceUncheckedCreateWithoutWardsInput = {
@@ -437,6 +520,7 @@ export type ProvinceUncheckedCreateWithoutWardsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   companyAddresses?: Prisma.CompanyAddressUncheckedCreateNestedManyWithoutProvinceInput
+  candidates?: Prisma.CandidateUncheckedCreateNestedManyWithoutProvinceInput
 }
 
 export type ProvinceCreateOrConnectWithoutWardsInput = {
@@ -460,6 +544,7 @@ export type ProvinceUpdateWithoutWardsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   companyAddresses?: Prisma.CompanyAddressUpdateManyWithoutProvinceNestedInput
+  candidates?: Prisma.CandidateUpdateManyWithoutProvinceNestedInput
 }
 
 export type ProvinceUncheckedUpdateWithoutWardsInput = {
@@ -468,6 +553,7 @@ export type ProvinceUncheckedUpdateWithoutWardsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   companyAddresses?: Prisma.CompanyAddressUncheckedUpdateManyWithoutProvinceNestedInput
+  candidates?: Prisma.CandidateUncheckedUpdateManyWithoutProvinceNestedInput
 }
 
 
@@ -478,11 +564,13 @@ export type ProvinceUncheckedUpdateWithoutWardsInput = {
 export type ProvinceCountOutputType = {
   wards: number
   companyAddresses: number
+  candidates: number
 }
 
 export type ProvinceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   wards?: boolean | ProvinceCountOutputTypeCountWardsArgs
   companyAddresses?: boolean | ProvinceCountOutputTypeCountCompanyAddressesArgs
+  candidates?: boolean | ProvinceCountOutputTypeCountCandidatesArgs
 }
 
 /**
@@ -509,6 +597,13 @@ export type ProvinceCountOutputTypeCountCompanyAddressesArgs<ExtArgs extends run
   where?: Prisma.CompanyAddressWhereInput
 }
 
+/**
+ * ProvinceCountOutputType without action
+ */
+export type ProvinceCountOutputTypeCountCandidatesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CandidateWhereInput
+}
+
 
 export type ProvinceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -517,6 +612,7 @@ export type ProvinceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   updatedAt?: boolean
   wards?: boolean | Prisma.Province$wardsArgs<ExtArgs>
   companyAddresses?: boolean | Prisma.Province$companyAddressesArgs<ExtArgs>
+  candidates?: boolean | Prisma.Province$candidatesArgs<ExtArgs>
   _count?: boolean | Prisma.ProvinceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["province"]>
 
@@ -533,6 +629,7 @@ export type ProvinceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 export type ProvinceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   wards?: boolean | Prisma.Province$wardsArgs<ExtArgs>
   companyAddresses?: boolean | Prisma.Province$companyAddressesArgs<ExtArgs>
+  candidates?: boolean | Prisma.Province$candidatesArgs<ExtArgs>
   _count?: boolean | Prisma.ProvinceCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -541,6 +638,7 @@ export type $ProvincePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   objects: {
     wards: Prisma.$WardPayload<ExtArgs>[]
     companyAddresses: Prisma.$CompanyAddressPayload<ExtArgs>[]
+    candidates: Prisma.$CandidatePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -889,6 +987,7 @@ export interface Prisma__ProvinceClient<T, Null = never, ExtArgs extends runtime
   readonly [Symbol.toStringTag]: "PrismaPromise"
   wards<T extends Prisma.Province$wardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Province$wardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   companyAddresses<T extends Prisma.Province$companyAddressesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Province$companyAddressesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyAddressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  candidates<T extends Prisma.Province$candidatesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Province$candidatesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CandidatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1315,6 +1414,30 @@ export type Province$companyAddressesArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.CompanyAddressScalarFieldEnum | Prisma.CompanyAddressScalarFieldEnum[]
+}
+
+/**
+ * Province.candidates
+ */
+export type Province$candidatesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Candidate
+   */
+  select?: Prisma.CandidateSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Candidate
+   */
+  omit?: Prisma.CandidateOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CandidateInclude<ExtArgs> | null
+  where?: Prisma.CandidateWhereInput
+  orderBy?: Prisma.CandidateOrderByWithRelationInput | Prisma.CandidateOrderByWithRelationInput[]
+  cursor?: Prisma.CandidateWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CandidateScalarFieldEnum | Prisma.CandidateScalarFieldEnum[]
 }
 
 /**

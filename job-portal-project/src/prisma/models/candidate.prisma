@@ -8,12 +8,20 @@ model Candidate {
     website             String?              @db.VarChar(50)
     isLookingJob        Boolean              @default(true)
     cvFile              String?              @db.VarChar(200)
+    jobRole             String?              @db.VarChar(100)
+    income              Int?
+    provinceId          Int?
+    wardId              Int?
     createdAt           DateTime             @default(now()) @db.Timestamp()
     updatedAt           DateTime             @default(now()) @updatedAt @db.Timestamp()
     candidateExps       CandidateExp[]
     candidateEducations CandidateEducation[]
     candidateSkills     CandidateSkill[]
     jobApplies          JobApply[]
+    province            Province?            @relation(fields: [provinceId], references: [id])
+    ward                Ward?                @relation(fields: [wardId], references: [id])
+    candidateSaveds     CandidateSaved[]
+    jobSaveds           JobSaved[]
 
     @@map("candidates")
 }

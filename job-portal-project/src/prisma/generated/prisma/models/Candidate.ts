@@ -29,11 +29,17 @@ export type AggregateCandidate = {
 export type CandidateAvgAggregateOutputType = {
   id: number | null
   userId: number | null
+  income: number | null
+  provinceId: number | null
+  wardId: number | null
 }
 
 export type CandidateSumAggregateOutputType = {
   id: number | null
   userId: number | null
+  income: number | null
+  provinceId: number | null
+  wardId: number | null
 }
 
 export type CandidateMinAggregateOutputType = {
@@ -45,6 +51,10 @@ export type CandidateMinAggregateOutputType = {
   website: string | null
   isLookingJob: boolean | null
   cvFile: string | null
+  jobRole: string | null
+  income: number | null
+  provinceId: number | null
+  wardId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -58,6 +68,10 @@ export type CandidateMaxAggregateOutputType = {
   website: string | null
   isLookingJob: boolean | null
   cvFile: string | null
+  jobRole: string | null
+  income: number | null
+  provinceId: number | null
+  wardId: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -71,6 +85,10 @@ export type CandidateCountAggregateOutputType = {
   website: number
   isLookingJob: number
   cvFile: number
+  jobRole: number
+  income: number
+  provinceId: number
+  wardId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -80,11 +98,17 @@ export type CandidateCountAggregateOutputType = {
 export type CandidateAvgAggregateInputType = {
   id?: true
   userId?: true
+  income?: true
+  provinceId?: true
+  wardId?: true
 }
 
 export type CandidateSumAggregateInputType = {
   id?: true
   userId?: true
+  income?: true
+  provinceId?: true
+  wardId?: true
 }
 
 export type CandidateMinAggregateInputType = {
@@ -96,6 +120,10 @@ export type CandidateMinAggregateInputType = {
   website?: true
   isLookingJob?: true
   cvFile?: true
+  jobRole?: true
+  income?: true
+  provinceId?: true
+  wardId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -109,6 +137,10 @@ export type CandidateMaxAggregateInputType = {
   website?: true
   isLookingJob?: true
   cvFile?: true
+  jobRole?: true
+  income?: true
+  provinceId?: true
+  wardId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -122,6 +154,10 @@ export type CandidateCountAggregateInputType = {
   website?: true
   isLookingJob?: true
   cvFile?: true
+  jobRole?: true
+  income?: true
+  provinceId?: true
+  wardId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -222,6 +258,10 @@ export type CandidateGroupByOutputType = {
   website: string | null
   isLookingJob: boolean
   cvFile: string | null
+  jobRole: string | null
+  income: number | null
+  provinceId: number | null
+  wardId: number | null
   createdAt: Date
   updatedAt: Date
   _count: CandidateCountAggregateOutputType | null
@@ -258,6 +298,10 @@ export type CandidateWhereInput = {
   website?: Prisma.StringNullableFilter<"Candidate"> | string | null
   isLookingJob?: Prisma.BoolFilter<"Candidate"> | boolean
   cvFile?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  jobRole?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  income?: Prisma.IntNullableFilter<"Candidate"> | number | null
+  provinceId?: Prisma.IntNullableFilter<"Candidate"> | number | null
+  wardId?: Prisma.IntNullableFilter<"Candidate"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Candidate"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Candidate"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -265,6 +309,10 @@ export type CandidateWhereInput = {
   candidateEducations?: Prisma.CandidateEducationListRelationFilter
   candidateSkills?: Prisma.CandidateSkillListRelationFilter
   jobApplies?: Prisma.JobApplyListRelationFilter
+  province?: Prisma.XOR<Prisma.ProvinceNullableScalarRelationFilter, Prisma.ProvinceWhereInput> | null
+  ward?: Prisma.XOR<Prisma.WardNullableScalarRelationFilter, Prisma.WardWhereInput> | null
+  candidateSaveds?: Prisma.CandidateSavedListRelationFilter
+  jobSaveds?: Prisma.JobSavedListRelationFilter
 }
 
 export type CandidateOrderByWithRelationInput = {
@@ -276,6 +324,10 @@ export type CandidateOrderByWithRelationInput = {
   website?: Prisma.SortOrderInput | Prisma.SortOrder
   isLookingJob?: Prisma.SortOrder
   cvFile?: Prisma.SortOrderInput | Prisma.SortOrder
+  jobRole?: Prisma.SortOrderInput | Prisma.SortOrder
+  income?: Prisma.SortOrderInput | Prisma.SortOrder
+  provinceId?: Prisma.SortOrderInput | Prisma.SortOrder
+  wardId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -283,6 +335,10 @@ export type CandidateOrderByWithRelationInput = {
   candidateEducations?: Prisma.CandidateEducationOrderByRelationAggregateInput
   candidateSkills?: Prisma.CandidateSkillOrderByRelationAggregateInput
   jobApplies?: Prisma.JobApplyOrderByRelationAggregateInput
+  province?: Prisma.ProvinceOrderByWithRelationInput
+  ward?: Prisma.WardOrderByWithRelationInput
+  candidateSaveds?: Prisma.CandidateSavedOrderByRelationAggregateInput
+  jobSaveds?: Prisma.JobSavedOrderByRelationAggregateInput
   _relevance?: Prisma.CandidateOrderByRelevanceInput
 }
 
@@ -298,6 +354,10 @@ export type CandidateWhereUniqueInput = Prisma.AtLeast<{
   website?: Prisma.StringNullableFilter<"Candidate"> | string | null
   isLookingJob?: Prisma.BoolFilter<"Candidate"> | boolean
   cvFile?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  jobRole?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  income?: Prisma.IntNullableFilter<"Candidate"> | number | null
+  provinceId?: Prisma.IntNullableFilter<"Candidate"> | number | null
+  wardId?: Prisma.IntNullableFilter<"Candidate"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Candidate"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Candidate"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -305,6 +365,10 @@ export type CandidateWhereUniqueInput = Prisma.AtLeast<{
   candidateEducations?: Prisma.CandidateEducationListRelationFilter
   candidateSkills?: Prisma.CandidateSkillListRelationFilter
   jobApplies?: Prisma.JobApplyListRelationFilter
+  province?: Prisma.XOR<Prisma.ProvinceNullableScalarRelationFilter, Prisma.ProvinceWhereInput> | null
+  ward?: Prisma.XOR<Prisma.WardNullableScalarRelationFilter, Prisma.WardWhereInput> | null
+  candidateSaveds?: Prisma.CandidateSavedListRelationFilter
+  jobSaveds?: Prisma.JobSavedListRelationFilter
 }, "id" | "userId">
 
 export type CandidateOrderByWithAggregationInput = {
@@ -316,6 +380,10 @@ export type CandidateOrderByWithAggregationInput = {
   website?: Prisma.SortOrderInput | Prisma.SortOrder
   isLookingJob?: Prisma.SortOrder
   cvFile?: Prisma.SortOrderInput | Prisma.SortOrder
+  jobRole?: Prisma.SortOrderInput | Prisma.SortOrder
+  income?: Prisma.SortOrderInput | Prisma.SortOrder
+  provinceId?: Prisma.SortOrderInput | Prisma.SortOrder
+  wardId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.CandidateCountOrderByAggregateInput
@@ -337,6 +405,10 @@ export type CandidateScalarWhereWithAggregatesInput = {
   website?: Prisma.StringNullableWithAggregatesFilter<"Candidate"> | string | null
   isLookingJob?: Prisma.BoolWithAggregatesFilter<"Candidate"> | boolean
   cvFile?: Prisma.StringNullableWithAggregatesFilter<"Candidate"> | string | null
+  jobRole?: Prisma.StringNullableWithAggregatesFilter<"Candidate"> | string | null
+  income?: Prisma.IntNullableWithAggregatesFilter<"Candidate"> | number | null
+  provinceId?: Prisma.IntNullableWithAggregatesFilter<"Candidate"> | number | null
+  wardId?: Prisma.IntNullableWithAggregatesFilter<"Candidate"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Candidate"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Candidate"> | Date | string
 }
@@ -348,6 +420,8 @@ export type CandidateCreateInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCandidateInput
@@ -355,6 +429,10 @@ export type CandidateCreateInput = {
   candidateEducations?: Prisma.CandidateEducationCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyCreateNestedManyWithoutCandidateInput
+  province?: Prisma.ProvinceCreateNestedOneWithoutCandidatesInput
+  ward?: Prisma.WardCreateNestedOneWithoutCandidatesInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateUncheckedCreateInput = {
@@ -366,12 +444,18 @@ export type CandidateUncheckedCreateInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  wardId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   candidateExps?: Prisma.CandidateExpUncheckedCreateNestedManyWithoutCandidateInput
   candidateEducations?: Prisma.CandidateEducationUncheckedCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillUncheckedCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedUncheckedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateUpdateInput = {
@@ -381,6 +465,8 @@ export type CandidateUpdateInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput
@@ -388,6 +474,10 @@ export type CandidateUpdateInput = {
   candidateEducations?: Prisma.CandidateEducationUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUpdateManyWithoutCandidateNestedInput
+  province?: Prisma.ProvinceUpdateOneWithoutCandidatesNestedInput
+  ward?: Prisma.WardUpdateOneWithoutCandidatesNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateUncheckedUpdateInput = {
@@ -399,12 +489,18 @@ export type CandidateUncheckedUpdateInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   candidateExps?: Prisma.CandidateExpUncheckedUpdateManyWithoutCandidateNestedInput
   candidateEducations?: Prisma.CandidateEducationUncheckedUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUncheckedUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUncheckedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateCreateManyInput = {
@@ -416,6 +512,10 @@ export type CandidateCreateManyInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  wardId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -427,6 +527,8 @@ export type CandidateUpdateManyMutationInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -440,6 +542,10 @@ export type CandidateUncheckedUpdateManyInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -464,6 +570,10 @@ export type CandidateCountOrderByAggregateInput = {
   website?: Prisma.SortOrder
   isLookingJob?: Prisma.SortOrder
   cvFile?: Prisma.SortOrder
+  jobRole?: Prisma.SortOrder
+  income?: Prisma.SortOrder
+  provinceId?: Prisma.SortOrder
+  wardId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -471,6 +581,9 @@ export type CandidateCountOrderByAggregateInput = {
 export type CandidateAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  income?: Prisma.SortOrder
+  provinceId?: Prisma.SortOrder
+  wardId?: Prisma.SortOrder
 }
 
 export type CandidateMaxOrderByAggregateInput = {
@@ -482,6 +595,10 @@ export type CandidateMaxOrderByAggregateInput = {
   website?: Prisma.SortOrder
   isLookingJob?: Prisma.SortOrder
   cvFile?: Prisma.SortOrder
+  jobRole?: Prisma.SortOrder
+  income?: Prisma.SortOrder
+  provinceId?: Prisma.SortOrder
+  wardId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -495,6 +612,10 @@ export type CandidateMinOrderByAggregateInput = {
   website?: Prisma.SortOrder
   isLookingJob?: Prisma.SortOrder
   cvFile?: Prisma.SortOrder
+  jobRole?: Prisma.SortOrder
+  income?: Prisma.SortOrder
+  provinceId?: Prisma.SortOrder
+  wardId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -502,6 +623,19 @@ export type CandidateMinOrderByAggregateInput = {
 export type CandidateSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  income?: Prisma.SortOrder
+  provinceId?: Prisma.SortOrder
+  wardId?: Prisma.SortOrder
+}
+
+export type CandidateListRelationFilter = {
+  every?: Prisma.CandidateWhereInput
+  some?: Prisma.CandidateWhereInput
+  none?: Prisma.CandidateWhereInput
+}
+
+export type CandidateOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type CandidateNullableScalarRelationFilter = {
@@ -537,6 +671,20 @@ export type CandidateUpdateOneRequiredWithoutCandidateEducationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CandidateUpdateToOneWithWhereWithoutCandidateEducationsInput, Prisma.CandidateUpdateWithoutCandidateEducationsInput>, Prisma.CandidateUncheckedUpdateWithoutCandidateEducationsInput>
 }
 
+export type CandidateCreateNestedOneWithoutCandidateSavedsInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutCandidateSavedsInput, Prisma.CandidateUncheckedCreateWithoutCandidateSavedsInput>
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutCandidateSavedsInput
+  connect?: Prisma.CandidateWhereUniqueInput
+}
+
+export type CandidateUpdateOneRequiredWithoutCandidateSavedsNestedInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutCandidateSavedsInput, Prisma.CandidateUncheckedCreateWithoutCandidateSavedsInput>
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutCandidateSavedsInput
+  upsert?: Prisma.CandidateUpsertWithoutCandidateSavedsInput
+  connect?: Prisma.CandidateWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CandidateUpdateToOneWithWhereWithoutCandidateSavedsInput, Prisma.CandidateUpdateWithoutCandidateSavedsInput>, Prisma.CandidateUncheckedUpdateWithoutCandidateSavedsInput>
+}
+
 export type CandidateCreateNestedOneWithoutCandidateSkillsInput = {
   create?: Prisma.XOR<Prisma.CandidateCreateWithoutCandidateSkillsInput, Prisma.CandidateUncheckedCreateWithoutCandidateSkillsInput>
   connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutCandidateSkillsInput
@@ -555,6 +703,14 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type CandidateCreateNestedOneWithoutJobAppliesInput = {
   create?: Prisma.XOR<Prisma.CandidateCreateWithoutJobAppliesInput, Prisma.CandidateUncheckedCreateWithoutJobAppliesInput>
   connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutJobAppliesInput
@@ -567,6 +723,62 @@ export type CandidateUpdateOneRequiredWithoutJobAppliesNestedInput = {
   upsert?: Prisma.CandidateUpsertWithoutJobAppliesInput
   connect?: Prisma.CandidateWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.CandidateUpdateToOneWithWhereWithoutJobAppliesInput, Prisma.CandidateUpdateWithoutJobAppliesInput>, Prisma.CandidateUncheckedUpdateWithoutJobAppliesInput>
+}
+
+export type CandidateCreateNestedOneWithoutJobSavedsInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutJobSavedsInput, Prisma.CandidateUncheckedCreateWithoutJobSavedsInput>
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutJobSavedsInput
+  connect?: Prisma.CandidateWhereUniqueInput
+}
+
+export type CandidateUpdateOneRequiredWithoutJobSavedsNestedInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutJobSavedsInput, Prisma.CandidateUncheckedCreateWithoutJobSavedsInput>
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutJobSavedsInput
+  upsert?: Prisma.CandidateUpsertWithoutJobSavedsInput
+  connect?: Prisma.CandidateWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CandidateUpdateToOneWithWhereWithoutJobSavedsInput, Prisma.CandidateUpdateWithoutJobSavedsInput>, Prisma.CandidateUncheckedUpdateWithoutJobSavedsInput>
+}
+
+export type CandidateCreateNestedManyWithoutProvinceInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutProvinceInput, Prisma.CandidateUncheckedCreateWithoutProvinceInput> | Prisma.CandidateCreateWithoutProvinceInput[] | Prisma.CandidateUncheckedCreateWithoutProvinceInput[]
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutProvinceInput | Prisma.CandidateCreateOrConnectWithoutProvinceInput[]
+  createMany?: Prisma.CandidateCreateManyProvinceInputEnvelope
+  connect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+}
+
+export type CandidateUncheckedCreateNestedManyWithoutProvinceInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutProvinceInput, Prisma.CandidateUncheckedCreateWithoutProvinceInput> | Prisma.CandidateCreateWithoutProvinceInput[] | Prisma.CandidateUncheckedCreateWithoutProvinceInput[]
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutProvinceInput | Prisma.CandidateCreateOrConnectWithoutProvinceInput[]
+  createMany?: Prisma.CandidateCreateManyProvinceInputEnvelope
+  connect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+}
+
+export type CandidateUpdateManyWithoutProvinceNestedInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutProvinceInput, Prisma.CandidateUncheckedCreateWithoutProvinceInput> | Prisma.CandidateCreateWithoutProvinceInput[] | Prisma.CandidateUncheckedCreateWithoutProvinceInput[]
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutProvinceInput | Prisma.CandidateCreateOrConnectWithoutProvinceInput[]
+  upsert?: Prisma.CandidateUpsertWithWhereUniqueWithoutProvinceInput | Prisma.CandidateUpsertWithWhereUniqueWithoutProvinceInput[]
+  createMany?: Prisma.CandidateCreateManyProvinceInputEnvelope
+  set?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  disconnect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  delete?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  connect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  update?: Prisma.CandidateUpdateWithWhereUniqueWithoutProvinceInput | Prisma.CandidateUpdateWithWhereUniqueWithoutProvinceInput[]
+  updateMany?: Prisma.CandidateUpdateManyWithWhereWithoutProvinceInput | Prisma.CandidateUpdateManyWithWhereWithoutProvinceInput[]
+  deleteMany?: Prisma.CandidateScalarWhereInput | Prisma.CandidateScalarWhereInput[]
+}
+
+export type CandidateUncheckedUpdateManyWithoutProvinceNestedInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutProvinceInput, Prisma.CandidateUncheckedCreateWithoutProvinceInput> | Prisma.CandidateCreateWithoutProvinceInput[] | Prisma.CandidateUncheckedCreateWithoutProvinceInput[]
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutProvinceInput | Prisma.CandidateCreateOrConnectWithoutProvinceInput[]
+  upsert?: Prisma.CandidateUpsertWithWhereUniqueWithoutProvinceInput | Prisma.CandidateUpsertWithWhereUniqueWithoutProvinceInput[]
+  createMany?: Prisma.CandidateCreateManyProvinceInputEnvelope
+  set?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  disconnect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  delete?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  connect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  update?: Prisma.CandidateUpdateWithWhereUniqueWithoutProvinceInput | Prisma.CandidateUpdateWithWhereUniqueWithoutProvinceInput[]
+  updateMany?: Prisma.CandidateUpdateManyWithWhereWithoutProvinceInput | Prisma.CandidateUpdateManyWithWhereWithoutProvinceInput[]
+  deleteMany?: Prisma.CandidateScalarWhereInput | Prisma.CandidateScalarWhereInput[]
 }
 
 export type CandidateCreateNestedOneWithoutUserInput = {
@@ -601,6 +813,48 @@ export type CandidateUncheckedUpdateOneWithoutUserNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CandidateUpdateToOneWithWhereWithoutUserInput, Prisma.CandidateUpdateWithoutUserInput>, Prisma.CandidateUncheckedUpdateWithoutUserInput>
 }
 
+export type CandidateCreateNestedManyWithoutWardInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutWardInput, Prisma.CandidateUncheckedCreateWithoutWardInput> | Prisma.CandidateCreateWithoutWardInput[] | Prisma.CandidateUncheckedCreateWithoutWardInput[]
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutWardInput | Prisma.CandidateCreateOrConnectWithoutWardInput[]
+  createMany?: Prisma.CandidateCreateManyWardInputEnvelope
+  connect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+}
+
+export type CandidateUncheckedCreateNestedManyWithoutWardInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutWardInput, Prisma.CandidateUncheckedCreateWithoutWardInput> | Prisma.CandidateCreateWithoutWardInput[] | Prisma.CandidateUncheckedCreateWithoutWardInput[]
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutWardInput | Prisma.CandidateCreateOrConnectWithoutWardInput[]
+  createMany?: Prisma.CandidateCreateManyWardInputEnvelope
+  connect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+}
+
+export type CandidateUpdateManyWithoutWardNestedInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutWardInput, Prisma.CandidateUncheckedCreateWithoutWardInput> | Prisma.CandidateCreateWithoutWardInput[] | Prisma.CandidateUncheckedCreateWithoutWardInput[]
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutWardInput | Prisma.CandidateCreateOrConnectWithoutWardInput[]
+  upsert?: Prisma.CandidateUpsertWithWhereUniqueWithoutWardInput | Prisma.CandidateUpsertWithWhereUniqueWithoutWardInput[]
+  createMany?: Prisma.CandidateCreateManyWardInputEnvelope
+  set?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  disconnect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  delete?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  connect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  update?: Prisma.CandidateUpdateWithWhereUniqueWithoutWardInput | Prisma.CandidateUpdateWithWhereUniqueWithoutWardInput[]
+  updateMany?: Prisma.CandidateUpdateManyWithWhereWithoutWardInput | Prisma.CandidateUpdateManyWithWhereWithoutWardInput[]
+  deleteMany?: Prisma.CandidateScalarWhereInput | Prisma.CandidateScalarWhereInput[]
+}
+
+export type CandidateUncheckedUpdateManyWithoutWardNestedInput = {
+  create?: Prisma.XOR<Prisma.CandidateCreateWithoutWardInput, Prisma.CandidateUncheckedCreateWithoutWardInput> | Prisma.CandidateCreateWithoutWardInput[] | Prisma.CandidateUncheckedCreateWithoutWardInput[]
+  connectOrCreate?: Prisma.CandidateCreateOrConnectWithoutWardInput | Prisma.CandidateCreateOrConnectWithoutWardInput[]
+  upsert?: Prisma.CandidateUpsertWithWhereUniqueWithoutWardInput | Prisma.CandidateUpsertWithWhereUniqueWithoutWardInput[]
+  createMany?: Prisma.CandidateCreateManyWardInputEnvelope
+  set?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  disconnect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  delete?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  connect?: Prisma.CandidateWhereUniqueInput | Prisma.CandidateWhereUniqueInput[]
+  update?: Prisma.CandidateUpdateWithWhereUniqueWithoutWardInput | Prisma.CandidateUpdateWithWhereUniqueWithoutWardInput[]
+  updateMany?: Prisma.CandidateUpdateManyWithWhereWithoutWardInput | Prisma.CandidateUpdateManyWithWhereWithoutWardInput[]
+  deleteMany?: Prisma.CandidateScalarWhereInput | Prisma.CandidateScalarWhereInput[]
+}
+
 export type CandidateCreateWithoutCandidateExpsInput = {
   avatar?: string | null
   phone?: string | null
@@ -608,12 +862,18 @@ export type CandidateCreateWithoutCandidateExpsInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCandidateInput
   candidateEducations?: Prisma.CandidateEducationCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyCreateNestedManyWithoutCandidateInput
+  province?: Prisma.ProvinceCreateNestedOneWithoutCandidatesInput
+  ward?: Prisma.WardCreateNestedOneWithoutCandidatesInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateUncheckedCreateWithoutCandidateExpsInput = {
@@ -625,11 +885,17 @@ export type CandidateUncheckedCreateWithoutCandidateExpsInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  wardId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   candidateEducations?: Prisma.CandidateEducationUncheckedCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillUncheckedCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedUncheckedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateCreateOrConnectWithoutCandidateExpsInput = {
@@ -655,12 +921,18 @@ export type CandidateUpdateWithoutCandidateExpsInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput
   candidateEducations?: Prisma.CandidateEducationUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUpdateManyWithoutCandidateNestedInput
+  province?: Prisma.ProvinceUpdateOneWithoutCandidatesNestedInput
+  ward?: Prisma.WardUpdateOneWithoutCandidatesNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateUncheckedUpdateWithoutCandidateExpsInput = {
@@ -672,11 +944,17 @@ export type CandidateUncheckedUpdateWithoutCandidateExpsInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   candidateEducations?: Prisma.CandidateEducationUncheckedUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUncheckedUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUncheckedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateCreateWithoutCandidateEducationsInput = {
@@ -686,12 +964,18 @@ export type CandidateCreateWithoutCandidateEducationsInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCandidateInput
   candidateExps?: Prisma.CandidateExpCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyCreateNestedManyWithoutCandidateInput
+  province?: Prisma.ProvinceCreateNestedOneWithoutCandidatesInput
+  ward?: Prisma.WardCreateNestedOneWithoutCandidatesInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateUncheckedCreateWithoutCandidateEducationsInput = {
@@ -703,11 +987,17 @@ export type CandidateUncheckedCreateWithoutCandidateEducationsInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  wardId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   candidateExps?: Prisma.CandidateExpUncheckedCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillUncheckedCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedUncheckedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateCreateOrConnectWithoutCandidateEducationsInput = {
@@ -733,12 +1023,18 @@ export type CandidateUpdateWithoutCandidateEducationsInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput
   candidateExps?: Prisma.CandidateExpUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUpdateManyWithoutCandidateNestedInput
+  province?: Prisma.ProvinceUpdateOneWithoutCandidatesNestedInput
+  ward?: Prisma.WardUpdateOneWithoutCandidatesNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateUncheckedUpdateWithoutCandidateEducationsInput = {
@@ -750,11 +1046,119 @@ export type CandidateUncheckedUpdateWithoutCandidateEducationsInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   candidateExps?: Prisma.CandidateExpUncheckedUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUncheckedUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUncheckedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateCreateWithoutCandidateSavedsInput = {
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCandidateInput
+  candidateExps?: Prisma.CandidateExpCreateNestedManyWithoutCandidateInput
+  candidateEducations?: Prisma.CandidateEducationCreateNestedManyWithoutCandidateInput
+  candidateSkills?: Prisma.CandidateSkillCreateNestedManyWithoutCandidateInput
+  jobApplies?: Prisma.JobApplyCreateNestedManyWithoutCandidateInput
+  province?: Prisma.ProvinceCreateNestedOneWithoutCandidatesInput
+  ward?: Prisma.WardCreateNestedOneWithoutCandidatesInput
+  jobSaveds?: Prisma.JobSavedCreateNestedManyWithoutCandidateInput
+}
+
+export type CandidateUncheckedCreateWithoutCandidateSavedsInput = {
+  id?: number
+  userId: number
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  wardId?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  candidateExps?: Prisma.CandidateExpUncheckedCreateNestedManyWithoutCandidateInput
+  candidateEducations?: Prisma.CandidateEducationUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSkills?: Prisma.CandidateSkillUncheckedCreateNestedManyWithoutCandidateInput
+  jobApplies?: Prisma.JobApplyUncheckedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedUncheckedCreateNestedManyWithoutCandidateInput
+}
+
+export type CandidateCreateOrConnectWithoutCandidateSavedsInput = {
+  where: Prisma.CandidateWhereUniqueInput
+  create: Prisma.XOR<Prisma.CandidateCreateWithoutCandidateSavedsInput, Prisma.CandidateUncheckedCreateWithoutCandidateSavedsInput>
+}
+
+export type CandidateUpsertWithoutCandidateSavedsInput = {
+  update: Prisma.XOR<Prisma.CandidateUpdateWithoutCandidateSavedsInput, Prisma.CandidateUncheckedUpdateWithoutCandidateSavedsInput>
+  create: Prisma.XOR<Prisma.CandidateCreateWithoutCandidateSavedsInput, Prisma.CandidateUncheckedCreateWithoutCandidateSavedsInput>
+  where?: Prisma.CandidateWhereInput
+}
+
+export type CandidateUpdateToOneWithWhereWithoutCandidateSavedsInput = {
+  where?: Prisma.CandidateWhereInput
+  data: Prisma.XOR<Prisma.CandidateUpdateWithoutCandidateSavedsInput, Prisma.CandidateUncheckedUpdateWithoutCandidateSavedsInput>
+}
+
+export type CandidateUpdateWithoutCandidateSavedsInput = {
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput
+  candidateExps?: Prisma.CandidateExpUpdateManyWithoutCandidateNestedInput
+  candidateEducations?: Prisma.CandidateEducationUpdateManyWithoutCandidateNestedInput
+  candidateSkills?: Prisma.CandidateSkillUpdateManyWithoutCandidateNestedInput
+  jobApplies?: Prisma.JobApplyUpdateManyWithoutCandidateNestedInput
+  province?: Prisma.ProvinceUpdateOneWithoutCandidatesNestedInput
+  ward?: Prisma.WardUpdateOneWithoutCandidatesNestedInput
+  jobSaveds?: Prisma.JobSavedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateUncheckedUpdateWithoutCandidateSavedsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  candidateExps?: Prisma.CandidateExpUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateEducations?: Prisma.CandidateEducationUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSkills?: Prisma.CandidateSkillUncheckedUpdateManyWithoutCandidateNestedInput
+  jobApplies?: Prisma.JobApplyUncheckedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUncheckedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateCreateWithoutCandidateSkillsInput = {
@@ -764,12 +1168,18 @@ export type CandidateCreateWithoutCandidateSkillsInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCandidateInput
   candidateExps?: Prisma.CandidateExpCreateNestedManyWithoutCandidateInput
   candidateEducations?: Prisma.CandidateEducationCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyCreateNestedManyWithoutCandidateInput
+  province?: Prisma.ProvinceCreateNestedOneWithoutCandidatesInput
+  ward?: Prisma.WardCreateNestedOneWithoutCandidatesInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateUncheckedCreateWithoutCandidateSkillsInput = {
@@ -781,11 +1191,17 @@ export type CandidateUncheckedCreateWithoutCandidateSkillsInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  wardId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   candidateExps?: Prisma.CandidateExpUncheckedCreateNestedManyWithoutCandidateInput
   candidateEducations?: Prisma.CandidateEducationUncheckedCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedUncheckedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateCreateOrConnectWithoutCandidateSkillsInput = {
@@ -811,12 +1227,18 @@ export type CandidateUpdateWithoutCandidateSkillsInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput
   candidateExps?: Prisma.CandidateExpUpdateManyWithoutCandidateNestedInput
   candidateEducations?: Prisma.CandidateEducationUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUpdateManyWithoutCandidateNestedInput
+  province?: Prisma.ProvinceUpdateOneWithoutCandidatesNestedInput
+  ward?: Prisma.WardUpdateOneWithoutCandidatesNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateUncheckedUpdateWithoutCandidateSkillsInput = {
@@ -828,11 +1250,17 @@ export type CandidateUncheckedUpdateWithoutCandidateSkillsInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   candidateExps?: Prisma.CandidateExpUncheckedUpdateManyWithoutCandidateNestedInput
   candidateEducations?: Prisma.CandidateEducationUncheckedUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUncheckedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateCreateWithoutJobAppliesInput = {
@@ -842,12 +1270,18 @@ export type CandidateCreateWithoutJobAppliesInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCandidateInput
   candidateExps?: Prisma.CandidateExpCreateNestedManyWithoutCandidateInput
   candidateEducations?: Prisma.CandidateEducationCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillCreateNestedManyWithoutCandidateInput
+  province?: Prisma.ProvinceCreateNestedOneWithoutCandidatesInput
+  ward?: Prisma.WardCreateNestedOneWithoutCandidatesInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateUncheckedCreateWithoutJobAppliesInput = {
@@ -859,11 +1293,17 @@ export type CandidateUncheckedCreateWithoutJobAppliesInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  wardId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   candidateExps?: Prisma.CandidateExpUncheckedCreateNestedManyWithoutCandidateInput
   candidateEducations?: Prisma.CandidateEducationUncheckedCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedUncheckedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateCreateOrConnectWithoutJobAppliesInput = {
@@ -889,12 +1329,18 @@ export type CandidateUpdateWithoutJobAppliesInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput
   candidateExps?: Prisma.CandidateExpUpdateManyWithoutCandidateNestedInput
   candidateEducations?: Prisma.CandidateEducationUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUpdateManyWithoutCandidateNestedInput
+  province?: Prisma.ProvinceUpdateOneWithoutCandidatesNestedInput
+  ward?: Prisma.WardUpdateOneWithoutCandidatesNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateUncheckedUpdateWithoutJobAppliesInput = {
@@ -906,11 +1352,208 @@ export type CandidateUncheckedUpdateWithoutJobAppliesInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   candidateExps?: Prisma.CandidateExpUncheckedUpdateManyWithoutCandidateNestedInput
   candidateEducations?: Prisma.CandidateEducationUncheckedUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUncheckedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateCreateWithoutJobSavedsInput = {
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCandidateInput
+  candidateExps?: Prisma.CandidateExpCreateNestedManyWithoutCandidateInput
+  candidateEducations?: Prisma.CandidateEducationCreateNestedManyWithoutCandidateInput
+  candidateSkills?: Prisma.CandidateSkillCreateNestedManyWithoutCandidateInput
+  jobApplies?: Prisma.JobApplyCreateNestedManyWithoutCandidateInput
+  province?: Prisma.ProvinceCreateNestedOneWithoutCandidatesInput
+  ward?: Prisma.WardCreateNestedOneWithoutCandidatesInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCandidateInput
+}
+
+export type CandidateUncheckedCreateWithoutJobSavedsInput = {
+  id?: number
+  userId: number
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  wardId?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  candidateExps?: Prisma.CandidateExpUncheckedCreateNestedManyWithoutCandidateInput
+  candidateEducations?: Prisma.CandidateEducationUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSkills?: Prisma.CandidateSkillUncheckedCreateNestedManyWithoutCandidateInput
+  jobApplies?: Prisma.JobApplyUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCandidateInput
+}
+
+export type CandidateCreateOrConnectWithoutJobSavedsInput = {
+  where: Prisma.CandidateWhereUniqueInput
+  create: Prisma.XOR<Prisma.CandidateCreateWithoutJobSavedsInput, Prisma.CandidateUncheckedCreateWithoutJobSavedsInput>
+}
+
+export type CandidateUpsertWithoutJobSavedsInput = {
+  update: Prisma.XOR<Prisma.CandidateUpdateWithoutJobSavedsInput, Prisma.CandidateUncheckedUpdateWithoutJobSavedsInput>
+  create: Prisma.XOR<Prisma.CandidateCreateWithoutJobSavedsInput, Prisma.CandidateUncheckedCreateWithoutJobSavedsInput>
+  where?: Prisma.CandidateWhereInput
+}
+
+export type CandidateUpdateToOneWithWhereWithoutJobSavedsInput = {
+  where?: Prisma.CandidateWhereInput
+  data: Prisma.XOR<Prisma.CandidateUpdateWithoutJobSavedsInput, Prisma.CandidateUncheckedUpdateWithoutJobSavedsInput>
+}
+
+export type CandidateUpdateWithoutJobSavedsInput = {
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput
+  candidateExps?: Prisma.CandidateExpUpdateManyWithoutCandidateNestedInput
+  candidateEducations?: Prisma.CandidateEducationUpdateManyWithoutCandidateNestedInput
+  candidateSkills?: Prisma.CandidateSkillUpdateManyWithoutCandidateNestedInput
+  jobApplies?: Prisma.JobApplyUpdateManyWithoutCandidateNestedInput
+  province?: Prisma.ProvinceUpdateOneWithoutCandidatesNestedInput
+  ward?: Prisma.WardUpdateOneWithoutCandidatesNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateUncheckedUpdateWithoutJobSavedsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  candidateExps?: Prisma.CandidateExpUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateEducations?: Prisma.CandidateEducationUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSkills?: Prisma.CandidateSkillUncheckedUpdateManyWithoutCandidateNestedInput
+  jobApplies?: Prisma.JobApplyUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateCreateWithoutProvinceInput = {
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCandidateInput
+  candidateExps?: Prisma.CandidateExpCreateNestedManyWithoutCandidateInput
+  candidateEducations?: Prisma.CandidateEducationCreateNestedManyWithoutCandidateInput
+  candidateSkills?: Prisma.CandidateSkillCreateNestedManyWithoutCandidateInput
+  jobApplies?: Prisma.JobApplyCreateNestedManyWithoutCandidateInput
+  ward?: Prisma.WardCreateNestedOneWithoutCandidatesInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedCreateNestedManyWithoutCandidateInput
+}
+
+export type CandidateUncheckedCreateWithoutProvinceInput = {
+  id?: number
+  userId: number
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  wardId?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  candidateExps?: Prisma.CandidateExpUncheckedCreateNestedManyWithoutCandidateInput
+  candidateEducations?: Prisma.CandidateEducationUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSkills?: Prisma.CandidateSkillUncheckedCreateNestedManyWithoutCandidateInput
+  jobApplies?: Prisma.JobApplyUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedUncheckedCreateNestedManyWithoutCandidateInput
+}
+
+export type CandidateCreateOrConnectWithoutProvinceInput = {
+  where: Prisma.CandidateWhereUniqueInput
+  create: Prisma.XOR<Prisma.CandidateCreateWithoutProvinceInput, Prisma.CandidateUncheckedCreateWithoutProvinceInput>
+}
+
+export type CandidateCreateManyProvinceInputEnvelope = {
+  data: Prisma.CandidateCreateManyProvinceInput | Prisma.CandidateCreateManyProvinceInput[]
+  skipDuplicates?: boolean
+}
+
+export type CandidateUpsertWithWhereUniqueWithoutProvinceInput = {
+  where: Prisma.CandidateWhereUniqueInput
+  update: Prisma.XOR<Prisma.CandidateUpdateWithoutProvinceInput, Prisma.CandidateUncheckedUpdateWithoutProvinceInput>
+  create: Prisma.XOR<Prisma.CandidateCreateWithoutProvinceInput, Prisma.CandidateUncheckedCreateWithoutProvinceInput>
+}
+
+export type CandidateUpdateWithWhereUniqueWithoutProvinceInput = {
+  where: Prisma.CandidateWhereUniqueInput
+  data: Prisma.XOR<Prisma.CandidateUpdateWithoutProvinceInput, Prisma.CandidateUncheckedUpdateWithoutProvinceInput>
+}
+
+export type CandidateUpdateManyWithWhereWithoutProvinceInput = {
+  where: Prisma.CandidateScalarWhereInput
+  data: Prisma.XOR<Prisma.CandidateUpdateManyMutationInput, Prisma.CandidateUncheckedUpdateManyWithoutProvinceInput>
+}
+
+export type CandidateScalarWhereInput = {
+  AND?: Prisma.CandidateScalarWhereInput | Prisma.CandidateScalarWhereInput[]
+  OR?: Prisma.CandidateScalarWhereInput[]
+  NOT?: Prisma.CandidateScalarWhereInput | Prisma.CandidateScalarWhereInput[]
+  id?: Prisma.IntFilter<"Candidate"> | number
+  userId?: Prisma.IntFilter<"Candidate"> | number
+  avatar?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  phone?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  address?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  website?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  isLookingJob?: Prisma.BoolFilter<"Candidate"> | boolean
+  cvFile?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  jobRole?: Prisma.StringNullableFilter<"Candidate"> | string | null
+  income?: Prisma.IntNullableFilter<"Candidate"> | number | null
+  provinceId?: Prisma.IntNullableFilter<"Candidate"> | number | null
+  wardId?: Prisma.IntNullableFilter<"Candidate"> | number | null
+  createdAt?: Prisma.DateTimeFilter<"Candidate"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Candidate"> | Date | string
 }
 
 export type CandidateCreateWithoutUserInput = {
@@ -920,12 +1563,18 @@ export type CandidateCreateWithoutUserInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   candidateExps?: Prisma.CandidateExpCreateNestedManyWithoutCandidateInput
   candidateEducations?: Prisma.CandidateEducationCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyCreateNestedManyWithoutCandidateInput
+  province?: Prisma.ProvinceCreateNestedOneWithoutCandidatesInput
+  ward?: Prisma.WardCreateNestedOneWithoutCandidatesInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateUncheckedCreateWithoutUserInput = {
@@ -936,12 +1585,18 @@ export type CandidateUncheckedCreateWithoutUserInput = {
   website?: string | null
   isLookingJob?: boolean
   cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  wardId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   candidateExps?: Prisma.CandidateExpUncheckedCreateNestedManyWithoutCandidateInput
   candidateEducations?: Prisma.CandidateEducationUncheckedCreateNestedManyWithoutCandidateInput
   candidateSkills?: Prisma.CandidateSkillUncheckedCreateNestedManyWithoutCandidateInput
   jobApplies?: Prisma.JobApplyUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedUncheckedCreateNestedManyWithoutCandidateInput
 }
 
 export type CandidateCreateOrConnectWithoutUserInput = {
@@ -967,12 +1622,18 @@ export type CandidateUpdateWithoutUserInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   candidateExps?: Prisma.CandidateExpUpdateManyWithoutCandidateNestedInput
   candidateEducations?: Prisma.CandidateEducationUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUpdateManyWithoutCandidateNestedInput
+  province?: Prisma.ProvinceUpdateOneWithoutCandidatesNestedInput
+  ward?: Prisma.WardUpdateOneWithoutCandidatesNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUpdateManyWithoutCandidateNestedInput
 }
 
 export type CandidateUncheckedUpdateWithoutUserInput = {
@@ -983,12 +1644,237 @@ export type CandidateUncheckedUpdateWithoutUserInput = {
   website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   candidateExps?: Prisma.CandidateExpUncheckedUpdateManyWithoutCandidateNestedInput
   candidateEducations?: Prisma.CandidateEducationUncheckedUpdateManyWithoutCandidateNestedInput
   candidateSkills?: Prisma.CandidateSkillUncheckedUpdateManyWithoutCandidateNestedInput
   jobApplies?: Prisma.JobApplyUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUncheckedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateCreateWithoutWardInput = {
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCandidateInput
+  candidateExps?: Prisma.CandidateExpCreateNestedManyWithoutCandidateInput
+  candidateEducations?: Prisma.CandidateEducationCreateNestedManyWithoutCandidateInput
+  candidateSkills?: Prisma.CandidateSkillCreateNestedManyWithoutCandidateInput
+  jobApplies?: Prisma.JobApplyCreateNestedManyWithoutCandidateInput
+  province?: Prisma.ProvinceCreateNestedOneWithoutCandidatesInput
+  candidateSaveds?: Prisma.CandidateSavedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedCreateNestedManyWithoutCandidateInput
+}
+
+export type CandidateUncheckedCreateWithoutWardInput = {
+  id?: number
+  userId: number
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  candidateExps?: Prisma.CandidateExpUncheckedCreateNestedManyWithoutCandidateInput
+  candidateEducations?: Prisma.CandidateEducationUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSkills?: Prisma.CandidateSkillUncheckedCreateNestedManyWithoutCandidateInput
+  jobApplies?: Prisma.JobApplyUncheckedCreateNestedManyWithoutCandidateInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedCreateNestedManyWithoutCandidateInput
+  jobSaveds?: Prisma.JobSavedUncheckedCreateNestedManyWithoutCandidateInput
+}
+
+export type CandidateCreateOrConnectWithoutWardInput = {
+  where: Prisma.CandidateWhereUniqueInput
+  create: Prisma.XOR<Prisma.CandidateCreateWithoutWardInput, Prisma.CandidateUncheckedCreateWithoutWardInput>
+}
+
+export type CandidateCreateManyWardInputEnvelope = {
+  data: Prisma.CandidateCreateManyWardInput | Prisma.CandidateCreateManyWardInput[]
+  skipDuplicates?: boolean
+}
+
+export type CandidateUpsertWithWhereUniqueWithoutWardInput = {
+  where: Prisma.CandidateWhereUniqueInput
+  update: Prisma.XOR<Prisma.CandidateUpdateWithoutWardInput, Prisma.CandidateUncheckedUpdateWithoutWardInput>
+  create: Prisma.XOR<Prisma.CandidateCreateWithoutWardInput, Prisma.CandidateUncheckedCreateWithoutWardInput>
+}
+
+export type CandidateUpdateWithWhereUniqueWithoutWardInput = {
+  where: Prisma.CandidateWhereUniqueInput
+  data: Prisma.XOR<Prisma.CandidateUpdateWithoutWardInput, Prisma.CandidateUncheckedUpdateWithoutWardInput>
+}
+
+export type CandidateUpdateManyWithWhereWithoutWardInput = {
+  where: Prisma.CandidateScalarWhereInput
+  data: Prisma.XOR<Prisma.CandidateUpdateManyMutationInput, Prisma.CandidateUncheckedUpdateManyWithoutWardInput>
+}
+
+export type CandidateCreateManyProvinceInput = {
+  id?: number
+  userId: number
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  wardId?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CandidateUpdateWithoutProvinceInput = {
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput
+  candidateExps?: Prisma.CandidateExpUpdateManyWithoutCandidateNestedInput
+  candidateEducations?: Prisma.CandidateEducationUpdateManyWithoutCandidateNestedInput
+  candidateSkills?: Prisma.CandidateSkillUpdateManyWithoutCandidateNestedInput
+  jobApplies?: Prisma.JobApplyUpdateManyWithoutCandidateNestedInput
+  ward?: Prisma.WardUpdateOneWithoutCandidatesNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateUncheckedUpdateWithoutProvinceInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  candidateExps?: Prisma.CandidateExpUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateEducations?: Prisma.CandidateEducationUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSkills?: Prisma.CandidateSkillUncheckedUpdateManyWithoutCandidateNestedInput
+  jobApplies?: Prisma.JobApplyUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUncheckedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateUncheckedUpdateManyWithoutProvinceInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  wardId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CandidateCreateManyWardInput = {
+  id?: number
+  userId: number
+  avatar?: string | null
+  phone?: string | null
+  address?: string | null
+  website?: string | null
+  isLookingJob?: boolean
+  cvFile?: string | null
+  jobRole?: string | null
+  income?: number | null
+  provinceId?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CandidateUpdateWithoutWardInput = {
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCandidateNestedInput
+  candidateExps?: Prisma.CandidateExpUpdateManyWithoutCandidateNestedInput
+  candidateEducations?: Prisma.CandidateEducationUpdateManyWithoutCandidateNestedInput
+  candidateSkills?: Prisma.CandidateSkillUpdateManyWithoutCandidateNestedInput
+  jobApplies?: Prisma.JobApplyUpdateManyWithoutCandidateNestedInput
+  province?: Prisma.ProvinceUpdateOneWithoutCandidatesNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateUncheckedUpdateWithoutWardInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  candidateExps?: Prisma.CandidateExpUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateEducations?: Prisma.CandidateEducationUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSkills?: Prisma.CandidateSkillUncheckedUpdateManyWithoutCandidateNestedInput
+  jobApplies?: Prisma.JobApplyUncheckedUpdateManyWithoutCandidateNestedInput
+  candidateSaveds?: Prisma.CandidateSavedUncheckedUpdateManyWithoutCandidateNestedInput
+  jobSaveds?: Prisma.JobSavedUncheckedUpdateManyWithoutCandidateNestedInput
+}
+
+export type CandidateUncheckedUpdateManyWithoutWardInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isLookingJob?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cvFile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobRole?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  income?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  provinceId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -1001,6 +1887,8 @@ export type CandidateCountOutputType = {
   candidateEducations: number
   candidateSkills: number
   jobApplies: number
+  candidateSaveds: number
+  jobSaveds: number
 }
 
 export type CandidateCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1008,6 +1896,8 @@ export type CandidateCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensi
   candidateEducations?: boolean | CandidateCountOutputTypeCountCandidateEducationsArgs
   candidateSkills?: boolean | CandidateCountOutputTypeCountCandidateSkillsArgs
   jobApplies?: boolean | CandidateCountOutputTypeCountJobAppliesArgs
+  candidateSaveds?: boolean | CandidateCountOutputTypeCountCandidateSavedsArgs
+  jobSaveds?: boolean | CandidateCountOutputTypeCountJobSavedsArgs
 }
 
 /**
@@ -1048,6 +1938,20 @@ export type CandidateCountOutputTypeCountJobAppliesArgs<ExtArgs extends runtime.
   where?: Prisma.JobApplyWhereInput
 }
 
+/**
+ * CandidateCountOutputType without action
+ */
+export type CandidateCountOutputTypeCountCandidateSavedsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CandidateSavedWhereInput
+}
+
+/**
+ * CandidateCountOutputType without action
+ */
+export type CandidateCountOutputTypeCountJobSavedsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.JobSavedWhereInput
+}
+
 
 export type CandidateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1058,6 +1962,10 @@ export type CandidateSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   website?: boolean
   isLookingJob?: boolean
   cvFile?: boolean
+  jobRole?: boolean
+  income?: boolean
+  provinceId?: boolean
+  wardId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1065,6 +1973,10 @@ export type CandidateSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   candidateEducations?: boolean | Prisma.Candidate$candidateEducationsArgs<ExtArgs>
   candidateSkills?: boolean | Prisma.Candidate$candidateSkillsArgs<ExtArgs>
   jobApplies?: boolean | Prisma.Candidate$jobAppliesArgs<ExtArgs>
+  province?: boolean | Prisma.Candidate$provinceArgs<ExtArgs>
+  ward?: boolean | Prisma.Candidate$wardArgs<ExtArgs>
+  candidateSaveds?: boolean | Prisma.Candidate$candidateSavedsArgs<ExtArgs>
+  jobSaveds?: boolean | Prisma.Candidate$jobSavedsArgs<ExtArgs>
   _count?: boolean | Prisma.CandidateCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["candidate"]>
 
@@ -1079,17 +1991,25 @@ export type CandidateSelectScalar = {
   website?: boolean
   isLookingJob?: boolean
   cvFile?: boolean
+  jobRole?: boolean
+  income?: boolean
+  provinceId?: boolean
+  wardId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CandidateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "avatar" | "phone" | "address" | "website" | "isLookingJob" | "cvFile" | "createdAt" | "updatedAt", ExtArgs["result"]["candidate"]>
+export type CandidateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "avatar" | "phone" | "address" | "website" | "isLookingJob" | "cvFile" | "jobRole" | "income" | "provinceId" | "wardId" | "createdAt" | "updatedAt", ExtArgs["result"]["candidate"]>
 export type CandidateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   candidateExps?: boolean | Prisma.Candidate$candidateExpsArgs<ExtArgs>
   candidateEducations?: boolean | Prisma.Candidate$candidateEducationsArgs<ExtArgs>
   candidateSkills?: boolean | Prisma.Candidate$candidateSkillsArgs<ExtArgs>
   jobApplies?: boolean | Prisma.Candidate$jobAppliesArgs<ExtArgs>
+  province?: boolean | Prisma.Candidate$provinceArgs<ExtArgs>
+  ward?: boolean | Prisma.Candidate$wardArgs<ExtArgs>
+  candidateSaveds?: boolean | Prisma.Candidate$candidateSavedsArgs<ExtArgs>
+  jobSaveds?: boolean | Prisma.Candidate$jobSavedsArgs<ExtArgs>
   _count?: boolean | Prisma.CandidateCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1101,6 +2021,10 @@ export type $CandidatePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     candidateEducations: Prisma.$CandidateEducationPayload<ExtArgs>[]
     candidateSkills: Prisma.$CandidateSkillPayload<ExtArgs>[]
     jobApplies: Prisma.$JobApplyPayload<ExtArgs>[]
+    province: Prisma.$ProvincePayload<ExtArgs> | null
+    ward: Prisma.$WardPayload<ExtArgs> | null
+    candidateSaveds: Prisma.$CandidateSavedPayload<ExtArgs>[]
+    jobSaveds: Prisma.$JobSavedPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1111,6 +2035,10 @@ export type $CandidatePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     website: string | null
     isLookingJob: boolean
     cvFile: string | null
+    jobRole: string | null
+    income: number | null
+    provinceId: number | null
+    wardId: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["candidate"]>
@@ -1458,6 +2386,10 @@ export interface Prisma__CandidateClient<T, Null = never, ExtArgs extends runtim
   candidateEducations<T extends Prisma.Candidate$candidateEducationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Candidate$candidateEducationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CandidateEducationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   candidateSkills<T extends Prisma.Candidate$candidateSkillsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Candidate$candidateSkillsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CandidateSkillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   jobApplies<T extends Prisma.Candidate$jobAppliesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Candidate$jobAppliesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JobApplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  province<T extends Prisma.Candidate$provinceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Candidate$provinceArgs<ExtArgs>>): Prisma.Prisma__ProvinceClient<runtime.Types.Result.GetResult<Prisma.$ProvincePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  ward<T extends Prisma.Candidate$wardArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Candidate$wardArgs<ExtArgs>>): Prisma.Prisma__WardClient<runtime.Types.Result.GetResult<Prisma.$WardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  candidateSaveds<T extends Prisma.Candidate$candidateSavedsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Candidate$candidateSavedsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CandidateSavedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  jobSaveds<T extends Prisma.Candidate$jobSavedsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Candidate$jobSavedsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JobSavedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1495,6 +2427,10 @@ export interface CandidateFieldRefs {
   readonly website: Prisma.FieldRef<"Candidate", 'String'>
   readonly isLookingJob: Prisma.FieldRef<"Candidate", 'Boolean'>
   readonly cvFile: Prisma.FieldRef<"Candidate", 'String'>
+  readonly jobRole: Prisma.FieldRef<"Candidate", 'String'>
+  readonly income: Prisma.FieldRef<"Candidate", 'Int'>
+  readonly provinceId: Prisma.FieldRef<"Candidate", 'Int'>
+  readonly wardId: Prisma.FieldRef<"Candidate", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Candidate", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Candidate", 'DateTime'>
 }
@@ -1938,6 +2874,92 @@ export type Candidate$jobAppliesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.JobApplyScalarFieldEnum | Prisma.JobApplyScalarFieldEnum[]
+}
+
+/**
+ * Candidate.province
+ */
+export type Candidate$provinceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Province
+   */
+  select?: Prisma.ProvinceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Province
+   */
+  omit?: Prisma.ProvinceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProvinceInclude<ExtArgs> | null
+  where?: Prisma.ProvinceWhereInput
+}
+
+/**
+ * Candidate.ward
+ */
+export type Candidate$wardArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Ward
+   */
+  select?: Prisma.WardSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Ward
+   */
+  omit?: Prisma.WardOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WardInclude<ExtArgs> | null
+  where?: Prisma.WardWhereInput
+}
+
+/**
+ * Candidate.candidateSaveds
+ */
+export type Candidate$candidateSavedsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CandidateSaved
+   */
+  select?: Prisma.CandidateSavedSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CandidateSaved
+   */
+  omit?: Prisma.CandidateSavedOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CandidateSavedInclude<ExtArgs> | null
+  where?: Prisma.CandidateSavedWhereInput
+  orderBy?: Prisma.CandidateSavedOrderByWithRelationInput | Prisma.CandidateSavedOrderByWithRelationInput[]
+  cursor?: Prisma.CandidateSavedWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CandidateSavedScalarFieldEnum | Prisma.CandidateSavedScalarFieldEnum[]
+}
+
+/**
+ * Candidate.jobSaveds
+ */
+export type Candidate$jobSavedsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the JobSaved
+   */
+  select?: Prisma.JobSavedSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the JobSaved
+   */
+  omit?: Prisma.JobSavedOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.JobSavedInclude<ExtArgs> | null
+  where?: Prisma.JobSavedWhereInput
+  orderBy?: Prisma.JobSavedOrderByWithRelationInput | Prisma.JobSavedOrderByWithRelationInput[]
+  cursor?: Prisma.JobSavedWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.JobSavedScalarFieldEnum | Prisma.JobSavedScalarFieldEnum[]
 }
 
 /**
